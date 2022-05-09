@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{238FE728-458F-40B2-9352-66335E1B4D8C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CoreDevelopWin</RootNamespace>
+    <AssemblyName>CoreDevelopWin</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContextDevelop.cs" />
+    <Compile Include="Dialogs\ClassChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ClassChooser.Designer.cs">
+      <DependentUpon>ClassChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\CoreDevelopForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\CoreDevelopForm.Designer.cs">
+      <DependentUpon>CoreDevelopForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PropChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\PropChooser.Designer.cs">
+      <DependentUpon>PropChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\TagChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\TagChooser.Designer.cs">
+      <DependentUpon>TagChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screens\Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dialogs\ClassChooser.resx">
+      <DependentUpon>ClassChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\CoreDevelopForm.resx">
+      <DependentUpon>CoreDevelopForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\PropChooser.resx">
+      <DependentUpon>PropChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\TagChooser.resx">
+      <DependentUpon>TagChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Tools\Tools.csproj">
+      <Project>{5047280A-4740-4083-85FE-F71B28B77848}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Tools\ToolsWin\ToolsWin.csproj">
+      <Project>{C4D3A247-5091-401F-9045-2DEDAE231831}</Project>
+      <Name>ToolsWin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core.csproj">
+      <Project>{B5CEFFDE-EA3C-4BFA-9501-03FE5642741C}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CoreWin\CoreWin.csproj">
+      <Project>{3836F191-B2A8-4457-A5F6-5B766DB73E36}</Project>
+      <Name>CoreWin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreDevelop.csproj">
+      <Project>{511fb666-28b8-4d3f-a604-1edb0d8036ae}</Project>
+      <Name>CoreDevelop</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

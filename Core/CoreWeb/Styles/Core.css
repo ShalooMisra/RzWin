@@ -1,0 +1,140 @@
+﻿body 
+{
+	font-family: Calibri;	
+}
+
+.display
+{
+	border: thin solid #999999;
+}
+
+tr.row_selected
+{    
+	background-color: #3366FF;
+	color: White !important;
+	font-weight: normal;
+}
+
+tr.row_selected_active
+{
+	background-color: #3366FF;
+	color: White !important;
+	font-weight: normal;
+}
+
+th.sorting
+{
+    font-weight: normal;
+	cursor: pointer;	    
+	background-color : #FFFFFF;
+	background-image : url(../Graphics/gradient_grey_white.jpg);
+	background-position : top;
+	background-repeat : repeat-x;
+	border-left-style: solid;
+	border-left-color: #000000;
+	border-left-width: thin;
+}
+
+th.sorting_asc
+{
+    font-weight: bolder;
+	cursor: pointer;	    
+	background-color : #FFFFFF;
+	background-image : url(../Graphics/gradient_grey_white.jpg);
+	background-position : top;
+	background-repeat : repeat-x;
+}
+
+th.sorting_desc
+{
+    font-weight: bolder;
+	cursor: pointer;	    
+	background-color : #FFFFFF;
+	background-image : url(../Graphics/gradient_grey_white.jpg);
+	background-position : top;
+	background-repeat : repeat-x;
+}
+
+.webtablecell
+{
+	border-bottom-style: solid;
+	border-bottom-color: #e3e3e6;
+	border-bottom-width: thin;
+	border-left-style: solid;
+	border-left-color: #e3e3e6;
+	border-left-width: thin;
+}
+
+.webtablerow
+{
+	cursor: pointer;
+}
+
+.menu_row
+{
+	cursor: pointer;
+}
+
+.menu_cell
+{
+	background-color: White;
+	color:Black;
+}
+
+.menu_cell:hover
+{
+	background-color: #b0bcef;
+	color:White;
+}
+
+a:hover 
+{
+    cursor:pointer;
+} 
+
+a:link
+{ 
+    color:blue; 
+}
+
+a:visited
+{ 
+    color:blue; 
+}
+
+a:hover
+{ 
+    color:purple; 
+}
+
+a:active
+{ 
+    color:red; 
+}
+
+.jqborderstyle
+{
+	border: 1px solid #AAAAAA;
+	border-radius: 4px;
+}
+
+.rz-margin
+{
+	margin: 4px;
+}
+
+.core-report-description
+{
+	color: Gray;
+}
+
+th.rz-report
+{
+    font-weight: normal;
+	cursor: pointer;	    
+	background-color : #FFFFFF;
+	background-image : url(../Graphics/gradient_grey_white.jpg);
+	background-position : top;
+	background-repeat : repeat-x;
+	border: thin solid #AAAAAA;
+}

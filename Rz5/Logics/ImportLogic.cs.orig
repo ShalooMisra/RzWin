@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using NewMethod;
+using Core;
+
+namespace Rz4
+{
+    public class ImportLogic
+    {
+        public void ActsList(Context x, List<ActHandle> acts)
+        {
+            if (((n_sys_Rz4)((ContextRz)x).xSys).ThePermitLogic.CheckPermit(Permissions.ThePermits.ImportLineItems, ((ContextRz)x).xUser))
+            {
+                ActHandle h = new ActHandle(new Act(x, "Import", new ActHandler(ImportShow)));
+                acts.Add(h);
+                h.SubActs.Add(new ActHandle(new Act(x, "Export Inventory", new ActHandler(ExportInventory))));
+                if (((n_sys_Rz4)((ContextRz)x).xSys).ThePermitLogic.CheckPermit(Permissions.ThePermits.ImportCompanies, ((ContextRz)x).xUser))
+                {
+                    h.SubActs.Add(new ActHandle(new Act(x, "Import Companies", new ActHandler(ImportCompanies))));
+                    h.SubActs.Add(new ActHandle(new Act(x, "Import Contacts", new ActHandler(ImportContacts))));
+                }
+            }
+        }
+        public void ImportShow(Context x, ActArgs args)
+        {
+            ((ILeaderRz)x.TheLeader).ImportShow((ContextRz)x);
+            args.Result(true);
+        }
+
+        public virtual ExportInventory GetExportInventory(Context x)
+        {
+            return new ExportInventory();
+        }
+
+        public virtual void ExportInventory(Context x, ActArgs args)
+        {
+            //if (!Rz3App.xUser.CheckPermit("Inventory:Exports:CustomExport"))
+            //{
+            //    nStatus.ShowNoRight();
+            //    return;
+            //}
+            ExportInventory export = GetExportInventory(x);
+            export.CompleteLoad();
+            ((ContextNM)x).xSys.xMainForm.TabShow(export, "Export Inventory");
+        }
+
+        public virtual void ImportCompanies(Context x, ActArgs args)
+        {
+            ((ContextNM)x).xSys.xMainForm.TabShow(new CompanyImport(), "Import Companies");
+        }
+        public virtual void ImportContacts(Context x, ActArgs args)
+        {
+            ((ContextNM)x).xSys.xMainForm.TabShow(new ContactImport(), "Import Contacts");
+        }
+        
+    }
+}
+
+
+
+

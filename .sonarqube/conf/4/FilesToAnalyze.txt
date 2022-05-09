@@ -1,0 +1,7 @@
+﻿C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\GoogleApis\GoogleApis\GoogleApis\authentication.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\GoogleApis\GoogleApis\GoogleApis\photos.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\GoogleApis\GoogleApis\GoogleApis\gmail.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\GoogleApis\GoogleApis\GoogleApis\Properties\AssemblyInfo.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\GoogleApis\GoogleApis\GoogleApis\program.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\GoogleApis\GoogleApis\GoogleApis\App.config
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\GoogleApis\GoogleApis\GoogleApis\packages.config

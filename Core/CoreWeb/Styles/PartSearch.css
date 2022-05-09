@@ -1,0 +1,70 @@
+﻿body
+{	
+}
+
+.Button1
+{
+	z-index:-1;
+	}
+
+.Button2
+{
+	position:absolute;
+	left:-20px;
+	}
+
+.list 
+{
+	background-color:#eeeeee;
+	list-style-type:none;
+	/*text-align:left;*/
+	display: block;
+}
+
+.highlighted
+{
+	display:block;
+	border-bottom-width:thin;
+	border-bottom-style:inset;
+/*	border-spacing:5px;*/
+	white-space:pre-wrap;
+	padding-bottom:3px;
+	padding-top:3px;
+	font-family:Tahoma;
+	font-size:10px;
+	background-color:#dddddd;
+}
+.highlighted:first-line
+{
+	font-family:Tahoma;
+	font-size:12px;
+}
+.item
+{
+	display:block;
+	border-bottom-width:thin;
+	border-bottom-style:inset;
+	border-spacing:3px;
+	white-space:pre-wrap;
+	padding-bottom:3px;
+	padding-top:3px;
+	font-family:Tahoma;
+	font-size:10px;
+}
+.item:hover
+{
+	background-color:#dddddd;
+	display:inherit;
+}
+	
+.item:first-line
+{
+	font-family:Tahoma;
+	font-size:12px;
+}
+
+.tabcontainer
+{
+	/*margin-left:20px;*/
+	/*width: 100%;*/
+}

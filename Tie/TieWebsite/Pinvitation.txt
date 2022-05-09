@@ -1,0 +1,24 @@
+
+
+Instructions On Accepting A Pinvitation
+-------------------------------------------------
+
+This message includes a block of text below that contains all of the connection details to make a computer available to whoever sent this invitation.
+
+To accept this invitation, please take these steps:
+
+1) Install the NewMethodSoftware TieService.  To do this:
+     Download and run http://www.newmethodsoftware.com/TieServiceSetup.msi
+     If prompted, install the Microsoft .NET 2.0 framework, and then re-run the install file above
+          ( the .NET 2.0 framework is available at microsoft.com and also at http://www.newmethodsoftware.com/dotnetfx.exe )
+
+     Click 'next' through the installation, accepting the license agreement, etc
+
+2) Accept this Pinvitation.  A settings screen should appear at the end of the TieService installation.
+     Click the link labeled 'accept a pinvitation' at the top of the screen, and another screen with a text box will appear
+     Copy the block of text below, and paste it into the text box of the Pinvitation screen.
+     Click 'Accept' on the Pinvitation screen.
+
+A full set of step-by-step screen shots and instructions on accepting this Pinvitation is available at http://www.newmethodsoftware.com/Tie/Docs/item_d5a9f3920868407eac563f4c3331a173.htm
+
+

@@ -1,0 +1,82 @@
+
+ok, users, teams, and permissions.
+
+how well does the metacode user/team/permission system work?
+why do i never want to set it up?
+	mainly because I know that there will be things that people ask for that the permission system can't do.
+
+HHMM.  can't the permission system add per-user per-control read/write access to any control, even controls on a hard-coded form?
+
+isn't that all Rz3, and most applications, are at that level?
+there are:
+	screens with controls that need read/write access
+	lists with user-configurable columns
+	actions that can be turned on and off per-user
+
+with all of those elements as part of the security system, nm can provide everything that people need.
+with the tools to turn them on and off directly on top of the functionality itself, that should be it.
+
+ok, so what components will need to be in place?
+
+the user/team manager, for editing users and organizing teams
+the caching of teams and permissions
+per-user and per-team templates
+
+so the permission checkpoints will work the same as before.
+but wouldn't it be nice to have a map of the system so that checkpoints can be laid out there?
+
+how would that work, without having to manually keep the code and the map in line?
+well, the way would be to have the map actually drive and organize the code in some way.
+
+that would be ideal; to begin sketching out the entire application in terms of a menu structure,
+so that permission to do or not do certain items can be added.
+
+that's another consideration; permissions need to be 2-way; 'yes-you-can-do-this' and 'no-you-cannot-do-this', so that companies can start at either end.
+some companies want to leave everyone as super-users...except for this or that specific permission.  others want it locked down, with only specific permissions enabled.
+
+in fact, that needs to go per-user; do they have everything by default, or not?
+
+THAT's the right way to go.
+
+
+ok, so each user will have a permission_mode string representing either optomistic or pessemistic permissions
+
+each system won't automatically cache the user's permissions, but the Rz3 app will do both.
+
+so, the current user needs to be able to:
+	cache its permissions
+	cache its team heirarchies
+
+each permission needs a flag to say if it is positive or negative (is_positive)
+
+each permission flag should also have an attribute for can_read, can_write, and can_design
+
+so, permissions in lists will be handled by per-user templates.
+permissions on screens will be handled by per-user screens, and also by per-control permissions
+permissions in the program flow will be handled by the standard security checkpoints
+
+per-user templates will need to be added and edited with respect to both the user and their associated teams
+each user will not only need to store a collection of their own teams, but they will also need to store how those teams inter-relate.
+
+hmm.  maybe the system should do that; track a collection of each top-level team and each linked team below it?
+
+that sounds right.
+
+ok, so the user just has a collection of teams that they're in, and to reference the team structure it can refer to its parent system.
+
+so, on the template editor, we need some choices.
+
+if this is a per-user template, they need the option to remove the per-user template and drop back to the default for their default team.
+if this is a per-team template, they need the option to remove it, and drop back to the default.
+if it is the default, they need the option to add one for the default team or their specific user account
+
+also, we need a way for a user to have a direct team link, (main_n_team_uid), so that a person's primary team relationship can be nailed down.
+
+
+
+
+
+
+
+
+

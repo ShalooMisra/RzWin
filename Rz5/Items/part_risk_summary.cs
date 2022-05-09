@@ -1,0 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.Text;
+using System.Data;
+using NewMethod;
+
+namespace Rz5
+{
+    public partial class part_risk_summary : part_risk_summary_auto
+    {
+    }
+}

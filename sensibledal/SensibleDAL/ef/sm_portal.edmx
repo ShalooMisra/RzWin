@@ -1,0 +1,786 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sm_portalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="insp_detail">
+          <Key>
+            <PropertyRef Name="detail_id" />
+          </Key>
+          <Property Name="detail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="insp_id" Type="int" Nullable="false" />
+          <Property Name="inner_cont1_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="inner_cont1_text" Type="nvarchar(max)" />
+          <Property Name="inner_cont2_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="inner_cont2_text" Type="nvarchar(max)" />
+          <Property Name="inner_cont3_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="inner_cont3_text" Type="nvarchar(max)" />
+          <Property Name="inner_cont4_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="inner_cont4_text" Type="nvarchar(max)" />
+          <Property Name="inner_cont5_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="inner_cont5_text" Type="nvarchar(max)" />
+          <Property Name="inner_cont6_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="inner_cont6_text" Type="nvarchar(max)" />
+          <Property Name="inner_cont7_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="inner_cont7_text" Type="nvarchar(max)" />
+          <Property Name="tube1_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="tube1_text" Type="nvarchar(max)" />
+          <Property Name="tube2_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="tube2_text" Type="nvarchar(max)" />
+          <Property Name="tube3_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="tube3_text" Type="nvarchar(max)" />
+          <Property Name="tube4_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="tube4_text" Type="nvarchar(max)" />
+          <Property Name="tube5_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="tube5_text" Type="nvarchar(max)" />
+          <Property Name="reel1_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="reel1_text" Type="nvarchar(max)" />
+          <Property Name="reel2_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="reel2_text" Type="nvarchar(max)" />
+          <Property Name="reel3_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="reel3_text" Type="nvarchar(max)" />
+          <Property Name="reel4_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="reel4_text" Type="nvarchar(max)" />
+          <Property Name="reel5_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="reel5_text" Type="nvarchar(max)" />
+          <Property Name="reel6_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="reel6_text" Type="nvarchar(max)" />
+          <Property Name="reel7_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="reel7_text" Type="nvarchar(max)" />
+          <Property Name="tray1_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="tray1_text" Type="nvarchar(max)" />
+          <Property Name="tray2_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="tray2_text" Type="nvarchar(max)" />
+          <Property Name="tray3_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="tray3_text" Type="nvarchar(max)" />
+          <Property Name="tray4_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="tray4_text" Type="nvarchar(max)" />
+          <Property Name="tray5_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="tray5_text" Type="nvarchar(max)" />
+          <Property Name="tray6_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="tray6_text" Type="nvarchar(max)" />
+          <Property Name="bulk1_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="bulk1_text" Type="nvarchar(max)" />
+          <Property Name="bulk2_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="bulk2_text" Type="nvarchar(max)" />
+          <Property Name="bulk3_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="bulk3_text" Type="nvarchar(max)" />
+          <Property Name="bulk4_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="bulk4_text" Type="nvarchar(max)" />
+          <Property Name="initial1_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="initial1_text" Type="nvarchar(max)" />
+          <Property Name="initial2_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="initial2_text" Type="nvarchar(max)" />
+          <Property Name="initial3_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="initial3_text" Type="nvarchar(max)" />
+          <Property Name="initial4_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="initial4_text" Type="nvarchar(max)" />
+          <Property Name="initial5_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="initial5_text" Type="nvarchar(max)" />
+          <Property Name="initial6_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="initial6_text" Type="nvarchar(max)" />
+          <Property Name="initial7_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="initial7_text" Type="nvarchar(max)" />
+          <Property Name="detail1_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail1_text" Type="nvarchar(max)" />
+          <Property Name="detail2_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail2_text" Type="nvarchar(max)" />
+          <Property Name="detail3_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail3_text" Type="nvarchar(max)" />
+          <Property Name="detail4_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail4_text" Type="nvarchar(max)" />
+          <Property Name="detail5_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail5_text" Type="nvarchar(max)" />
+          <Property Name="detail6_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail6_text" Type="nvarchar(max)" />
+          <Property Name="detail7_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail7_text" Type="nvarchar(max)" />
+          <Property Name="detail8_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail8_text" Type="nvarchar(max)" />
+          <Property Name="detail9_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail9_text" Type="nvarchar(max)" />
+          <Property Name="detail10_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail10_text" Type="nvarchar(max)" />
+          <Property Name="detail11_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail11_text" Type="nvarchar(max)" />
+          <Property Name="detail12_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail12_text" Type="nvarchar(max)" />
+          <Property Name="detail13_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail13_text" Type="nvarchar(max)" />
+          <Property Name="detail14_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail14_text" Type="nvarchar(max)" />
+          <Property Name="detail15_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail15_text" Type="nvarchar(max)" />
+          <Property Name="detail16_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail16_text" Type="nvarchar(max)" />
+          <Property Name="detail17_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="detail17_text" Type="nvarchar(max)" />
+          <Property Name="is_solvent" Type="bit" />
+          <Property Name="solvent1_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="solvent1_text" Type="nvarchar(max)" />
+          <Property Name="solvent2_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="solvent2_text" Type="nvarchar(max)" />
+          <Property Name="solvent3_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="solvent3_text" Type="nvarchar(max)" />
+          <Property Name="is_mech" Type="bit" />
+          <Property Name="mech1_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="mech1_text" Type="nvarchar(max)" />
+          <Property Name="mech2_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="mech2_text" Type="nvarchar(max)" />
+          <Property Name="mech3_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="mech3_text" Type="nvarchar(max)" />
+          <Property Name="is_tube" Type="bit" />
+          <Property Name="is_reel" Type="bit" />
+          <Property Name="is_tray" Type="bit" />
+          <Property Name="is_bulk" Type="bit" />
+          <Property Name="imagetest1" Type="image" />
+          <Property Name="imagetest2" Type="varchar" MaxLength="256" />
+          <Property Name="is_complete" Type="bit" />
+          <Property Name="date_modified" Type="datetime" />
+          <Property Name="date_created" Type="datetime" />
+          <Property Name="is_addtesting" Type="bit" />
+          <Property Name="addtesting_text" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="insp_head">
+          <Key>
+            <PropertyRef Name="insp_id" />
+          </Key>
+          <Property Name="insp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="insp_date" Type="datetime" />
+          <Property Name="customer_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="customer_uid" Type="nvarchar" MaxLength="50" />
+          <Property Name="customer_po" Type="nvarchar" MaxLength="30" />
+          <Property Name="vendor_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="vendor_uid" Type="nvarchar" MaxLength="50" />
+          <Property Name="vendor_po" Type="nvarchar" MaxLength="30" />
+          <Property Name="vendor_po_uid" Type="nvarchar" MaxLength="50" />
+          <Property Name="ordernumber_sales" Type="nvarchar" MaxLength="30" />
+          <Property Name="orderid_sales" Type="nvarchar" MaxLength="50" />
+          <Property Name="sales_email" Type="nvarchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="20" />
+          <Property Name="packaging" Type="nvarchar" MaxLength="50" />
+          <Property Name="manufacturer" Type="nvarchar" MaxLength="50" />
+          <Property Name="fullpartnumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="date_code" Type="nvarchar" MaxLength="250" />
+          <Property Name="lot" Type="nvarchar(max)" />
+          <Property Name="coo" Type="nvarchar" MaxLength="50" />
+          <Property Name="package_type" Type="nvarchar" MaxLength="250" />
+          <Property Name="date_created" Type="datetime" />
+          <Property Name="date_modified" Type="datetime" />
+          <Property Name="inspector" Type="nvarchar" MaxLength="30" />
+          <Property Name="inspector_uid" Type="nvarchar" MaxLength="250" />
+          <Property Name="is_deleted" Type="bit" />
+          <Property Name="is_complete" Type="bit" />
+          <Property Name="expectedShipDate" Type="datetime" />
+          <Property Name="result" Type="nvarchar" MaxLength="50" />
+          <Property Name="resultnotes" Type="nvarchar(max)" />
+          <Property Name="completed_by" Type="nvarchar" MaxLength="50" />
+          <Property Name="completed_date" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="is_insp_complete" Type="bit" />
+          <Property Name="email_sent" Type="bit" />
+          <Property Name="orddet_line_uid" Type="nvarchar" MaxLength="50" />
+          <Property Name="is_demo" Type="bit" Nullable="false" />
+          <Property Name="source_insp_id" Type="int" />
+          <Property Name="final_InspectionComplete" Type="bit" />
+          <Property Name="final_InspectionCompleteDate" Type="datetime" />
+          <Property Name="final_Inspector" Type="nvarchar" MaxLength="250" />
+          <Property Name="final_Inspector_uid" Type="nvarchar" MaxLength="250" />
+          <Property Name="current_turn_back_id" Type="nvarchar" MaxLength="250" />
+          <Property Name="initial_alert_sent" Type="bit" />
+        </EntityType>
+        <EntityType Name="insp_whse">
+          <Key>
+            <PropertyRef Name="whse_id" />
+          </Key>
+          <Property Name="whse_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="insp_id" Type="int" Nullable="false" />
+          <Property Name="date_created" Type="datetime" />
+          <Property Name="date_modified" Type="datetime" />
+          <Property Name="gencarton1_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="gencarton1_text" Type="nvarchar(max)" />
+          <Property Name="gencarton2_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="gencarton2_text" Type="nvarchar(max)" />
+          <Property Name="gencarton3_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="gencarton3_text" Type="nvarchar(max)" />
+          <Property Name="gencarton4_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="gencarton4_text" Type="nvarchar(max)" />
+          <Property Name="gencarton5_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="gencarton5_text" Type="nvarchar(max)" />
+          <Property Name="outcarton1_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="outcarton1_text" Type="nvarchar(max)" />
+          <Property Name="outcarton2_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="outcarton2_text" Type="nvarchar(max)" />
+          <Property Name="outcarton3_result" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="outcarton3_text" Type="nvarchar(max)" />
+          <Property Name="outcarton4_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="outcarton4_text" Type="nvarchar(max)" />
+          <Property Name="outcarton5_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="outcarton5_text" Type="nvarchar(max)" />
+          <Property Name="outcarton6_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="outcarton6_text" Type="nvarchar(max)" />
+          <Property Name="outcarton7_result" Type="nvarchar" MaxLength="10" />
+          <Property Name="outcarton7_text" Type="nvarchar(max)" />
+          <Property Name="is_complete" Type="bit" />
+        </EntityType>
+        <Association Name="FK_insp_detail_insp_head">
+          <End Role="insp_head" Type="Self.insp_head" Multiplicity="1" />
+          <End Role="insp_detail" Type="Self.insp_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="insp_head">
+              <PropertyRef Name="insp_id" />
+            </Principal>
+            <Dependent Role="insp_detail">
+              <PropertyRef Name="insp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_insp_whse_insp_head">
+          <End Role="insp_head" Type="Self.insp_head" Multiplicity="1" />
+          <End Role="insp_whse" Type="Self.insp_whse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="insp_head">
+              <PropertyRef Name="insp_id" />
+            </Principal>
+            <Dependent Role="insp_whse">
+              <PropertyRef Name="insp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sm_portalModelStoreContainer">
+          <EntitySet Name="insp_detail" EntityType="Self.insp_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="insp_head" EntityType="Self.insp_head" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="insp_whse" EntityType="Self.insp_whse" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_insp_detail_insp_head" Association="Self.FK_insp_detail_insp_head">
+            <End Role="insp_head" EntitySet="insp_head" />
+            <End Role="insp_detail" EntitySet="insp_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_insp_whse_insp_head" Association="Self.FK_insp_whse_insp_head">
+            <End Role="insp_head" EntitySet="insp_head" />
+            <End Role="insp_whse" EntitySet="insp_whse" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sm_portalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="insp_detail">
+          <Key>
+            <PropertyRef Name="detail_id" />
+          </Key>
+          <Property Name="detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="insp_id" Type="Int32" Nullable="false" />
+          <Property Name="inner_cont1_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont1_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont2_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont2_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont3_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont3_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont4_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont4_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont5_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont5_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont6_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont6_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont7_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="inner_cont7_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tube1_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tube1_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tube2_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tube2_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tube3_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tube3_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tube4_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tube4_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tube5_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tube5_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="reel1_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="reel1_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="reel2_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="reel2_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="reel3_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="reel3_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="reel4_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="reel4_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="reel5_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="reel5_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="reel6_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="reel6_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="reel7_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="reel7_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tray1_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tray1_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tray2_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tray2_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tray3_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tray3_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tray4_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tray4_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tray5_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tray5_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tray6_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tray6_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bulk1_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="bulk1_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bulk2_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="bulk2_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bulk3_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="bulk3_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bulk4_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="bulk4_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="initial1_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="initial1_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="initial2_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="initial2_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="initial3_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="initial3_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="initial4_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="initial4_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="initial5_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="initial5_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="initial6_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="initial6_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="initial7_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="initial7_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail1_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail1_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail2_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail2_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail3_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail3_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail4_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail4_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail5_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail5_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail6_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail6_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail7_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail7_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail8_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail8_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail9_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail9_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail10_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail10_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail11_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail11_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail12_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail12_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail13_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail13_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail14_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail14_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail15_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail15_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail16_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail16_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail17_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="detail17_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_solvent" Type="Boolean" />
+          <Property Name="solvent1_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="solvent1_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="solvent2_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="solvent2_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="solvent3_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="solvent3_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_mech" Type="Boolean" />
+          <Property Name="mech1_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="mech1_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mech2_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="mech2_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mech3_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="mech3_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_tube" Type="Boolean" />
+          <Property Name="is_reel" Type="Boolean" />
+          <Property Name="is_tray" Type="Boolean" />
+          <Property Name="is_bulk" Type="Boolean" />
+          <Property Name="imagetest1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="imagetest2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="is_complete" Type="Boolean" />
+          <Property Name="date_modified" Type="DateTime" Precision="3" />
+          <Property Name="date_created" Type="DateTime" Precision="3" />
+          <Property Name="is_addtesting" Type="Boolean" />
+          <Property Name="addtesting_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="insp_head" Relationship="Self.FK_insp_detail_insp_head" FromRole="insp_detail" ToRole="insp_head" />
+        </EntityType>
+        <EntityType Name="insp_head">
+          <Key>
+            <PropertyRef Name="insp_id" />
+          </Key>
+          <Property Name="insp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="insp_date" Type="DateTime" Precision="3" />
+          <Property Name="customer_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="customer_uid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="customer_po" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="vendor_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="vendor_uid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vendor_po" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="vendor_po_uid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ordernumber_sales" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="orderid_sales" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sales_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="packaging" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fullpartnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="date_code" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="lot" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="coo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="package_type" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="date_created" Type="DateTime" Precision="3" />
+          <Property Name="date_modified" Type="DateTime" Precision="3" />
+          <Property Name="inspector" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="inspector_uid" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="is_deleted" Type="Boolean" />
+          <Property Name="is_complete" Type="Boolean" />
+          <Property Name="expectedShipDate" Type="DateTime" Precision="3" />
+          <Property Name="result" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="resultnotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="completed_by" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="completed_date" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="is_insp_complete" Type="Boolean" />
+          <Property Name="email_sent" Type="Boolean" />
+          <Property Name="orddet_line_uid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="is_demo" Type="Boolean" Nullable="false" />
+          <Property Name="source_insp_id" Type="Int32" />
+          <Property Name="final_InspectionComplete" Type="Boolean" />
+          <Property Name="final_InspectionCompleteDate" Type="DateTime" Precision="3" />
+          <Property Name="final_Inspector" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="final_Inspector_uid" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="current_turn_back_id" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="initial_alert_sent" Type="Boolean" />
+          <NavigationProperty Name="insp_detail" Relationship="Self.FK_insp_detail_insp_head" FromRole="insp_head" ToRole="insp_detail" />
+          <NavigationProperty Name="insp_whse" Relationship="Self.FK_insp_whse_insp_head" FromRole="insp_head" ToRole="insp_whse" />
+        </EntityType>
+        <EntityType Name="insp_whse">
+          <Key>
+            <PropertyRef Name="whse_id" />
+          </Key>
+          <Property Name="whse_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="insp_id" Type="Int32" Nullable="false" />
+          <Property Name="date_created" Type="DateTime" Precision="3" />
+          <Property Name="date_modified" Type="DateTime" Precision="3" />
+          <Property Name="gencarton1_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="gencarton1_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gencarton2_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="gencarton2_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gencarton3_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="gencarton3_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gencarton4_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="gencarton4_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gencarton5_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="gencarton5_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton1_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton1_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton2_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton2_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton3_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="outcarton3_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton4_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton4_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton5_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton5_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton6_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton6_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton7_result" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="outcarton7_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_complete" Type="Boolean" />
+          <NavigationProperty Name="insp_head" Relationship="Self.FK_insp_whse_insp_head" FromRole="insp_whse" ToRole="insp_head" />
+        </EntityType>
+        <Association Name="FK_insp_detail_insp_head">
+          <End Role="insp_head" Type="Self.insp_head" Multiplicity="1" />
+          <End Role="insp_detail" Type="Self.insp_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="insp_head">
+              <PropertyRef Name="insp_id" />
+            </Principal>
+            <Dependent Role="insp_detail">
+              <PropertyRef Name="insp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_insp_whse_insp_head">
+          <End Role="insp_head" Type="Self.insp_head" Multiplicity="1" />
+          <End Role="insp_whse" Type="Self.insp_whse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="insp_head">
+              <PropertyRef Name="insp_id" />
+            </Principal>
+            <Dependent Role="insp_whse">
+              <PropertyRef Name="insp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sm_portalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="insp_detail" EntityType="Self.insp_detail" />
+          <EntitySet Name="insp_head" EntityType="Self.insp_head" />
+          <EntitySet Name="insp_whse" EntityType="Self.insp_whse" />
+          <AssociationSet Name="FK_insp_detail_insp_head" Association="Self.FK_insp_detail_insp_head">
+            <End Role="insp_head" EntitySet="insp_head" />
+            <End Role="insp_detail" EntitySet="insp_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_insp_whse_insp_head" Association="Self.FK_insp_whse_insp_head">
+            <End Role="insp_head" EntitySet="insp_head" />
+            <End Role="insp_whse" EntitySet="insp_whse" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sm_portalModelStoreContainer" CdmEntityContainer="sm_portalEntities">
+          <EntitySetMapping Name="insp_detail">
+            <EntityTypeMapping TypeName="sm_portalModel.insp_detail">
+              <MappingFragment StoreEntitySet="insp_detail">
+                <ScalarProperty Name="detail_id" ColumnName="detail_id" />
+                <ScalarProperty Name="insp_id" ColumnName="insp_id" />
+                <ScalarProperty Name="inner_cont1_result" ColumnName="inner_cont1_result" />
+                <ScalarProperty Name="inner_cont1_text" ColumnName="inner_cont1_text" />
+                <ScalarProperty Name="inner_cont2_result" ColumnName="inner_cont2_result" />
+                <ScalarProperty Name="inner_cont2_text" ColumnName="inner_cont2_text" />
+                <ScalarProperty Name="inner_cont3_result" ColumnName="inner_cont3_result" />
+                <ScalarProperty Name="inner_cont3_text" ColumnName="inner_cont3_text" />
+                <ScalarProperty Name="inner_cont4_result" ColumnName="inner_cont4_result" />
+                <ScalarProperty Name="inner_cont4_text" ColumnName="inner_cont4_text" />
+                <ScalarProperty Name="inner_cont5_result" ColumnName="inner_cont5_result" />
+                <ScalarProperty Name="inner_cont5_text" ColumnName="inner_cont5_text" />
+                <ScalarProperty Name="inner_cont6_result" ColumnName="inner_cont6_result" />
+                <ScalarProperty Name="inner_cont6_text" ColumnName="inner_cont6_text" />
+                <ScalarProperty Name="inner_cont7_result" ColumnName="inner_cont7_result" />
+                <ScalarProperty Name="inner_cont7_text" ColumnName="inner_cont7_text" />
+                <ScalarProperty Name="tube1_result" ColumnName="tube1_result" />
+                <ScalarProperty Name="tube1_text" ColumnName="tube1_text" />
+                <ScalarProperty Name="tube2_result" ColumnName="tube2_result" />
+                <ScalarProperty Name="tube2_text" ColumnName="tube2_text" />
+                <ScalarProperty Name="tube3_result" ColumnName="tube3_result" />
+                <ScalarProperty Name="tube3_text" ColumnName="tube3_text" />
+                <ScalarProperty Name="tube4_result" ColumnName="tube4_result" />
+                <ScalarProperty Name="tube4_text" ColumnName="tube4_text" />
+                <ScalarProperty Name="tube5_result" ColumnName="tube5_result" />
+                <ScalarProperty Name="tube5_text" ColumnName="tube5_text" />
+                <ScalarProperty Name="reel1_result" ColumnName="reel1_result" />
+                <ScalarProperty Name="reel1_text" ColumnName="reel1_text" />
+                <ScalarProperty Name="reel2_result" ColumnName="reel2_result" />
+                <ScalarProperty Name="reel2_text" ColumnName="reel2_text" />
+                <ScalarProperty Name="reel3_result" ColumnName="reel3_result" />
+                <ScalarProperty Name="reel3_text" ColumnName="reel3_text" />
+                <ScalarProperty Name="reel4_result" ColumnName="reel4_result" />
+                <ScalarProperty Name="reel4_text" ColumnName="reel4_text" />
+                <ScalarProperty Name="reel5_result" ColumnName="reel5_result" />
+                <ScalarProperty Name="reel5_text" ColumnName="reel5_text" />
+                <ScalarProperty Name="reel6_result" ColumnName="reel6_result" />
+                <ScalarProperty Name="reel6_text" ColumnName="reel6_text" />
+                <ScalarProperty Name="reel7_result" ColumnName="reel7_result" />
+                <ScalarProperty Name="reel7_text" ColumnName="reel7_text" />
+                <ScalarProperty Name="tray1_result" ColumnName="tray1_result" />
+                <ScalarProperty Name="tray1_text" ColumnName="tray1_text" />
+                <ScalarProperty Name="tray2_result" ColumnName="tray2_result" />
+                <ScalarProperty Name="tray2_text" ColumnName="tray2_text" />
+                <ScalarProperty Name="tray3_result" ColumnName="tray3_result" />
+                <ScalarProperty Name="tray3_text" ColumnName="tray3_text" />
+                <ScalarProperty Name="tray4_result" ColumnName="tray4_result" />
+                <ScalarProperty Name="tray4_text" ColumnName="tray4_text" />
+                <ScalarProperty Name="tray5_result" ColumnName="tray5_result" />
+                <ScalarProperty Name="tray5_text" ColumnName="tray5_text" />
+                <ScalarProperty Name="tray6_result" ColumnName="tray6_result" />
+                <ScalarProperty Name="tray6_text" ColumnName="tray6_text" />
+                <ScalarProperty Name="bulk1_result" ColumnName="bulk1_result" />
+                <ScalarProperty Name="bulk1_text" ColumnName="bulk1_text" />
+                <ScalarProperty Name="bulk2_result" ColumnName="bulk2_result" />
+                <ScalarProperty Name="bulk2_text" ColumnName="bulk2_text" />
+                <ScalarProperty Name="bulk3_result" ColumnName="bulk3_result" />
+                <ScalarProperty Name="bulk3_text" ColumnName="bulk3_text" />
+                <ScalarProperty Name="bulk4_result" ColumnName="bulk4_result" />
+                <ScalarProperty Name="bulk4_text" ColumnName="bulk4_text" />
+                <ScalarProperty Name="initial1_result" ColumnName="initial1_result" />
+                <ScalarProperty Name="initial1_text" ColumnName="initial1_text" />
+                <ScalarProperty Name="initial2_result" ColumnName="initial2_result" />
+                <ScalarProperty Name="initial2_text" ColumnName="initial2_text" />
+                <ScalarProperty Name="initial3_result" ColumnName="initial3_result" />
+                <ScalarProperty Name="initial3_text" ColumnName="initial3_text" />
+                <ScalarProperty Name="initial4_result" ColumnName="initial4_result" />
+                <ScalarProperty Name="initial4_text" ColumnName="initial4_text" />
+                <ScalarProperty Name="initial5_result" ColumnName="initial5_result" />
+                <ScalarProperty Name="initial5_text" ColumnName="initial5_text" />
+                <ScalarProperty Name="initial6_result" ColumnName="initial6_result" />
+                <ScalarProperty Name="initial6_text" ColumnName="initial6_text" />
+                <ScalarProperty Name="initial7_result" ColumnName="initial7_result" />
+                <ScalarProperty Name="initial7_text" ColumnName="initial7_text" />
+                <ScalarProperty Name="detail1_result" ColumnName="detail1_result" />
+                <ScalarProperty Name="detail1_text" ColumnName="detail1_text" />
+                <ScalarProperty Name="detail2_result" ColumnName="detail2_result" />
+                <ScalarProperty Name="detail2_text" ColumnName="detail2_text" />
+                <ScalarProperty Name="detail3_result" ColumnName="detail3_result" />
+                <ScalarProperty Name="detail3_text" ColumnName="detail3_text" />
+                <ScalarProperty Name="detail4_result" ColumnName="detail4_result" />
+                <ScalarProperty Name="detail4_text" ColumnName="detail4_text" />
+                <ScalarProperty Name="detail5_result" ColumnName="detail5_result" />
+                <ScalarProperty Name="detail5_text" ColumnName="detail5_text" />
+                <ScalarProperty Name="detail6_result" ColumnName="detail6_result" />
+                <ScalarProperty Name="detail6_text" ColumnName="detail6_text" />
+                <ScalarProperty Name="detail7_result" ColumnName="detail7_result" />
+                <ScalarProperty Name="detail7_text" ColumnName="detail7_text" />
+                <ScalarProperty Name="detail8_result" ColumnName="detail8_result" />
+                <ScalarProperty Name="detail8_text" ColumnName="detail8_text" />
+                <ScalarProperty Name="detail9_result" ColumnName="detail9_result" />
+                <ScalarProperty Name="detail9_text" ColumnName="detail9_text" />
+                <ScalarProperty Name="detail10_result" ColumnName="detail10_result" />
+                <ScalarProperty Name="detail10_text" ColumnName="detail10_text" />
+                <ScalarProperty Name="detail11_result" ColumnName="detail11_result" />
+                <ScalarProperty Name="detail11_text" ColumnName="detail11_text" />
+                <ScalarProperty Name="detail12_result" ColumnName="detail12_result" />
+                <ScalarProperty Name="detail12_text" ColumnName="detail12_text" />
+                <ScalarProperty Name="detail13_result" ColumnName="detail13_result" />
+                <ScalarProperty Name="detail13_text" ColumnName="detail13_text" />
+                <ScalarProperty Name="detail14_result" ColumnName="detail14_result" />
+                <ScalarProperty Name="detail14_text" ColumnName="detail14_text" />
+                <ScalarProperty Name="detail15_result" ColumnName="detail15_result" />
+                <ScalarProperty Name="detail15_text" ColumnName="detail15_text" />
+                <ScalarProperty Name="detail16_result" ColumnName="detail16_result" />
+                <ScalarProperty Name="detail16_text" ColumnName="detail16_text" />
+                <ScalarProperty Name="detail17_result" ColumnName="detail17_result" />
+                <ScalarProperty Name="detail17_text" ColumnName="detail17_text" />
+                <ScalarProperty Name="is_solvent" ColumnName="is_solvent" />
+                <ScalarProperty Name="solvent1_result" ColumnName="solvent1_result" />
+                <ScalarProperty Name="solvent1_text" ColumnName="solvent1_text" />
+                <ScalarProperty Name="solvent2_result" ColumnName="solvent2_result" />
+                <ScalarProperty Name="solvent2_text" ColumnName="solvent2_text" />
+                <ScalarProperty Name="solvent3_result" ColumnName="solvent3_result" />
+                <ScalarProperty Name="solvent3_text" ColumnName="solvent3_text" />
+                <ScalarProperty Name="is_mech" ColumnName="is_mech" />
+                <ScalarProperty Name="mech1_result" ColumnName="mech1_result" />
+                <ScalarProperty Name="mech1_text" ColumnName="mech1_text" />
+                <ScalarProperty Name="mech2_result" ColumnName="mech2_result" />
+                <ScalarProperty Name="mech2_text" ColumnName="mech2_text" />
+                <ScalarProperty Name="mech3_result" ColumnName="mech3_result" />
+                <ScalarProperty Name="mech3_text" ColumnName="mech3_text" />
+                <ScalarProperty Name="is_tube" ColumnName="is_tube" />
+                <ScalarProperty Name="is_reel" ColumnName="is_reel" />
+                <ScalarProperty Name="is_tray" ColumnName="is_tray" />
+                <ScalarProperty Name="is_bulk" ColumnName="is_bulk" />
+                <ScalarProperty Name="imagetest1" ColumnName="imagetest1" />
+                <ScalarProperty Name="imagetest2" ColumnName="imagetest2" />
+                <ScalarProperty Name="is_complete" ColumnName="is_complete" />
+                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="is_addtesting" ColumnName="is_addtesting" />
+                <ScalarProperty Name="addtesting_text" ColumnName="addtesting_text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="insp_head">
+            <EntityTypeMapping TypeName="sm_portalModel.insp_head">
+              <MappingFragment StoreEntitySet="insp_head">
+                <ScalarProperty Name="insp_id" ColumnName="insp_id" />
+                <ScalarProperty Name="insp_date" ColumnName="insp_date" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+                <ScalarProperty Name="customer_uid" ColumnName="customer_uid" />
+                <ScalarProperty Name="customer_po" ColumnName="customer_po" />
+                <ScalarProperty Name="vendor_name" ColumnName="vendor_name" />
+                <ScalarProperty Name="vendor_uid" ColumnName="vendor_uid" />
+                <ScalarProperty Name="vendor_po" ColumnName="vendor_po" />
+                <ScalarProperty Name="vendor_po_uid" ColumnName="vendor_po_uid" />
+                <ScalarProperty Name="ordernumber_sales" ColumnName="ordernumber_sales" />
+                <ScalarProperty Name="orderid_sales" ColumnName="orderid_sales" />
+                <ScalarProperty Name="sales_email" ColumnName="sales_email" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="packaging" ColumnName="packaging" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="fullpartnumber" ColumnName="fullpartnumber" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="date_code" ColumnName="date_code" />
+                <ScalarProperty Name="lot" ColumnName="lot" />
+                <ScalarProperty Name="coo" ColumnName="coo" />
+                <ScalarProperty Name="package_type" ColumnName="package_type" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+                <ScalarProperty Name="inspector" ColumnName="inspector" />
+                <ScalarProperty Name="inspector_uid" ColumnName="inspector_uid" />
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+                <ScalarProperty Name="is_complete" ColumnName="is_complete" />
+                <ScalarProperty Name="expectedShipDate" ColumnName="expectedShipDate" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="resultnotes" ColumnName="resultnotes" />
+                <ScalarProperty Name="completed_by" ColumnName="completed_by" />
+                <ScalarProperty Name="completed_date" ColumnName="completed_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="is_insp_complete" ColumnName="is_insp_complete" />
+                <ScalarProperty Name="email_sent" ColumnName="email_sent" />
+                <ScalarProperty Name="orddet_line_uid" ColumnName="orddet_line_uid" />
+                <ScalarProperty Name="is_demo" ColumnName="is_demo" />
+                <ScalarProperty Name="source_insp_id" ColumnName="source_insp_id" />
+                <ScalarProperty Name="final_InspectionComplete" ColumnName="final_InspectionComplete" />
+                <ScalarProperty Name="final_InspectionCompleteDate" ColumnName="final_InspectionCompleteDate" />
+                <ScalarProperty Name="final_Inspector" ColumnName="final_Inspector" />
+                <ScalarProperty Name="final_Inspector_uid" ColumnName="final_Inspector_uid" />
+                <ScalarProperty Name="current_turn_back_id" ColumnName="current_turn_back_id" />
+                <ScalarProperty Name="initial_alert_sent" ColumnName="initial_alert_sent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="insp_whse">
+            <EntityTypeMapping TypeName="sm_portalModel.insp_whse">
+              <MappingFragment StoreEntitySet="insp_whse">
+                <ScalarProperty Name="whse_id" ColumnName="whse_id" />
+                <ScalarProperty Name="insp_id" ColumnName="insp_id" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+                <ScalarProperty Name="gencarton1_result" ColumnName="gencarton1_result" />
+                <ScalarProperty Name="gencarton1_text" ColumnName="gencarton1_text" />
+                <ScalarProperty Name="gencarton2_result" ColumnName="gencarton2_result" />
+                <ScalarProperty Name="gencarton2_text" ColumnName="gencarton2_text" />
+                <ScalarProperty Name="gencarton3_result" ColumnName="gencarton3_result" />
+                <ScalarProperty Name="gencarton3_text" ColumnName="gencarton3_text" />
+                <ScalarProperty Name="gencarton4_result" ColumnName="gencarton4_result" />
+                <ScalarProperty Name="gencarton4_text" ColumnName="gencarton4_text" />
+                <ScalarProperty Name="gencarton5_result" ColumnName="gencarton5_result" />
+                <ScalarProperty Name="gencarton5_text" ColumnName="gencarton5_text" />
+                <ScalarProperty Name="outcarton1_result" ColumnName="outcarton1_result" />
+                <ScalarProperty Name="outcarton1_text" ColumnName="outcarton1_text" />
+                <ScalarProperty Name="outcarton2_result" ColumnName="outcarton2_result" />
+                <ScalarProperty Name="outcarton2_text" ColumnName="outcarton2_text" />
+                <ScalarProperty Name="outcarton3_result" ColumnName="outcarton3_result" />
+                <ScalarProperty Name="outcarton3_text" ColumnName="outcarton3_text" />
+                <ScalarProperty Name="outcarton4_result" ColumnName="outcarton4_result" />
+                <ScalarProperty Name="outcarton4_text" ColumnName="outcarton4_text" />
+                <ScalarProperty Name="outcarton5_result" ColumnName="outcarton5_result" />
+                <ScalarProperty Name="outcarton5_text" ColumnName="outcarton5_text" />
+                <ScalarProperty Name="outcarton6_result" ColumnName="outcarton6_result" />
+                <ScalarProperty Name="outcarton6_text" ColumnName="outcarton6_text" />
+                <ScalarProperty Name="outcarton7_result" ColumnName="outcarton7_result" />
+                <ScalarProperty Name="outcarton7_text" ColumnName="outcarton7_text" />
+                <ScalarProperty Name="is_complete" ColumnName="is_complete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

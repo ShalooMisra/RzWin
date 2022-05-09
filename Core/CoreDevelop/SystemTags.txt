@@ -1,0 +1,10 @@
+C:\Eternal\Code\Recipes\bin\Debug\Recipes.dll|C:\Eternal\Code\Recipes\RecipesBuild.sln|C:\Eternal\Code\Recipes\
+C:\Eternal\Code\Recipes2\bin\Debug\Recipes2.dll|C:\Eternal\Code\Recipes2\Recipes2Build.sln|C:\Eternal\Code\Recipes2\
+C:\Eternal\Code\Recipes3\bin\Debug\Recipes3.dll|C:\Eternal\Code\Recipes3\Recipes3Build.sln|C:\Eternal\Code\Recipes3\
+C:\Eternal\Code\NMCore\bin\Debug\NewMethod.dll|C:\Eternal\Code\NMCore\NewMethod.sln|C:\Eternal\Code\NMCore\
+C:\Eternal\Code\ChopStix\bin\Debug\ChopStix.dll|C:\Eternal\Code\ChopStix\ChopStix.sln|C:\Eternal\Code\ChopStix\
+C:\Eternal\Code\Core\CoreUI\bin\Debug\CoreUI.dll|C:\Eternal\Code\Core\CoreUI\CoreUI.sln|C:\Eternal\Code\Core\CoreUI\
+C:\Eternal\Code\TestProj\TestProjLoader\bin\Debug\TestProj.dll|C:\Eternal\Code\TestProj\TestProj.sln|C:\Eternal\Code\TestProj\
+C:\Eternal\Code\Rz4\bin\Debug\Rz4.dll|C:\Eternal\Code\Rz4\Rz4.sln|C:\Eternal\Code\Rz4\
+C:\Eternal\Code\NewMethod\bin\Debug\NewMethod.dll|C:\Eternal\Code\NewMethod\NewMethod.sln|C:\Eternal\Code\NewMethod\
+C:\Reorg\NewMethod\bin\Debug\NewMethod.dll|C:\Reorg\NewMethod\NewMethod.sln|C:\Reorg\NewMethod\

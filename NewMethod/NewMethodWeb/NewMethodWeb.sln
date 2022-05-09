@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewMethodWeb", "NewMethodWeb.csproj", "{F540AB2B-B4D7-43DB-9CF2-A69899BE24DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewMethod", "..\NewMethod.csproj", "{DA2388CC-2076-4327-90E4-46B8D463DBC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "..\..\Tools\Tools.csproj", "{5047280A-4740-4083-85FE-F71B28B77848}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F540AB2B-B4D7-43DB-9CF2-A69899BE24DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F540AB2B-B4D7-43DB-9CF2-A69899BE24DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F540AB2B-B4D7-43DB-9CF2-A69899BE24DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F540AB2B-B4D7-43DB-9CF2-A69899BE24DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA2388CC-2076-4327-90E4-46B8D463DBC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA2388CC-2076-4327-90E4-46B8D463DBC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA2388CC-2076-4327-90E4-46B8D463DBC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA2388CC-2076-4327-90E4-46B8D463DBC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5047280A-4740-4083-85FE-F71B28B77848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5047280A-4740-4083-85FE-F71B28B77848}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5047280A-4740-4083-85FE-F71B28B77848}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5047280A-4740-4083-85FE-F71B28B77848}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

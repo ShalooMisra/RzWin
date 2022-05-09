@@ -1,0 +1,90 @@
+<HTML>
+<head>
+
+<link type="text/css" href="images/vps/pfl/pfl_styles.css" rel="stylesheet">
+<style type="text/css">
+		.header {COLOR: 000000;}
+		.names {COLOR: 000000;}
+		.subtext {COLOR: 000000;}
+		.bodytext {COLOR: 000000;}
+		.pagetext {COLOR: 000000;}
+		.dispname {COLOR: 000000;}
+		.hftext {COLOR: 000000;}
+	</style>
+<script language="JavaScript" type="text/javascript">
+<!--
+		    var submitted = false;
+
+                    
+                        function Validator(form) {
+                          if (submitted) {
+                              alert("Your transaction is being submitted but the connection is taking longer than usual  - please be patient. Click OK to continue the submission.")
+                              return (false);
+                          }
+                          submitted = true;
+                          return (true);
+                        }
+                      
+
+		    function GoBack()
+		    {
+		        window.history.go(-1)
+		    }
+		--></script>
+<title>Confirmation</title>
+</head>
+<body background="" bgcolor="ffffff"><center><table cellspacing="0" cellpadding="0" border="0" width="420">
+<tr>
+<td colspan="2"><img src="https://images.payflowlink.verisign.com/Recognin_VeriSign_logo.jpg" alt=""></td>
+</tr>
+</table>
+<form onsubmit="return Validator(this)" name="entry" method="post" action="SophiaServlet%3BVPSSESSION=GJyn5qr3kpTy9Dyy7yKfy9yN2P1sJQKCJHlJKvXGmxYZ2261Ghph!1224660312!-1544475247?pagecontext=none&FORM_FILE=vps/pfl/runTrans.fdf">
+<input value="" type="hidden" name="ORIGID"><input value="" type="hidden" name="TRANSID"><input value="" type="hidden" name="SHOWCONFIRM"><input value="0" type="hidden" name="EMAIL_CUSTOMER"><input value="" type="hidden" name="ORDERFORM"><input value="" type="hidden" name="DISABLERECEIPT"><input value="" type="hidden" name="ECHODATA"><input value="" type="hidden" name="CVV2"><input value="" type="hidden" name="ACCOUNT"><input value="" type="hidden" name="MICR"><input value="" type="hidden" name="ACCT"><input value="" type="hidden" name="ABA"><input value="" type="hidden" name="SSN"><input value="" type="hidden" name="ACCTTYPE"><input value="" type="hidden" name="CHECKNUM"><input value="" type="hidden" name="STATEOFDL"><input value="" type="hidden" name="DLNUM"><input value="" type="hidden" name="TYPEOFCHECK"><input value="" type="hidden" name="INVOICE"><input value="" type="hidden" name="DESCRIPTION"><input value="S" type="hidden" name="TYPE"><input value="mike bloise" type="hidden" name="NAME"><input value="8604 vanburgh ct" type="hidden" name="ADDRESS"><input value="nc" type="hidden" name="STATE"><input value="27615" type="hidden" name="ZIP"><input value="raleigh" type="hidden" name="CITY"><input value="usa" type="hidden" name="COUNTRY"><input value="9198707899" type="hidden" name="PHONE"><input value="" type="hidden" name="FAX"><input value="mike@recognin.com" type="hidden" name="EMAIL"><input value="" type="hidden" name="NAMETOSHIP"><input value="" type="hidden" name="ADDRESSTOSHIP"><input value="" type="hidden" name="CITYTOSHIP"><input value="" type="hidden" name="STATETOSHIP"><input value="" type="hidden" name="ZIPTOSHIP"><input value="" type="hidden" name="COUNTRYTOSHIP"><input value="" type="hidden" name="PHONETOSHIP"><input value="" type="hidden" name="FAXTOSHIP"><input value="" type="hidden" name="EMAILTOSHIP"><input value="" type="hidden" name="COMMENT1"><input value="" type="hidden" name="COMMENT2"><input value="" type="hidden" name="USER1"><input value="" type="hidden" name="USER2"><input value="" type="hidden" name="USER3"><input value="" type="hidden" name="USER4"><input value="" type="hidden" name="USER5"><input value="" type="hidden" name="USER6"><input value="" type="hidden" name="USER7"><input value="" type="hidden" name="USER8"><input value="" type="hidden" name="USER9"><input value="" type="hidden" name="USER10"><input value="" type="hidden" name="PONUM"><input value="" type="hidden" name="CUSTID"><input value="" type="hidden" name="NAME_FLAG"><input value="" type="hidden" name="ADDR_FLAG"><input value="" type="hidden" name="CITY_FLAG"><input value="" type="hidden" name="STATE_FLAG"><input value="" type="hidden" name="ZIP_FLAG"><input value="" type="hidden" name="COUNTRY_FLAG"><input value="" type="hidden" name="PHONE_FLAG"><input value="" type="hidden" name="EMAIL_FLAG"><input value="" type="hidden" name="CVV2_FLAG"><input value="" type="hidden" name="NAMETOSHIP_FLAG"><input value="" type="hidden" name="ADDRTOSHIP_FLAG"><input value="" type="hidden" name="CITYTOSHIP_FLAG"><input value="" type="hidden" name="STATETOSHIP_FLAG"><input value="" type="hidden" name="ZIPTOSHIP_FLAG"><input value="" type="hidden" name="COUNTRYTOSHIP_FLAG"><input value="" type="hidden" name="PHONETOSHIP_FLAG"><input value="" type="hidden" name="EMAILTOSHIP_FLAG"><input value="Visa" type="hidden" name="CARDTYPE_FULLNAME"><input value="" type="hidden" name="DOBMONTH"><input value="" type="hidden" name="DOBDATE"><input value="" type="hidden" name="DOBYEAR"><input value="65.13.153.140" type="hidden" name="HTTPIP"><input value="4828801308752016" type="hidden" name="CARDNUM"><input value="" type="hidden" name="METHOD"><input value="02" type="hidden" name="EXPMONTH"><input value="11" type="hidden" name="EXPYEAR"><input value="4828801308752016" type="hidden" name="ORIGCARDNUM"><input value="0211" type="hidden" name="EXPDATE"><input value="" type="hidden" name="flag3dSecure">
+<table cellspacing="0" cellpadding="2" border="0" width="420">
+<tr>
+<td colspan="2"><span class="hftext">Please Confirm that the information below is correct.</span></td>
+</tr>
+<tr>
+<td colspan="2" background="images/vps/pfl/screens/666666.gif"><span class="header">Confirmation</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;Card Number:</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">4828801308752016</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;Exp Date:</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">0211</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;Total Amount:</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">$60.00</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;Bill To:</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">mike bloise</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">8604 vanburgh ct</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">raleigh   nc   27615</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">usa</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">9198707899</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">mike@recognin.com</span></td>
+</tr>
+<tr>
+<td colspan="2" align="center"><input value="Submit Transaction For Processing" type="submit">&nbsp;
+			<input onclick="GoBack()" value="<< Back" type="button"></td>
+</tr>
+</table>
+</form></center><div align="center">
+<table bgcolor="#FFFFFF" bordercolor="#000000" cellspacing="0" cellpadding="5" border="1">
+<tr>
+<td><script src="https://seal.verisign.com/getseal?host_name=payments.verisign.com&size=M&use_flash=NO&use_transparent=NO"></script></td>
+</tr>
+</table>
+</div>
+</body>
+</HTML>

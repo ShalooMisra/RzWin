@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="rz3_picturesModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="partpicture">
+          <Key>
+            <PropertyRef Name="unique_id" />
+          </Key>
+          <Property Name="unique_id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="grid_color" Type="int" />
+          <Property Name="icon_index" Type="int" />
+          <Property Name="fullpartnumber" Type="varchar" MaxLength="255" />
+          <Property Name="prefix" Type="varchar" MaxLength="255" />
+          <Property Name="basenumber" Type="varchar" MaxLength="255" />
+          <Property Name="basenumberstripped" Type="varchar" MaxLength="255" />
+          <Property Name="companyname" Type="varchar" MaxLength="255" />
+          <Property Name="contactname" Type="varchar" MaxLength="255" />
+          <Property Name="filename" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="8000" />
+          <Property Name="linktype" Type="varchar" MaxLength="255" />
+          <Property Name="filetype" Type="varchar" MaxLength="255" />
+          <Property Name="the_partrecord_uid" Type="varchar" MaxLength="255" />
+          <Property Name="the_qualitycontrol_uid" Type="varchar" MaxLength="255" />
+          <Property Name="the_company_uid" Type="varchar" MaxLength="255" />
+          <Property Name="the_orddet_uid" Type="varchar" MaxLength="255" />
+          <Property Name="the_companycontact_uid" Type="varchar" MaxLength="255" />
+          <Property Name="date_created" Type="datetime" Precision="0" />
+          <Property Name="date_modified" Type="datetime" Precision="0" />
+          <Property Name="picturedata" Type="longblob" />
+          <Property Name="is_cofc" Type="bool" />
+          <Property Name="the_ordhed_uid" Type="varchar" MaxLength="255" />
+          <Property Name="image_height" Type="int" />
+          <Property Name="image_width" Type="int" />
+          <Property Name="thumbnail_thirty_two_square" Type="longblob" />
+          <Property Name="order_caption" Type="varchar" MaxLength="255" />
+          <Property Name="file_path" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="rz3_picturesModelStoreContainer">
+          <EntitySet Name="partpicture" EntityType="Self.partpicture" Schema="rz3_pictures" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="rz3_picturesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="partpicture">
+          <Key>
+            <PropertyRef Name="unique_id" />
+          </Key>
+          <Property Name="unique_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="grid_color" Type="Int32" />
+          <Property Name="icon_index" Type="Int32" />
+          <Property Name="fullpartnumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="prefix" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="basenumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="basenumberstripped" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="companyname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="contactname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="filename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="linktype" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="filetype" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="the_partrecord_uid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="the_qualitycontrol_uid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="the_company_uid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="the_orddet_uid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="the_companycontact_uid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="date_created" Type="DateTime" />
+          <Property Name="date_modified" Type="DateTime" />
+          <Property Name="picturedata" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="is_cofc" Type="Boolean" />
+          <Property Name="the_ordhed_uid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="image_height" Type="Int32" />
+          <Property Name="image_width" Type="Int32" />
+          <Property Name="thumbnail_thirty_two_square" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="order_caption" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="file_path" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="rz_attachEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="partpictures" EntityType="Self.partpicture" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="rz3_picturesModelStoreContainer" CdmEntityContainer="rz_attachEntities">
+          <EntitySetMapping Name="partpictures">
+            <EntityTypeMapping TypeName="rz3_picturesModel.partpicture">
+              <MappingFragment StoreEntitySet="partpicture">
+                <ScalarProperty Name="unique_id" ColumnName="unique_id" />
+                <ScalarProperty Name="grid_color" ColumnName="grid_color" />
+                <ScalarProperty Name="icon_index" ColumnName="icon_index" />
+                <ScalarProperty Name="fullpartnumber" ColumnName="fullpartnumber" />
+                <ScalarProperty Name="prefix" ColumnName="prefix" />
+                <ScalarProperty Name="basenumber" ColumnName="basenumber" />
+                <ScalarProperty Name="basenumberstripped" ColumnName="basenumberstripped" />
+                <ScalarProperty Name="companyname" ColumnName="companyname" />
+                <ScalarProperty Name="contactname" ColumnName="contactname" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="linktype" ColumnName="linktype" />
+                <ScalarProperty Name="filetype" ColumnName="filetype" />
+                <ScalarProperty Name="the_partrecord_uid" ColumnName="the_partrecord_uid" />
+                <ScalarProperty Name="the_qualitycontrol_uid" ColumnName="the_qualitycontrol_uid" />
+                <ScalarProperty Name="the_company_uid" ColumnName="the_company_uid" />
+                <ScalarProperty Name="the_orddet_uid" ColumnName="the_orddet_uid" />
+                <ScalarProperty Name="the_companycontact_uid" ColumnName="the_companycontact_uid" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+                <ScalarProperty Name="picturedata" ColumnName="picturedata" />
+                <ScalarProperty Name="is_cofc" ColumnName="is_cofc" />
+                <ScalarProperty Name="the_ordhed_uid" ColumnName="the_ordhed_uid" />
+                <ScalarProperty Name="image_height" ColumnName="image_height" />
+                <ScalarProperty Name="image_width" ColumnName="image_width" />
+                <ScalarProperty Name="thumbnail_thirty_two_square" ColumnName="thumbnail_thirty_two_square" />
+                <ScalarProperty Name="order_caption" ColumnName="order_caption" />
+                <ScalarProperty Name="file_path" ColumnName="file_path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

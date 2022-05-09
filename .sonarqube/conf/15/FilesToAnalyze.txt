@@ -1,0 +1,16 @@
+﻿C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\frmChooseVersion.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\frmChooseVersion.Designer.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\Tools.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\Program.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\Properties\AssemblyInfo.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\VersionPane.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\VersionPane.Designer.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\VersionUpdate.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\Rz.ico
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\frmChooseVersion.resx
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\Properties\Resources.resx
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\VersionPane.resx
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\app.config
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\Properties\Settings.settings
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\Resources\RzMid.bmp
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\Rz5\Peak\Resources\Recogniz.ico

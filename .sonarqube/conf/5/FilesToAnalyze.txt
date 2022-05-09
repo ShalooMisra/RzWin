@@ -1,0 +1,4 @@
+﻿C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\HubspotApi\HubspotApi\HubspotApi.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\HubspotApi\HubspotApi\Properties\AssemblyInfo.cs
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\HubspotApi\HubspotApi\app.config
+C:\Shaloo\Projects\Informulate\SensibleSolutions\sm_solutions_2022\dev_share_2022\Rz\RzWin\HubspotApi\HubspotApi\packages.config

@@ -1,0 +1,27 @@
+﻿Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<CoreDevelopSolutionName>", "<CoreDevelopSolutionName>.csproj", "{5BCD5367-0000-0000-0000-000000000000}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BCD5367-0000-0000-0000-000000000000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BCD5367-0000-0000-0000-000000000000}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BCD5367-0000-0000-0000-000000000000}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BCD5367-0000-0000-0000-000000000000}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5047280A-4740-4083-85FE-F71B28B77848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5047280A-4740-4083-85FE-F71B28B77848}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5047280A-4740-4083-85FE-F71B28B77848}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5047280A-4740-4083-85FE-F71B28B77848}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5CEFFDE-EA3C-4BFA-9501-03FE5642741C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5CEFFDE-EA3C-4BFA-9501-03FE5642741C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5CEFFDE-EA3C-4BFA-9501-03FE5642741C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5CEFFDE-EA3C-4BFA-9501-03FE5642741C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

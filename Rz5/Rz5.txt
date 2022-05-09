@@ -1,0 +1,208 @@
+Rz5
+
+Data structure
+	Remove duplicate and legacy fields
+		
+Code structure
+	Require that everything balance, and wrap all balance-relevant processes in transactions
+	Start with a consistent, automated test process that gets run on each publish
+
+	
+Features
+	General ledger
+		Chart of accounts, account types, balances
+	Reports
+		Balance sheet
+		Income statement
+		Equity statement
+		Cash flow
+
+	Reports in Html with the financial look and feel
+	Reports to .pdf the same way
+	Running reports on multiple dates, for comparison
+	
+	On stock sales, find the original PO line and split and link it like a flip deal
+	Automatically assigned lot number tracking by received line (important for demos)
+
+	Support for the sale of non-inventory items
+	
+	
+Development process
+	Create an Rz5Recognin that Joel manages and uses to keep our books
+	Convert Phoenix live to the new database structure and logic to keep us conservative
+	
+	Phoenix:
+	First, we will copy the Rz4 structure to Rz5 and eliminate the duplicate and unused columns
+	Then we will update Phoenix with Rz5, still labeled as Rz4
+	Then we will implement the currency and accounting features into Rz5, with the accounting features hidden
+	Then we will run Rz5 at Phoenix, letting all transactions hit the accounting system with default accounts
+	We will monitor the balance of the system and indentify options that will have to be disabled or worked around
+	Then we can approach Phoenix with the accounting module quite far along, and demo it and pitch a conversion to it
+	
+	CTG:
+	Meanwhile, we will build the user-generated reports into Rz4, for Amy
+	(other adds and changes for the CTG staff)
+	At go live - 1 week approach Joe with the possibility of the accounting system and lower cost
+		They've had a developer on call every day; that's not needed anymore
+		What they need now is a more closed, less flexible system, less interaction with me, less cost
+	That week, call Mike and draw him into a conversation on Rz5
+	Then during the go-live when problems arise, the natural desire to go back to the way it was will have an actual outlet
+	What about having Bruce do all of that communication?
+		A new voice without the baggage of all of my history with them...
+			That's probably part of why the Axiom demo went so well; its all fresh and new
+	
+	I need to make joe understand at that critical point that axiom is looking at ctg as just another deal
+		they're not seeing that ctg has always had a system that grows with ctg, rather than cramming ctg's model into a fixed structure
+		
+Strategy
+	What can be done to make Mike and Pete question this move?
+	What can be done to move Amy over to our side?  What does she want?
+		Integrated financials, of course
+		Control over her system?  Has she run into the "we can't do it" response yet?
+	Joe Ross is already on Rz's side, right?  Need to confirm there's nothing he wants.
+	What about Denise?  She's the president, after all.  What does she want?
+	
+	Or is it Cathy?  Mike said it isn't him.  Is Cathy related to tara?  Is she still pissed i hung up on her in 2011?
+	
+	Described reservations:
+		Financials (working on)
+		Telephone support (can be answered with Joel)
+		Development depth (can be answered with Joel)
+		Ongoing costs (affects others just as much as us)
+		
+	Hidden reservations
+		They're tired of me (bring in Joel, bring in Bruce?)
+		?? there has to be more here
+		
+	Ask Michael Johnson for access to SAP to check it out, reproducing everything good
+	Re-create every QB report and make our menus and terminology similar
+		That way people with QB experience can walk right in, and we can say we analyzed the low end and high end acct system and took the best of both.
+		
+		
+Actual additions:
+	Currency
+		Add customer setting
+		Per order currency and rate
+		Tracked at each document creation
+		Add customer-facing prices and vendor facing costs
+		
+		currency
+			name
+			exchange_rate
+			symbol
+		
+		customer
+			default_currency (if it doesn't already exist)
+		
+		ordhed_quote
+			currency
+			exchange_rate
+			totalprice_exchanged
+			
+		orddet_quote
+			currency
+			exchange_rate
+			target_price_exchanged
+			unitprice_exchanged
+			totalprice_exchanged
+			
+		orddet_rfq
+			currency
+			exchange_rate
+			target_price_exchanged
+			unitprice_exchanged
+			totalprice_exchanged
+		
+		ordhed_sales, ordhed_invoice, ordhed_vendrma, ordhed_service
+			currency
+			exchange_rate
+			totalprice_exchanged
+			totalcost_exchanged
+
+		ordhed_purchase, ordhed_rma
+			currency
+			exchange_rate
+			totalcost_exchanged
+
+		orddet_line
+			currency_name_price
+			exchange_rate_price
+
+			currency_name_cost
+			exchange_rate_cost	
+			
+			unit_price_exchanged
+			total_price_exchanged
+
+			unit_cost_exchanged
+			total_cost_exchanged
+		
+		service_line
+			currency
+			exchange_rate
+			unit_price_exchanged
+			total_price_exchanged
+			
+			
+Accounting structure:
+
+Asset account numbers start with 1, liability accounts with 2, equity accounts with 3, revenue accounts with 4, cost accounts with 5, and expense accounts with 6.			
+
+		account
+			name
+			reference_number
+				
+				
+		journal_item or just "journal"?
+			date_utc ?  or maybe date_base?  or maybe the zoned date_created is fine?
+			type (credit, debit)
+			account_name
+			account_number
+			description
+			amount
+			tag  (like the QB class?)
+			
+		JournalEntry
+			(list of journal_item)
+			Balances?
+			Post();
+			
+			
+Objections:
+
+Joe:
+	EPDS is tight
+		-yeah but CTG isn't set up for tight
+		
+	EPDS licenses are permanent
+		-yeah but that's a bad thing long term
+		
+	Rz is expensive
+		-it doesn't have to be
+		
+	Axiom has a deep development team
+		-2 lead programmers is better than 1 lead programmer and 99 assistants
+				
+Cathy/Amy
+	Rz lacks accounting controls
+		-it will have the controls along with accounting
+
+	Rz lacks user-defined reports
+		-doable
+		
+Salespeople
+	Rz can't do multiple outside service orders
+	
+		
+	
+Points for joe
+		
+		
+I think the Axiom project will be a failure.  They'll go live eventually but only by lowering CTG's expectations of the Rz benefits they're going to be able to bring over to their system.  So the software implementation might be a success but the benefit isn't going to be there.
+
+Having integrated accounting is key for CTG in order to grow; that's obvious.  But the benefits of having Axiom come in and integrate the accounting department and get rid of Quickbooks will be overshadowed by the huge disruption of moving to the new system and the gaps created by the things they won't be able to bring forward.
+
+They're not going to come to you and say "we screwed up; we already spent twice what CTG has paid and we're still not close; we can't do this".  What they will do is come to you and say "look; go live on x date with whatever we've already completed and like it or lump it".  
+
+
+

@@ -1,0 +1,16 @@
+glob:*.exe
+glob:*.dll
+glob:*.msi
+glob:*.pdb
+glob:*.lic
+glob:*.zip
+glob:*.rar
+glob:*.manifest
+glob:*.resources
+glob:*.mdf
+glob:*.ldf
+glob:*.force
+glob:*.suo
+glob:*.db
+glob:bin/**
+glob:obj/**

@@ -1,0 +1,776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NONCON_RMAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="NonCon_Customer">
+          <Key>
+            <PropertyRef Name="NonConCustomerID" />
+          </Key>
+          <Property Name="NonConCustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NonConID" Type="int" Nullable="false" />
+          <Property Name="customerPO" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="customerPOID" Type="nvarchar" MaxLength="50" />
+          <Property Name="SONumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SONumberUID" Type="nvarchar" MaxLength="40" />
+          <Property Name="CustomerUID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="customerName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="sellerEmail" Type="nvarchar" MaxLength="255" />
+          <Property Name="sellerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateSubmitted" Type="datetime" Nullable="false" />
+          <Property Name="submittedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NonCon_Details">
+          <Key>
+            <PropertyRef Name="DetailsID" />
+          </Key>
+          <Property Name="DetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NonConID" Type="int" Nullable="false" />
+          <Property Name="isNonconforming" Type="bit" />
+          <Property Name="isActionRequired" Type="bit" />
+          <Property Name="IsVendorFeedbackUpdated" Type="nvarchar" MaxLength="5" />
+          <Property Name="CANum" Type="nvarchar" MaxLength="15" />
+          <Property Name="SCNum" Type="nvarchar" MaxLength="15" />
+          <Property Name="PANum" Type="nvarchar" MaxLength="15" />
+          <Property Name="submittedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateSubmitted" Type="datetime" Nullable="false" />
+          <Property Name="detailsComplete" Type="bit" />
+          <Property Name="completedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="isLeadsBodyIssue" Type="bit" />
+          <Property Name="leadsMemo" Type="nvarchar(max)" />
+          <Property Name="Retin" Type="bit" />
+          <Property Name="Oxidation" Type="bit" />
+          <Property Name="GenDamage" Type="bit" />
+          <Property Name="Pull" Type="bit" />
+          <Property Name="Refurb" Type="bit" />
+        </EntityType>
+        <EntityType Name="NonCon_Disposition">
+          <Key>
+            <PropertyRef Name="DispositionID" />
+          </Key>
+          <Property Name="DispositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NonConID" Type="int" Nullable="false" />
+          <Property Name="as_is" Type="bit" />
+          <Property Name="replace" Type="bit" />
+          <Property Name="vendor_return" Type="nvarchar" MaxLength="3" />
+          <Property Name="return_to_stock" Type="bit" />
+          <Property Name="quarantined" Type="bit" />
+          <Property Name="scrap" Type="bit" />
+          <Property Name="containment_notes" Type="nvarchar(max)" />
+          <Property Name="remarks" Type="nvarchar(max)" />
+          <Property Name="submittedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="dateSubmitted" Type="datetime" Nullable="false" />
+          <Property Name="dispositionComplete" Type="bit" />
+          <Property Name="completedBy" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="NonCon_Head">
+          <Key>
+            <PropertyRef Name="NonConID" />
+          </Key>
+          <Property Name="NonConID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NonConDate" Type="datetime" />
+          <Property Name="VendorUID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="vendorName" Type="nvarchar" MaxLength="100" />
+          <Property Name="vendorPO" Type="nvarchar" MaxLength="50" />
+          <Property Name="vendorPOID" Type="nvarchar" MaxLength="50" />
+          <Property Name="partNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="partNumberID" Type="nvarchar" MaxLength="40" />
+          <Property Name="MFG" Type="nvarchar" MaxLength="50" />
+          <Property Name="QTY" Type="int" />
+          <Property Name="stocktype" Type="nvarchar" MaxLength="50" />
+          <Property Name="isSale" Type="bit" />
+          <Property Name="dateSubmitted" Type="datetime" />
+          <Property Name="submittedBy" Type="varchar" MaxLength="50" />
+          <Property Name="isComplete" Type="nvarchar" MaxLength="3" />
+          <Property Name="completedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="completedDate" Type="datetime" />
+          <Property Name="buyerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="buyerEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="nvarchar" MaxLength="30" />
+          <Property Name="deleted" Type="bit" />
+          <Property Name="ClosureRemarks" Type="nvarchar(max)" />
+          <Property Name="isShortShip" Type="bit" />
+          <Property Name="linecode_sales" Type="nvarchar" MaxLength="100" />
+          <Property Name="lineCount" Type="int" />
+          <Property Name="initial_email_sent" Type="bit" />
+          <Property Name="is_approved" Type="bit" />
+          <Property Name="approval_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="approval_date" Type="datetime" />
+          <Property Name="approval_email_sent" Type="bit" />
+        </EntityType>
+        <EntityType Name="NonCon_Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NonConID" Type="int" Nullable="false" />
+          <Property Name="confirmedNetProfit" Type="nvarchar" MaxLength="20" />
+          <Property Name="isPaymentDue" Type="bit" />
+          <Property Name="isPaymentRefunded" Type="bit" />
+          <Property Name="dateRefunded" Type="datetime" />
+          <Property Name="wirePaymentReceivedQB" Type="bit" />
+          <Property Name="checkCancelledQB" Type="bit" />
+          <Property Name="checkNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="creditPaymentReceivedQB" Type="bit" />
+          <Property Name="vendorCreditReceivedQB" Type="bit" />
+          <Property Name="vendorCreditAmount" Type="nvarchar" MaxLength="15" />
+          <Property Name="submittedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="dateSubmitted" Type="datetime" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar(max)" />
+          <Property Name="isPoorQuality" Type="bit" />
+          <Property Name="isSuspectCounterfeit" Type="bit" />
+          <Property Name="isDamaged" Type="bit" />
+          <Property Name="isClerical" Type="bit" />
+          <Property Name="isCustomerSpecific" Type="bit" />
+          <Property Name="paymentComplete" Type="bit" />
+          <Property Name="completedBy" Type="bit" />
+          <Property Name="paypalNetAmnt" Type="nvarchar" MaxLength="20" />
+          <Property Name="paymentType" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="NonCon_RMA">
+          <Key>
+            <PropertyRef Name="RMAID" />
+          </Key>
+          <Property Name="NonConID" Type="int" Nullable="false" />
+          <Property Name="RMAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="isVRMA" Type="bit" />
+          <Property Name="isCRMA" Type="bit" />
+          <Property Name="dateSubmitted" Type="datetime" Nullable="false" />
+          <Property Name="submittedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="isFunctionalIssue" Type="bit" />
+          <Property Name="fnSolderFail" Type="bit" />
+          <Property Name="fnElecFail" Type="bit" />
+          <Property Name="fnCoplanFail" Type="bit" />
+          <Property Name="fnProgramFail" Type="bit" />
+          <Property Name="fnRemarks" Type="nvarchar(max)" />
+          <Property Name="isSuspectCounterfeit" Type="bit" />
+          <Property Name="scSecondaryCoating" Type="bit" />
+          <Property Name="scRemarked" Type="bit" />
+          <Property Name="scRefurb" Type="bit" />
+          <Property Name="scPulls" Type="bit" />
+          <Property Name="scCloned" Type="bit" />
+          <Property Name="scRemarks" Type="nvarchar(max)" />
+          <Property Name="isDamaged" Type="bit" />
+          <Property Name="dmCarrier" Type="bit" />
+          <Property Name="dmSMCReceipt" Type="bit" />
+          <Property Name="dmCustReceipt" Type="bit" />
+          <Property Name="dmSMCWarehouse" Type="bit" />
+          <Property Name="dmProduct" Type="bit" />
+          <Property Name="dmPackage" Type="bit" />
+          <Property Name="dmRemarks" Type="nvarchar(max)" />
+          <Property Name="isClerical" Type="bit" />
+          <Property Name="clSMC" Type="bit" />
+          <Property Name="clVendor" Type="bit" />
+          <Property Name="clCustomer" Type="bit" />
+          <Property Name="clRemarks" Type="nvarchar(max)" />
+          <Property Name="isImproperPKG" Type="bit" />
+          <Property Name="ipContainer" Type="bit" />
+          <Property Name="ipMSL" Type="bit" />
+          <Property Name="ipESD" Type="bit" />
+          <Property Name="ipTandR" Type="bit" />
+          <Property Name="ipRemarks" Type="nvarchar(max)" />
+          <Property Name="RMARemarks" Type="nvarchar(max)" />
+          <Property Name="RMAComplete" Type="bit" />
+          <Property Name="completedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="VRMAQTY" Type="int" />
+          <Property Name="CRMAQTY" Type="int" />
+          <Property Name="paymentType" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_Disposition_NonCon_Head">
+          <End Role="NonCon_Head" Type="Self.NonCon_Head" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NonCon_Disposition" Type="Self.NonCon_Disposition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonCon_Head">
+              <PropertyRef Name="NonConID" />
+            </Principal>
+            <Dependent Role="NonCon_Disposition">
+              <PropertyRef Name="NonConID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonCon_Customer_NonCon_Head">
+          <End Role="NonCon_Head" Type="Self.NonCon_Head" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NonCon_Customer" Type="Self.NonCon_Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonCon_Head">
+              <PropertyRef Name="NonConID" />
+            </Principal>
+            <Dependent Role="NonCon_Customer">
+              <PropertyRef Name="NonConID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonCon_Details_NonCon_Head">
+          <End Role="NonCon_Head" Type="Self.NonCon_Head" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NonCon_Details" Type="Self.NonCon_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonCon_Head">
+              <PropertyRef Name="NonConID" />
+            </Principal>
+            <Dependent Role="NonCon_Details">
+              <PropertyRef Name="NonConID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonCon_Payment_NonCon_Head1">
+          <End Role="NonCon_Head" Type="Self.NonCon_Head" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NonCon_Payment" Type="Self.NonCon_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonCon_Head">
+              <PropertyRef Name="NonConID" />
+            </Principal>
+            <Dependent Role="NonCon_Payment">
+              <PropertyRef Name="NonConID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonCon_RMA_NonCon_Head">
+          <End Role="NonCon_Head" Type="Self.NonCon_Head" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NonCon_RMA" Type="Self.NonCon_RMA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonCon_Head">
+              <PropertyRef Name="NonConID" />
+            </Principal>
+            <Dependent Role="NonCon_RMA">
+              <PropertyRef Name="NonConID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NONCON_RMAModelStoreContainer">
+          <EntitySet Name="NonCon_Customer" EntityType="Self.NonCon_Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NonCon_Details" EntityType="Self.NonCon_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NonCon_Disposition" EntityType="Self.NonCon_Disposition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NonCon_Head" EntityType="Self.NonCon_Head" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NonCon_Payment" EntityType="Self.NonCon_Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NonCon_RMA" EntityType="Self.NonCon_RMA" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Disposition_NonCon_Head" Association="Self.FK_Disposition_NonCon_Head">
+            <End Role="NonCon_Head" EntitySet="NonCon_Head" />
+            <End Role="NonCon_Disposition" EntitySet="NonCon_Disposition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonCon_Customer_NonCon_Head" Association="Self.FK_NonCon_Customer_NonCon_Head">
+            <End Role="NonCon_Head" EntitySet="NonCon_Head" />
+            <End Role="NonCon_Customer" EntitySet="NonCon_Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonCon_Details_NonCon_Head" Association="Self.FK_NonCon_Details_NonCon_Head">
+            <End Role="NonCon_Head" EntitySet="NonCon_Head" />
+            <End Role="NonCon_Details" EntitySet="NonCon_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonCon_Payment_NonCon_Head1" Association="Self.FK_NonCon_Payment_NonCon_Head1">
+            <End Role="NonCon_Head" EntitySet="NonCon_Head" />
+            <End Role="NonCon_Payment" EntitySet="NonCon_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonCon_RMA_NonCon_Head" Association="Self.FK_NonCon_RMA_NonCon_Head">
+            <End Role="NonCon_Head" EntitySet="NonCon_Head" />
+            <End Role="NonCon_RMA" EntitySet="NonCon_RMA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NONCON_RMAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="NonCon_Customer">
+          <Key>
+            <PropertyRef Name="NonConCustomerID" />
+          </Key>
+          <Property Name="NonConCustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NonConID" Type="Int32" Nullable="false" />
+          <Property Name="customerPO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customerPOID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SONumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SONumberUID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerUID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sellerEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sellerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateSubmitted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="submittedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NonCon_Head" Relationship="Self.FK_NonCon_Customer_NonCon_Head" FromRole="NonCon_Customer" ToRole="NonCon_Head" />
+        </EntityType>
+        <EntityType Name="NonCon_Details">
+          <Key>
+            <PropertyRef Name="DetailsID" />
+          </Key>
+          <Property Name="DetailsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NonConID" Type="Int32" Nullable="false" />
+          <Property Name="isNonconforming" Type="Boolean" />
+          <Property Name="isActionRequired" Type="Boolean" />
+          <Property Name="IsVendorFeedbackUpdated" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="CANum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="SCNum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PANum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="submittedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateSubmitted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="detailsComplete" Type="Boolean" />
+          <Property Name="completedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="isLeadsBodyIssue" Type="Boolean" />
+          <Property Name="leadsMemo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Retin" Type="Boolean" />
+          <Property Name="Oxidation" Type="Boolean" />
+          <Property Name="GenDamage" Type="Boolean" />
+          <Property Name="Pull" Type="Boolean" />
+          <Property Name="Refurb" Type="Boolean" />
+          <NavigationProperty Name="NonCon_Head" Relationship="Self.FK_NonCon_Details_NonCon_Head" FromRole="NonCon_Details" ToRole="NonCon_Head" />
+        </EntityType>
+        <EntityType Name="NonCon_Disposition">
+          <Key>
+            <PropertyRef Name="DispositionID" />
+          </Key>
+          <Property Name="DispositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NonConID" Type="Int32" Nullable="false" />
+          <Property Name="as_is" Type="Boolean" />
+          <Property Name="replace" Type="Boolean" />
+          <Property Name="vendor_return" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="return_to_stock" Type="Boolean" />
+          <Property Name="quarantined" Type="Boolean" />
+          <Property Name="scrap" Type="Boolean" />
+          <Property Name="containment_notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="submittedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dateSubmitted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dispositionComplete" Type="Boolean" />
+          <Property Name="completedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NonCon_Head" Relationship="Self.FK_Disposition_NonCon_Head" FromRole="NonCon_Disposition" ToRole="NonCon_Head" />
+        </EntityType>
+        <EntityType Name="NonCon_Head">
+          <Key>
+            <PropertyRef Name="NonConID" />
+          </Key>
+          <Property Name="NonConID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NonConDate" Type="DateTime" Precision="3" />
+          <Property Name="VendorUID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vendorName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="vendorPO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vendorPOID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="partNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="partNumberID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="MFG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QTY" Type="Int32" />
+          <Property Name="stocktype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isSale" Type="Boolean" />
+          <Property Name="dateSubmitted" Type="DateTime" Precision="3" />
+          <Property Name="submittedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isComplete" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="completedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="completedDate" Type="DateTime" Precision="3" />
+          <Property Name="buyerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="buyerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="deleted" Type="Boolean" />
+          <Property Name="ClosureRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isShortShip" Type="Boolean" />
+          <Property Name="linecode_sales" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="lineCount" Type="Int32" />
+          <Property Name="initial_email_sent" Type="Boolean" />
+          <Property Name="is_approved" Type="Boolean" />
+          <Property Name="approval_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="approval_date" Type="DateTime" Precision="3" />
+          <Property Name="approval_email_sent" Type="Boolean" />
+          <NavigationProperty Name="NonCon_Customer" Relationship="Self.FK_NonCon_Customer_NonCon_Head" FromRole="NonCon_Head" ToRole="NonCon_Customer" />
+          <NavigationProperty Name="NonCon_Details" Relationship="Self.FK_NonCon_Details_NonCon_Head" FromRole="NonCon_Head" ToRole="NonCon_Details" />
+          <NavigationProperty Name="NonCon_Disposition" Relationship="Self.FK_Disposition_NonCon_Head" FromRole="NonCon_Head" ToRole="NonCon_Disposition" />
+          <NavigationProperty Name="NonCon_Payment" Relationship="Self.FK_NonCon_Payment_NonCon_Head1" FromRole="NonCon_Head" ToRole="NonCon_Payment" />
+          <NavigationProperty Name="NonCon_RMA" Relationship="Self.FK_NonCon_RMA_NonCon_Head" FromRole="NonCon_Head" ToRole="NonCon_RMA" />
+        </EntityType>
+        <EntityType Name="NonCon_Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NonConID" Type="Int32" Nullable="false" />
+          <Property Name="confirmedNetProfit" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="isPaymentDue" Type="Boolean" />
+          <Property Name="isPaymentRefunded" Type="Boolean" />
+          <Property Name="dateRefunded" Type="DateTime" Precision="3" />
+          <Property Name="wirePaymentReceivedQB" Type="Boolean" />
+          <Property Name="checkCancelledQB" Type="Boolean" />
+          <Property Name="checkNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="creditPaymentReceivedQB" Type="Boolean" />
+          <Property Name="vendorCreditReceivedQB" Type="Boolean" />
+          <Property Name="vendorCreditAmount" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="submittedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dateSubmitted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isPoorQuality" Type="Boolean" />
+          <Property Name="isSuspectCounterfeit" Type="Boolean" />
+          <Property Name="isDamaged" Type="Boolean" />
+          <Property Name="isClerical" Type="Boolean" />
+          <Property Name="isCustomerSpecific" Type="Boolean" />
+          <Property Name="paymentComplete" Type="Boolean" />
+          <Property Name="completedBy" Type="Boolean" />
+          <Property Name="paypalNetAmnt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="paymentType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NonCon_Head" Relationship="Self.FK_NonCon_Payment_NonCon_Head1" FromRole="NonCon_Payment" ToRole="NonCon_Head" />
+        </EntityType>
+        <EntityType Name="NonCon_RMA">
+          <Key>
+            <PropertyRef Name="RMAID" />
+          </Key>
+          <Property Name="NonConID" Type="Int32" Nullable="false" />
+          <Property Name="RMAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="isVRMA" Type="Boolean" />
+          <Property Name="isCRMA" Type="Boolean" />
+          <Property Name="dateSubmitted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="submittedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="isFunctionalIssue" Type="Boolean" />
+          <Property Name="fnSolderFail" Type="Boolean" />
+          <Property Name="fnElecFail" Type="Boolean" />
+          <Property Name="fnCoplanFail" Type="Boolean" />
+          <Property Name="fnProgramFail" Type="Boolean" />
+          <Property Name="fnRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isSuspectCounterfeit" Type="Boolean" />
+          <Property Name="scSecondaryCoating" Type="Boolean" />
+          <Property Name="scRemarked" Type="Boolean" />
+          <Property Name="scRefurb" Type="Boolean" />
+          <Property Name="scPulls" Type="Boolean" />
+          <Property Name="scCloned" Type="Boolean" />
+          <Property Name="scRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isDamaged" Type="Boolean" />
+          <Property Name="dmCarrier" Type="Boolean" />
+          <Property Name="dmSMCReceipt" Type="Boolean" />
+          <Property Name="dmCustReceipt" Type="Boolean" />
+          <Property Name="dmSMCWarehouse" Type="Boolean" />
+          <Property Name="dmProduct" Type="Boolean" />
+          <Property Name="dmPackage" Type="Boolean" />
+          <Property Name="dmRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isClerical" Type="Boolean" />
+          <Property Name="clSMC" Type="Boolean" />
+          <Property Name="clVendor" Type="Boolean" />
+          <Property Name="clCustomer" Type="Boolean" />
+          <Property Name="clRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isImproperPKG" Type="Boolean" />
+          <Property Name="ipContainer" Type="Boolean" />
+          <Property Name="ipMSL" Type="Boolean" />
+          <Property Name="ipESD" Type="Boolean" />
+          <Property Name="ipTandR" Type="Boolean" />
+          <Property Name="ipRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RMARemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RMAComplete" Type="Boolean" />
+          <Property Name="completedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VRMAQTY" Type="Int32" />
+          <Property Name="CRMAQTY" Type="Int32" />
+          <Property Name="paymentType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NonCon_Head" Relationship="Self.FK_NonCon_RMA_NonCon_Head" FromRole="NonCon_RMA" ToRole="NonCon_Head" />
+        </EntityType>
+        <Association Name="FK_NonCon_Customer_NonCon_Head">
+          <End Role="NonCon_Head" Type="Self.NonCon_Head" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NonCon_Customer" Type="Self.NonCon_Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonCon_Head">
+              <PropertyRef Name="NonConID" />
+            </Principal>
+            <Dependent Role="NonCon_Customer">
+              <PropertyRef Name="NonConID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonCon_Details_NonCon_Head">
+          <End Role="NonCon_Head" Type="Self.NonCon_Head" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NonCon_Details" Type="Self.NonCon_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonCon_Head">
+              <PropertyRef Name="NonConID" />
+            </Principal>
+            <Dependent Role="NonCon_Details">
+              <PropertyRef Name="NonConID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disposition_NonCon_Head">
+          <End Role="NonCon_Head" Type="Self.NonCon_Head" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NonCon_Disposition" Type="Self.NonCon_Disposition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonCon_Head">
+              <PropertyRef Name="NonConID" />
+            </Principal>
+            <Dependent Role="NonCon_Disposition">
+              <PropertyRef Name="NonConID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonCon_Payment_NonCon_Head1">
+          <End Role="NonCon_Head" Type="Self.NonCon_Head" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NonCon_Payment" Type="Self.NonCon_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonCon_Head">
+              <PropertyRef Name="NonConID" />
+            </Principal>
+            <Dependent Role="NonCon_Payment">
+              <PropertyRef Name="NonConID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonCon_RMA_NonCon_Head">
+          <End Role="NonCon_Head" Type="Self.NonCon_Head" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NonCon_RMA" Type="Self.NonCon_RMA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonCon_Head">
+              <PropertyRef Name="NonConID" />
+            </Principal>
+            <Dependent Role="NonCon_RMA">
+              <PropertyRef Name="NonConID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sm_nonconEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="NonCon_Customer" EntityType="Self.NonCon_Customer" />
+          <EntitySet Name="NonCon_Details" EntityType="Self.NonCon_Details" />
+          <EntitySet Name="NonCon_Disposition" EntityType="Self.NonCon_Disposition" />
+          <EntitySet Name="NonCon_Head" EntityType="Self.NonCon_Head" />
+          <EntitySet Name="NonCon_Payment" EntityType="Self.NonCon_Payment" />
+          <EntitySet Name="NonCon_RMA" EntityType="Self.NonCon_RMA" />
+          <AssociationSet Name="FK_NonCon_Customer_NonCon_Head" Association="Self.FK_NonCon_Customer_NonCon_Head">
+            <End Role="NonCon_Head" EntitySet="NonCon_Head" />
+            <End Role="NonCon_Customer" EntitySet="NonCon_Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonCon_Details_NonCon_Head" Association="Self.FK_NonCon_Details_NonCon_Head">
+            <End Role="NonCon_Head" EntitySet="NonCon_Head" />
+            <End Role="NonCon_Details" EntitySet="NonCon_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disposition_NonCon_Head" Association="Self.FK_Disposition_NonCon_Head">
+            <End Role="NonCon_Head" EntitySet="NonCon_Head" />
+            <End Role="NonCon_Disposition" EntitySet="NonCon_Disposition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonCon_Payment_NonCon_Head1" Association="Self.FK_NonCon_Payment_NonCon_Head1">
+            <End Role="NonCon_Head" EntitySet="NonCon_Head" />
+            <End Role="NonCon_Payment" EntitySet="NonCon_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonCon_RMA_NonCon_Head" Association="Self.FK_NonCon_RMA_NonCon_Head">
+            <End Role="NonCon_Head" EntitySet="NonCon_Head" />
+            <End Role="NonCon_RMA" EntitySet="NonCon_RMA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NONCON_RMAModelStoreContainer" CdmEntityContainer="sm_nonconEntities">
+          <EntitySetMapping Name="NonCon_Customer">
+            <EntityTypeMapping TypeName="NONCON_RMAModel.NonCon_Customer">
+              <MappingFragment StoreEntitySet="NonCon_Customer">
+                <ScalarProperty Name="NonConCustomerID" ColumnName="NonConCustomerID" />
+                <ScalarProperty Name="NonConID" ColumnName="NonConID" />
+                <ScalarProperty Name="customerPO" ColumnName="customerPO" />
+                <ScalarProperty Name="customerPOID" ColumnName="customerPOID" />
+                <ScalarProperty Name="SONumber" ColumnName="SONumber" />
+                <ScalarProperty Name="SONumberUID" ColumnName="SONumberUID" />
+                <ScalarProperty Name="CustomerUID" ColumnName="CustomerUID" />
+                <ScalarProperty Name="customerName" ColumnName="customerName" />
+                <ScalarProperty Name="sellerEmail" ColumnName="sellerEmail" />
+                <ScalarProperty Name="sellerName" ColumnName="sellerName" />
+                <ScalarProperty Name="dateSubmitted" ColumnName="dateSubmitted" />
+                <ScalarProperty Name="submittedBy" ColumnName="submittedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NonCon_Details">
+            <EntityTypeMapping TypeName="NONCON_RMAModel.NonCon_Details">
+              <MappingFragment StoreEntitySet="NonCon_Details">
+                <ScalarProperty Name="DetailsID" ColumnName="DetailsID" />
+                <ScalarProperty Name="NonConID" ColumnName="NonConID" />
+                <ScalarProperty Name="isNonconforming" ColumnName="isNonconforming" />
+                <ScalarProperty Name="isActionRequired" ColumnName="isActionRequired" />
+                <ScalarProperty Name="IsVendorFeedbackUpdated" ColumnName="IsVendorFeedbackUpdated" />
+                <ScalarProperty Name="CANum" ColumnName="CANum" />
+                <ScalarProperty Name="SCNum" ColumnName="SCNum" />
+                <ScalarProperty Name="PANum" ColumnName="PANum" />
+                <ScalarProperty Name="submittedBy" ColumnName="submittedBy" />
+                <ScalarProperty Name="dateSubmitted" ColumnName="dateSubmitted" />
+                <ScalarProperty Name="detailsComplete" ColumnName="detailsComplete" />
+                <ScalarProperty Name="completedBy" ColumnName="completedBy" />
+                <ScalarProperty Name="isLeadsBodyIssue" ColumnName="isLeadsBodyIssue" />
+                <ScalarProperty Name="leadsMemo" ColumnName="leadsMemo" />
+                <ScalarProperty Name="Retin" ColumnName="Retin" />
+                <ScalarProperty Name="Oxidation" ColumnName="Oxidation" />
+                <ScalarProperty Name="GenDamage" ColumnName="GenDamage" />
+                <ScalarProperty Name="Pull" ColumnName="Pull" />
+                <ScalarProperty Name="Refurb" ColumnName="Refurb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NonCon_Disposition">
+            <EntityTypeMapping TypeName="NONCON_RMAModel.NonCon_Disposition">
+              <MappingFragment StoreEntitySet="NonCon_Disposition">
+                <ScalarProperty Name="DispositionID" ColumnName="DispositionID" />
+                <ScalarProperty Name="NonConID" ColumnName="NonConID" />
+                <ScalarProperty Name="as_is" ColumnName="as_is" />
+                <ScalarProperty Name="replace" ColumnName="replace" />
+                <ScalarProperty Name="vendor_return" ColumnName="vendor_return" />
+                <ScalarProperty Name="return_to_stock" ColumnName="return_to_stock" />
+                <ScalarProperty Name="quarantined" ColumnName="quarantined" />
+                <ScalarProperty Name="scrap" ColumnName="scrap" />
+                <ScalarProperty Name="containment_notes" ColumnName="containment_notes" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="submittedBy" ColumnName="submittedBy" />
+                <ScalarProperty Name="dateSubmitted" ColumnName="dateSubmitted" />
+                <ScalarProperty Name="dispositionComplete" ColumnName="dispositionComplete" />
+                <ScalarProperty Name="completedBy" ColumnName="completedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NonCon_Head">
+            <EntityTypeMapping TypeName="NONCON_RMAModel.NonCon_Head">
+              <MappingFragment StoreEntitySet="NonCon_Head">
+                <ScalarProperty Name="NonConID" ColumnName="NonConID" />
+                <ScalarProperty Name="NonConDate" ColumnName="NonConDate" />
+                <ScalarProperty Name="VendorUID" ColumnName="VendorUID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="vendorName" ColumnName="vendorName" />
+                <ScalarProperty Name="vendorPO" ColumnName="vendorPO" />
+                <ScalarProperty Name="vendorPOID" ColumnName="vendorPOID" />
+                <ScalarProperty Name="partNumber" ColumnName="partNumber" />
+                <ScalarProperty Name="partNumberID" ColumnName="partNumberID" />
+                <ScalarProperty Name="MFG" ColumnName="MFG" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="stocktype" ColumnName="stocktype" />
+                <ScalarProperty Name="isSale" ColumnName="isSale" />
+                <ScalarProperty Name="dateSubmitted" ColumnName="dateSubmitted" />
+                <ScalarProperty Name="submittedBy" ColumnName="submittedBy" />
+                <ScalarProperty Name="isComplete" ColumnName="isComplete" />
+                <ScalarProperty Name="completedBy" ColumnName="completedBy" />
+                <ScalarProperty Name="completedDate" ColumnName="completedDate" />
+                <ScalarProperty Name="buyerName" ColumnName="buyerName" />
+                <ScalarProperty Name="buyerEmail" ColumnName="buyerEmail" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="ClosureRemarks" ColumnName="ClosureRemarks" />
+                <ScalarProperty Name="isShortShip" ColumnName="isShortShip" />
+                <ScalarProperty Name="linecode_sales" ColumnName="linecode_sales" />
+                <ScalarProperty Name="lineCount" ColumnName="lineCount" />
+                <ScalarProperty Name="initial_email_sent" ColumnName="initial_email_sent" />
+                <ScalarProperty Name="is_approved" ColumnName="is_approved" />
+                <ScalarProperty Name="approval_user" ColumnName="approval_user" />
+                <ScalarProperty Name="approval_date" ColumnName="approval_date" />
+                <ScalarProperty Name="approval_email_sent" ColumnName="approval_email_sent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NonCon_Payment">
+            <EntityTypeMapping TypeName="NONCON_RMAModel.NonCon_Payment">
+              <MappingFragment StoreEntitySet="NonCon_Payment">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="NonConID" ColumnName="NonConID" />
+                <ScalarProperty Name="confirmedNetProfit" ColumnName="confirmedNetProfit" />
+                <ScalarProperty Name="isPaymentDue" ColumnName="isPaymentDue" />
+                <ScalarProperty Name="isPaymentRefunded" ColumnName="isPaymentRefunded" />
+                <ScalarProperty Name="dateRefunded" ColumnName="dateRefunded" />
+                <ScalarProperty Name="wirePaymentReceivedQB" ColumnName="wirePaymentReceivedQB" />
+                <ScalarProperty Name="checkCancelledQB" ColumnName="checkCancelledQB" />
+                <ScalarProperty Name="checkNumber" ColumnName="checkNumber" />
+                <ScalarProperty Name="creditPaymentReceivedQB" ColumnName="creditPaymentReceivedQB" />
+                <ScalarProperty Name="vendorCreditReceivedQB" ColumnName="vendorCreditReceivedQB" />
+                <ScalarProperty Name="vendorCreditAmount" ColumnName="vendorCreditAmount" />
+                <ScalarProperty Name="submittedBy" ColumnName="submittedBy" />
+                <ScalarProperty Name="dateSubmitted" ColumnName="dateSubmitted" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="isPoorQuality" ColumnName="isPoorQuality" />
+                <ScalarProperty Name="isSuspectCounterfeit" ColumnName="isSuspectCounterfeit" />
+                <ScalarProperty Name="isDamaged" ColumnName="isDamaged" />
+                <ScalarProperty Name="isClerical" ColumnName="isClerical" />
+                <ScalarProperty Name="isCustomerSpecific" ColumnName="isCustomerSpecific" />
+                <ScalarProperty Name="paymentComplete" ColumnName="paymentComplete" />
+                <ScalarProperty Name="completedBy" ColumnName="completedBy" />
+                <ScalarProperty Name="paypalNetAmnt" ColumnName="paypalNetAmnt" />
+                <ScalarProperty Name="paymentType" ColumnName="paymentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NonCon_RMA">
+            <EntityTypeMapping TypeName="NONCON_RMAModel.NonCon_RMA">
+              <MappingFragment StoreEntitySet="NonCon_RMA">
+                <ScalarProperty Name="NonConID" ColumnName="NonConID" />
+                <ScalarProperty Name="RMAID" ColumnName="RMAID" />
+                <ScalarProperty Name="isVRMA" ColumnName="isVRMA" />
+                <ScalarProperty Name="isCRMA" ColumnName="isCRMA" />
+                <ScalarProperty Name="dateSubmitted" ColumnName="dateSubmitted" />
+                <ScalarProperty Name="submittedBy" ColumnName="submittedBy" />
+                <ScalarProperty Name="isFunctionalIssue" ColumnName="isFunctionalIssue" />
+                <ScalarProperty Name="fnSolderFail" ColumnName="fnSolderFail" />
+                <ScalarProperty Name="fnElecFail" ColumnName="fnElecFail" />
+                <ScalarProperty Name="fnCoplanFail" ColumnName="fnCoplanFail" />
+                <ScalarProperty Name="fnProgramFail" ColumnName="fnProgramFail" />
+                <ScalarProperty Name="fnRemarks" ColumnName="fnRemarks" />
+                <ScalarProperty Name="isSuspectCounterfeit" ColumnName="isSuspectCounterfeit" />
+                <ScalarProperty Name="scSecondaryCoating" ColumnName="scSecondaryCoating" />
+                <ScalarProperty Name="scRemarked" ColumnName="scRemarked" />
+                <ScalarProperty Name="scRefurb" ColumnName="scRefurb" />
+                <ScalarProperty Name="scPulls" ColumnName="scPulls" />
+                <ScalarProperty Name="scCloned" ColumnName="scCloned" />
+                <ScalarProperty Name="scRemarks" ColumnName="scRemarks" />
+                <ScalarProperty Name="isDamaged" ColumnName="isDamaged" />
+                <ScalarProperty Name="dmCarrier" ColumnName="dmCarrier" />
+                <ScalarProperty Name="dmSMCReceipt" ColumnName="dmSMCReceipt" />
+                <ScalarProperty Name="dmCustReceipt" ColumnName="dmCustReceipt" />
+                <ScalarProperty Name="dmSMCWarehouse" ColumnName="dmSMCWarehouse" />
+                <ScalarProperty Name="dmProduct" ColumnName="dmProduct" />
+                <ScalarProperty Name="dmPackage" ColumnName="dmPackage" />
+                <ScalarProperty Name="dmRemarks" ColumnName="dmRemarks" />
+                <ScalarProperty Name="isClerical" ColumnName="isClerical" />
+                <ScalarProperty Name="clSMC" ColumnName="clSMC" />
+                <ScalarProperty Name="clVendor" ColumnName="clVendor" />
+                <ScalarProperty Name="clCustomer" ColumnName="clCustomer" />
+                <ScalarProperty Name="clRemarks" ColumnName="clRemarks" />
+                <ScalarProperty Name="isImproperPKG" ColumnName="isImproperPKG" />
+                <ScalarProperty Name="ipContainer" ColumnName="ipContainer" />
+                <ScalarProperty Name="ipMSL" ColumnName="ipMSL" />
+                <ScalarProperty Name="ipESD" ColumnName="ipESD" />
+                <ScalarProperty Name="ipTandR" ColumnName="ipTandR" />
+                <ScalarProperty Name="ipRemarks" ColumnName="ipRemarks" />
+                <ScalarProperty Name="RMARemarks" ColumnName="RMARemarks" />
+                <ScalarProperty Name="RMAComplete" ColumnName="RMAComplete" />
+                <ScalarProperty Name="completedBy" ColumnName="completedBy" />
+                <ScalarProperty Name="VRMAQTY" ColumnName="VRMAQTY" />
+                <ScalarProperty Name="CRMAQTY" ColumnName="CRMAQTY" />
+                <ScalarProperty Name="paymentType" ColumnName="paymentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,1238 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Core;
+using NewMethod;
+
+namespace Rz4
+{
+    public class LineLogic : NewMethod.Logic
+    {
+        public override void ActsListInstance(Context context, ActSetup m)
+        {
+            base.ActsListInstance(context, m);
+            ActsListInstanceLine(context, m);
+        }
+        protected virtual void ActsListInstanceLine(Context context, ActSetup m)
+        {
+            Enums.OrderType type = Enums.OrderType.Any;
+            if (m is ActSetupOrder)
+            {
+                ActSetupOrder mm = (ActSetupOrder)m;
+                type = mm.TheOrderType;
+            }
+
+            //handled in DeletePossible now
+            //m.BlockDelete = true;
+
+            List<orddet_line> lines = new List<orddet_line>();
+            foreach (IItem i in m.TheItems.AllGet(context))
+            {
+                lines.Add((orddet_line)i);
+            }
+            bool all_on_hold = true;
+            bool all_open = true;
+            bool has_shipped = false;
+            bool any_are_void = false;
+            bool all_can_be_sent_for_service = true;
+            bool allNotSentToQBPurchase = true;
+            bool allNotSentToQBService = true;
+            bool allOnSameSalesOrder = true;
+            bool allNotInvoiced = true;
+            String salesOrderNumber = "";
+
+           
+            //bool all_on_sales = true;
+            List<String> sales_numbers = new List<string>();
+            List<String> po_numbers = new List<string>();
+            List<String> invoice_numbers = new List<string>();
+            List<String> service_numbers = new List<string>();
+            List<String> rma_numbers = new List<string>();
+            List<String> vendrma_numbers = new List<string>();
+            foreach (orddet_line l in lines)
+            {
+                if (l.Status != Enums.OrderLineStatus.Hold)
+                    all_on_hold = false;
+                if (l.Status != Enums.OrderLineStatus.Open)
+                    all_open = false;
+                if (l.Status == Enums.OrderLineStatus.Shipped)
+                    has_shipped = true;
+                if (l.SalesHas)
+                {
+                    if (!sales_numbers.Contains(l.ordernumber_sales))
+                        sales_numbers.Add(l.ordernumber_sales);
+                }
+                if (l.PurchaseHas)
+                {
+                    if (!po_numbers.Contains(l.ordernumber_purchase))
+                        po_numbers.Add(l.ordernumber_purchase);
+                }
+                if (l.InvoiceHas)
+                {
+                    if (!invoice_numbers.Contains(l.ordernumber_invoice))
+                        invoice_numbers.Add(l.ordernumber_invoice);
+                }
+                if (l.ServiceHas)
+                {
+                    if (!service_numbers.Contains(l.ordernumber_service))
+                        service_numbers.Add(l.ordernumber_service);
+                }
+                if (l.RMAHas)
+                {
+                    if (!rma_numbers.Contains(l.ordernumber_rma))
+                        rma_numbers.Add(l.ordernumber_rma);
+                }
+                if (l.VendRMAHas)
+                {
+                    if (!vendrma_numbers.Contains(l.ordernumber_vendrma))
+                        vendrma_numbers.Add(l.ordernumber_vendrma);
+                }
+                if (l.isvoid || l.Status == Enums.OrderLineStatus.Void)
+                    any_are_void = true;
+
+                if (l.OrderHas(Enums.OrderType.Service))
+                    all_can_be_sent_for_service = false;
+                else if (l.was_service_out && !l.was_service_in)
+                    all_can_be_sent_for_service = false;
+                else if (l.was_shipped && !l.was_rma_received)
+                    all_can_be_sent_for_service = false;
+
+                if (l.qb_sent_purchase)
+                    allNotSentToQBPurchase = false;
+
+                if (l.qb_sent_service)
+                    allNotSentToQBService = false;
+
+                if (l.InvoiceHas)
+                    allNotInvoiced = false;
+
+                if (!l.SalesHas)
+                    allOnSameSalesOrder = false;
+                else
+                {
+                    if (salesOrderNumber == "")
+                        salesOrderNumber = l.ordernumber_sales;
+                    else if (salesOrderNumber != l.ordernumber_sales)
+                        allOnSameSalesOrder = false;
+                }
+            }
+            if (any_are_void)
+            {
+                m.Clear();
+                m.Close();
+                return;
+            }
+            if (all_on_hold && Tools.Strings.StrCmp(type.ToString(), "sales"))
+                GetSalesOrderCompleteTag(m);
+            if (Tools.Strings.StrCmp(type.ToString(), "sales") && allNotInvoiced && allOnSameSalesOrder)
+                m.Add("Make Invoice");
+            if (all_open)
+                m.Add("Ship");
+            if (lines.Count == 1)
+                LineManagementOptionsAdd(context, m);
+            if (lines.Count == 1)
+            {
+                if (type != Enums.OrderType.Any)
+                {
+                    m.Add("Duplicate", "Duplicate" + Tools.Strings.NiceFormat(type.ToString()));
+                }
+            }
+            if (all_can_be_sent_for_service)
+                m.Add("Send For Service");
+            AddCustSpecificMenuItemsOrdDetLine(context, m);
+            AddOrders(m, sales_numbers, "Sales Order", "viewsales");
+            AddOrders(m, po_numbers, "Purchase Order", "viewpos");
+            AddOrders(m, invoice_numbers, "Invoice", "viewinvoices");
+            AddOrders(m, service_numbers, "Service Order", "viewservices");
+            AddOrders(m, rma_numbers, "RMA", "viewrmas");
+            AddOrders(m, vendrma_numbers, "Vendor RMA", "viewvendorrmas");
+            AddRMAOptions(m, type, rma_numbers, vendrma_numbers);
+            AddReceiveOptions((ContextRz)context, type, lines, m, po_numbers, rma_numbers, service_numbers);
+            AddShipOptions((ContextRz)context, type, lines, m, invoice_numbers, vendrma_numbers, service_numbers);
+            if (AllowLineStatusChanges((ContextRz)context, m) && m.IsRightClick)
+                AddLineStatusChanges((ContextRz)context, m);
+
+            //switch (type)
+            //{
+            //    case Enums.OrderType.Purchase:
+            //        if (allNotSentToQBPurchase && ((n_sys_Rz4)((ContextRz)context).xSys).ThePermitLogic.CheckPermit(Permissions.ThePermits.SendOrdersToQuickBooks, ((ContextRz)context).xUser))
+            //        {
+            //            m.Add("QB PO Bill");
+            //            //m.Add("Customer To QB");
+            //        }
+            //        break;
+            //    case Enums.OrderType.Service:
+            //        if (allNotSentToQBService && ((n_sys_Rz4)((ContextRz)context).xSys).ThePermitLogic.CheckPermit(Permissions.ThePermits.SendOrdersToQuickBooks, ((ContextRz)context).xUser))
+            //        {
+            //            m.Add("QB Service Bill");
+            //            //m.Add("Vendor To QB");
+            //        }
+            //        break;
+            //}
+            
+            m.AddSeparator();
+            m.Add("Cancel");
+            //if (((ContextRz)context).xUser.SuperUser || ((ContextRz)context).xUserRz.AccountingIs || ((ContextNM)context).xSys.Recall && Rz3App.xUser.CheckPermit(context, "System:Changes:History", true))
+            //{
+            //    m.AddSeparator();
+            //    m.Add("View Change History");
+            //}
+        }
+        protected virtual void GetSalesOrderCompleteTag(ActSetup m)
+        {
+            if (m != null)
+                m.Add("Sales Order Complete");
+        }
+        protected virtual void AddCustSpecificMenuItemsOrdDetLine(Context context, ActSetup m)
+        {
+
+        }
+        protected virtual void LineManagementOptionsAdd(Context context, ActSetup m)
+        {
+            m.Add("Split");
+            if (((ContextRz)context).xUserRz.SuperUser) 
+                m.Add("Merge");
+        }
+        protected virtual void AddLineStatusChanges(ContextRz context, ActSetup m)
+        {
+            m.AddSeparator();
+            m.Add("Switch To Hold");
+            m.Add("Switch To Open");
+            m.Add("Switch To Buy");
+            m.Add("Switch To Received");
+            m.Add("Switch To Packing");
+            m.Add("Switch To Shipped");
+            m.Add("Switch To Packing For Service");
+            m.Add("Switch To Out For Service");
+            m.Add("Switch To RMA Receiving");
+            m.Add("Switch To RMA Received");
+            m.Add("Switch To Vendor RMA Packing");
+            m.Add("Switch To Vendor RMA Shipped");
+        }
+        protected virtual void AddReceiveOptions(ContextRz context, Enums.OrderType type, List<orddet_line> lines, ActSetup m, List<String> po_numbers, List<String> rma_numbers, List<String> service_numbers)
+        {
+            if (po_numbers.Count > 0 && type == Enums.OrderType.Purchase)
+            {
+                m.Add("Receive PO");
+                if (HasInspection((ContextNM)context, lines, Enums.OrderType.Purchase))
+                    m.Add("View Inspection PO");
+            }
+            if (rma_numbers.Count > 0 && type == Enums.OrderType.RMA)
+            {
+                m.Add("Receive RMA");
+                if (HasInspection((ContextNM)context, lines, Enums.OrderType.RMA))
+                    m.Add("View Inspection RMA");
+            }
+            if (service_numbers.Count > 0 && type == Enums.OrderType.Service)
+                m.Add("Receive Service Order");
+        }
+        protected virtual void AddShipOptions(ContextRz context, Enums.OrderType type, List<orddet_line> lines, ActSetup m, List<String> invoice_numbers, List<String> vrma_numbers, List<String> service_numbers)
+        {
+            bool allUnShipped = true;
+            bool allUnShippedVRMA = true;
+            bool allUnShippedService = true;
+
+            foreach (orddet_line l in lines)
+            {
+                if (l.was_shipped)
+                    allUnShipped = false;
+
+                if (l.was_vendrma_shipped)
+                    allUnShippedVRMA = false;
+
+                if (l.was_service_out)
+                    allUnShippedService = false;
+            }
+            if (invoice_numbers.Count > 0 && type == Enums.OrderType.Invoice && allUnShipped)
+                m.Add("Ship Invoice");
+            if (vrma_numbers.Count > 0 && type == Enums.OrderType.VendRMA && allUnShippedVRMA)
+                m.Add("Ship Vendor RMA");
+            if (service_numbers.Count > 0 && type == Enums.OrderType.Service && allUnShippedService)
+                m.Add("Ship Service Order");
+        }
+        protected virtual void AddRMAOptions(ActSetup m, Enums.OrderType type, List<String> rma_numbers, List<String> vendrma_numbers)
+        {
+            if (rma_numbers.Count == 0 && type == Enums.OrderType.Invoice)
+                m.Add("RMA");
+            if (vendrma_numbers.Count == 0 && (type == Enums.OrderType.Purchase || type == Enums.OrderType.RMA))
+                m.Add("Vendor RMA");
+        }
+        void AddOrders(ActSetup m, List<String> numbers, String name, String key)
+        {
+            if (numbers.Count > 0)
+            {
+                if (numbers.Count == 1)
+                    m.Add("View " + name + " " + numbers[0], key);
+                else
+                    m.Add("View " + Tools.Strings.PluralizePhrase(name, numbers.Count), key);
+            }
+        }
+        protected virtual bool AllowLineStatusChanges(ContextRz context, ActSetup m)
+        {
+            return context.xUser.SuperUser;
+        }
+        public override void ActInstance(Context context, ActArgs args)
+        {
+            List<orddet_line> lines = new List<orddet_line>();
+            foreach (IItem i in args.TheItems.AllGet(context))
+            {
+                lines.Add((orddet_line)i);
+            }
+
+            switch (args.ActionName.ToLower())
+            {
+                case "makepo":
+                case "salesordercomplete":
+                    ordhed_sales s = (ordhed_sales)lines[0].SalesVar.RefGet(context);
+                    if (s == null)
+                    {
+                        context.TheLeader.Error("The sales order was not found");
+                        return;
+                    }
+                    s.CompleteSalesOrder((ContextRz)context, lines);
+                    break;
+                case "ship":
+                case "makeinvoice":
+                    ordhed_sales sale = (ordhed_sales)lines[0].SalesVar.RefGet(context);
+                    if (sale == null)
+                    {
+                        context.TheLeader.Error("The sales order was not found");
+                        return;
+                    }
+
+                    List<ordhed_invoice> invoices = sale.MakeInvoiceWithChecks((ContextRz)context, lines);
+                    if (invoices != null)
+                    {
+                        foreach (ordhed_invoice i in invoices)
+                        {
+                            context.Show(i);
+                        }
+                    }
+                    break;
+                case "sendforservice":
+                    ordhed_service serv = SendForService((ContextRz)context, lines);
+                    if (serv != null)
+                        context.Show(serv);
+                    break;
+                case "rma":
+                    RMA((ContextRz)context, lines);
+                    break;
+                case "vendorrma":
+                    ordhed_vendrma vrma = VendRMA((ContextRz)context, lines);
+                    if (vrma != null)
+                        context.Show(vrma);
+                    break;
+                case "trackingnumbers-invoice":
+                    TrackingAdd((ContextRz)context, lines, Rz4.Enums.OrderType.Invoice);
+                    break;
+                case "trackingnumbers-po":
+                    TrackingAdd((ContextRz)context, lines, Rz4.Enums.OrderType.Purchase);
+                    break;
+                case "trackingnumbers-rma":
+                    TrackingAdd((ContextRz)context, lines, Rz4.Enums.OrderType.RMA);
+                    break;
+                case "trackingnumbers-vendrma":
+                    TrackingAdd((ContextRz)context, lines, Rz4.Enums.OrderType.VendRMA);
+                    break;
+                case "viewsales":
+                    ViewOrders((ContextRz)context, lines, Rz4.Enums.OrderType.Sales);
+                    break;
+                case "viewpos":
+                    ViewOrders((ContextRz)context, lines, Rz4.Enums.OrderType.Purchase);
+                    break;
+                case "viewinvoices":
+                    ViewOrders((ContextRz)context, lines, Rz4.Enums.OrderType.Invoice);
+                    break;
+                case "viewservices":
+                    ViewOrders((ContextRz)context, lines, Rz4.Enums.OrderType.Service);
+                    break;
+                case "viewrmas":
+                    ViewOrders((ContextRz)context, lines, Rz4.Enums.OrderType.RMA);
+                    break;
+                case "viewvendorrmas":
+                case "viewvendrmas":
+                    ViewOrders((ContextRz)context, lines, Rz4.Enums.OrderType.VendRMA);
+                    break;
+                case "switchtohold":
+                    SwitchTo((ContextRz)context, lines, Rz4.Enums.OrderLineStatus.Hold);
+                    break;
+                case "switchtoopen":
+                    SwitchTo((ContextRz)context, lines, Rz4.Enums.OrderLineStatus.Open);
+                    break;
+                case "switchtobuy":
+                    SwitchTo((ContextRz)context, lines, Rz4.Enums.OrderLineStatus.Buy);
+                    break;
+                case "switchtoreceived":
+                    SwitchTo((ContextRz)context, lines, Rz4.Enums.OrderLineStatus.Received);
+                    break;
+                case "switchtopacking":
+                    SwitchTo((ContextRz)context, lines, Rz4.Enums.OrderLineStatus.Packing);
+                    break;
+                case "switchtoshipped":
+                    SwitchTo((ContextRz)context, lines, Rz4.Enums.OrderLineStatus.Shipped);
+                    break;
+                case "switchtormareceiving":
+                    SwitchTo((ContextRz)context, lines, Rz4.Enums.OrderLineStatus.RMA_Receiving);
+                    break;
+                case "switchtormareceived":
+                    SwitchTo((ContextRz)context, lines, Rz4.Enums.OrderLineStatus.RMA_Received);
+                    break;
+                case "switchtovendorrmapacking":
+                    SwitchTo((ContextRz)context, lines, Rz4.Enums.OrderLineStatus.Vendor_RMA_Packing);
+                    break;
+                case "switchtovendorrmashipped":
+                    SwitchTo((ContextRz)context, lines, Rz4.Enums.OrderLineStatus.Vendor_RMA_Shipped);
+                    break;
+                case "switchtopackingforservice":
+                    SwitchTo((ContextRz)context, lines, Rz4.Enums.OrderLineStatus.Packing_For_Service);
+                    break;
+                case "switchtooutforservice":
+                    SwitchTo((ContextRz)context, lines, Rz4.Enums.OrderLineStatus.Out_For_Service);
+                    break;
+                //case "switchtocanceled":
+                //    SwitchTo(context, lines, Rz4.Enums.OrderLineStatus.Canceled);
+                //    break;
+                case "receivepo":
+                    ReceivePO((ContextRz)context, lines);
+                    break;
+                case "receiverma":
+                    ReceiveRMA((ContextRz)context, lines);
+                    break;
+                case "shipinvoice":
+                    ShipInvoice((ContextRz)context, lines);
+                    break;
+                case "receiveserviceorder":
+                    ReceiveService((ContextRz)context, lines);
+                    break;
+                case "shipserviceorder":
+                    ShipService((ContextRz)context, lines);
+                    break;
+                case "shipvendorrma":
+                    ShipVRMA((ContextRz)context, lines);
+                    break;
+                case "viewinspectionpo":
+                    ViewInspectionPO((ContextRz)context, lines);
+                    break;
+                case "viewinspectionrma":
+                    ViewInspectionRMA((ContextRz)context, lines);
+                    break;
+                case "qbpobill":                    
+                    QuickBooksBill((ContextRz)context, lines, Enums.OrderType.Purchase);
+                    break;
+                case "qbservicebill":
+                    QuickBooksBill((ContextRz)context, lines, Enums.OrderType.Service);
+                    break;
+                default:
+                    base.ActInstance(context, args);
+                    break;
+            }
+        }
+        protected virtual void ShipVRMA(ContextRz context, List<orddet_line> lines)
+        {
+            try
+            {
+                context.TheLeader.Reorg();
+                //orddet_line d = lines[0];
+                //if (d == null)
+                //    return;
+                //ViewDetailVendRMA v = (ViewDetailVendRMA)context.TheLeader.ViewCreate(context, new ShowArgsOrder(context, d, Enums.OrderType.VendRMA));
+                //v.SetCurrentObject(d);
+                //v.CompleteLoad();
+                //contextRz.xSys.xMainForm.TabShow(v);
+                //v.DoShip();
+            }
+            catch { }
+        }
+        protected virtual void ViewInspectionPO(ContextRz context, List<orddet_line> lines)
+        {
+            context.Reorg();
+            //orddet_line l = lines[0];
+            //if (l == null)
+            //    return;
+            //pack p = (pack)context.QtO("pack", "select * from pack where the_orddet_purchase_uid = '" + l.unique_id + "'");
+            //qualitycontrol q = (qualitycontrol)context.QtO("qualitycontrol", "select * from qualitycontrol where the_companycontact_uid = '" + p.unique_id + "' and the_orddet_uid = '" + l.unique_id + "'");
+            //frmQC qc = new frmQC();
+            //if (!qc.CompleteLoad(contextRz, p, l, "PO# " + l.ordernumber_purchase, q))
+            //    return;
+            //qc.ShowDialog();
+        }
+        protected virtual void ViewInspectionRMA(ContextRz context, List<orddet_line> lines)
+        {
+            context.Reorg();
+            //orddet_line l = lines[0];
+            //if (l == null)
+            //    return;
+            //pack p = (pack)context.QtO("pack", "select * from pack where the_orddet_rma_uid = '" + l.unique_id + "'");
+            //qualitycontrol q = (qualitycontrol)context.QtO("qualitycontrol", "select * from qualitycontrol where the_partrecord_uid = '" + p.unique_id + "' and the_orddet_uid = '" + l.unique_id + "'");
+            //frmQC qc = new frmQC();
+            //if (!qc.CompleteLoad(contextRz, p, l, "RMA# " + l.ordernumber_rma, q))
+            //    return;
+            //qc.ShowDialog();
+        }
+        protected virtual void QuickBooksBill(ContextRz context, List<orddet_line> lines, Enums.OrderType type)
+        {
+            try
+            {
+                ordhed_new order = null;
+                StringBuilder sb = new StringBuilder();
+                List<BillLineHandle> handles = new List<BillLineHandle>();
+                foreach(orddet_line l in lines)
+                {
+                    BillLineHandle h =new BillLineHandle();
+                    h.TheLine = l;
+                    h.TheType = type;
+                    handles.Add(h);
+
+                    if( order == null )
+                    {
+                        if( type == Enums.OrderType.Purchase )
+                            order = (ordhed_new)l.PurchaseVar.RefGet(context);
+                        else
+                            order = (ordhed_new)l.ServiceVar.RefGet(context);
+                    }
+
+                    if (type == Enums.OrderType.Purchase)
+                    {
+                        if (!sb.ToString().Contains(l.ordernumber_purchase))
+                            sb.Append(" PO#" + l.ordernumber_purchase);
+                    }
+                    else if (type == Enums.OrderType.Service)
+                    {
+                        if (!sb.ToString().Contains(l.ordernumber_service))
+                            sb.Append(" Service#" + l.ordernumber_service);
+                    }
+                }
+
+                context.TheSysRz.TheQuickBooksLogic.SendBill(context, order.CompanyVar.RefGet(context), context.TheSysRz.TheQuickBooksLogic.BillReferenceCalc(order), context.TheSysRz.TheQuickBooksLogic.MemoCalc(order), context.TheSysRz.TheQuickBooksLogic.InitalsCalc(context, order), context.TheSysRz.TheQuickBooksLogic.PayableAccountCalc(order), order.shipvia, order.terms, context.TheSysRz.TheQuickBooksLogic.BillDateCalc(order), handles, new List<orddet_line>(), sb.ToString());
+            }
+            catch(Exception ex)
+            {
+                context.TheLeader.Error(ex);
+            }
+        }
+        public virtual bool ShipViaInvoiceOK(orddet_line l)
+        {
+            if (l == null)
+                return false;
+            return Tools.Strings.StrExt(l.shipvia_invoice);
+        }
+        public virtual void ActDetail(ContextRz context, ActArgs args)
+        {
+            ContextRz xrz = (ContextRz)context;
+
+            List<orddet> lines = new List<orddet>();
+            foreach (IItem i in args.TheItems.AllGet(context))
+            {
+                lines.Add((orddet)i);
+            }
+            switch (args.ActionName.ToLower())
+            {
+                case "duplicatesupplier":
+                    orddet.SetSupplier(lines);
+                    args.Handled = true;
+                    break;
+                case "sendforservice":
+                    orddet.SendForService(xrz, lines, true);
+                    args.Handled = true;
+                    break;
+                case "sendmultiplequotes":
+                    context.Logic.SendMultipleQuotes(xrz, lines);
+                    args.Handled = true;
+                    break;
+                case "copylineinfo":
+                    orddet.GlobalLineInfo = new ArrayList();
+                    foreach (object x in lines)
+                    {
+                        orddet.GlobalLineInfo.Add(x);
+                    }
+                    args.Handled = true;
+                    break;
+                case "newformalquote":
+                    orddet.ShowNewFormalQuote(xrz, lines);
+                    args.Handled = true;
+                    break;
+                case "emailvendorgroup":
+                    List<orddet> details = new List<orddet>();
+                    foreach (orddet d in lines)
+                    {
+                        details.Add(d);
+                    }
+                    orddet_quote.EmailVendorGroup(xrz, details);
+                    args.Handled = true;
+                    break;
+                case "setlotnumber":
+                    orddet.SetLotNumber(xrz, lines);
+                    args.Handled = true;
+                    break;
+                default:
+                    base.ActInstance(context, args);
+                    break;
+            }
+        }
+        protected virtual bool AddANote()
+        {
+            return false;
+        }
+        public virtual void ActsListOrdDetOld(ContextRz context, ActSetup m)
+        {
+            Enums.OrderType t = Enums.OrderType.Any;
+            foreach (IItem b in m.TheItems.AllGet(context))
+            {
+                if (!(b is orddet_old))
+                    continue;
+                orddet_old o = (orddet_old)b;
+                t = o.OrderType;
+                break;
+            }
+            m.Add("Select");
+            switch (t)
+            {
+                case Enums.OrderType.RFQ:
+                    m.Add("Make PO");
+                    m.Add("Give Quote");
+                    break;
+                case Enums.OrderType.Quote:
+                    if (AddANote())
+                        m.Add("Add A Note");
+                    m.Add("Receive Bid");
+                    m.Add("Formal Quote");
+                    m.Add("New Formal Quote");
+                    m.Add("Sales Order");
+                    m.AddSeparator();
+                    if (!context.Logic.UseMergedQuotes)
+                        m.Add("Email Vendor");
+                    else
+                        m.Add("Email Vendor Group");
+                    m.Add("Send For Service");
+                    break;
+            }
+            if (t != Enums.OrderType.Quote)
+                m.Add("View Order");
+            m.Add("View Order Batch");
+            m.Add("Hot Part");
+            m.Add("Duplicate");
+            m.Add("Copy Line Info");
+            m.Add("Pictures");
+            if (context.xUser.IsDeveloper())
+                m.Add("Forms");
+        }
+        private bool HasInspection(ContextNM context, List<orddet_line> lines, Rz4.Enums.OrderType type)
+        {
+            string id = "";
+            foreach (orddet_line l in lines)
+            {
+                int count = context.SelectScalarInt32("select count(unique_id) from qualitycontrol where the_orddet_uid = '" + l.unique_id + "'");
+                if (count <= 0)
+                    continue;
+                return true;
+            }
+            return false;
+        }
+        public virtual void ViewOrders(ContextRz context, List<orddet_line> lines, Rz4.Enums.OrderType type)
+        {
+            Dictionary<String, ordhed_new> pos = new Dictionary<string, ordhed_new>();
+            foreach (orddet_line l in lines)
+            {
+                ordhed_new p = (ordhed_new)l.OrderObjectGet(context, type);
+                if (p != null)
+                {
+                    if (!pos.ContainsKey(p.unique_id))
+                        pos.Add(p.unique_id, p);
+                }
+            }
+
+            if (pos.Count == 0)
+                return;
+
+            foreach (KeyValuePair<String, ordhed_new> kvp in pos)
+            {
+                context.Show(kvp.Value);
+            }
+        }
+        public void TrackingAdd(ContextRz context, List<orddet_line> lines, Enums.OrderType type)
+        {
+            String add = context.TheLeader.AskForString(type.ToString() + " Tracking Numbers", "", true);
+            if (!Tools.Strings.StrExt(add))
+                return;
+
+            TrackingAdd(context, lines, type, add);
+        }
+        public virtual void TrackingAdd(ContextRz context, List<orddet_line> lines, Enums.OrderType type, String add)
+        {
+            String prop = "tracking_" + type.ToString().ToLower();
+            List<String> nums = Tools.Strings.SplitLinesList(add);
+            foreach (String num in nums)
+            {
+                if (Tools.Strings.StrExt(num))
+                {
+                    foreach (orddet_line line in lines)
+                    {
+                        String existing = Tools.Data.NullFilterString(line.IGet(prop));
+                        if (!Tools.Strings.HasString(existing, num))
+                        {
+                            if (existing != "")
+                                existing += "\r\n";
+                            existing += num;
+                        }
+
+                        line.ISet(prop, existing);
+                        context.Update(line);
+                    }
+                }
+            }
+        }
+        protected virtual void SwitchTo(ContextRz context, List<orddet_line> lines, Rz4.Enums.OrderLineStatus s)
+        {
+            foreach (orddet_line l in lines)
+            {
+                l.Status = s;
+
+                switch (l.Status)
+                {
+                    case Enums.OrderLineStatus.Vendor_RMA_Packing:
+                        l.was_vendrma_shipped = false;
+                        break;
+                    case Enums.OrderLineStatus.Buy:
+                        l.was_received = false;
+                        break;
+                    case Enums.OrderLineStatus.Packing:
+                        l.was_shipped = false;
+                        break;
+                    case Enums.OrderLineStatus.RMA_Receiving:
+                        l.was_rma_received = false;
+                        break;
+                    case Enums.OrderLineStatus.Packing_For_Service:
+                        l.was_service_out = false;
+                        break;
+                    case Enums.OrderLineStatus.Hold:
+                        l.was_shipped = false;
+                        l.was_received = false;
+                        l.was_service_out = false;
+                        l.was_service_in = false;
+                        break;
+                    case Enums.OrderLineStatus.Shipped:
+                        l.was_shipped = true;
+                        l.ship_date_actual = l.orderdate_invoice;
+                        break;
+                }
+
+                context.Update(l);
+            }
+        }
+        protected virtual void ReceivePO(ContextRz context, List<orddet_line> lines)
+        {
+            try
+            {
+                context.Reorg();
+                //orddet_line d = lines[0];
+                //if (d == null)
+                //    return;
+                //ViewDetailPurchase v = null;
+                //try { v = (ViewDetailPurchase)contextRz.xSys.xMainForm.TabCheckShow(d.unique_id); }
+                //catch { }
+                //if (v != null)
+                //{
+                //    v.DoReceive();
+                //    return;
+                //}
+                //v = (ViewDetailPurchase)context.TheLeader.ViewCreate(context, new ShowArgsOrder(context, d, Enums.OrderType.Purchase));
+                //v.SetCurrentObject(d);
+                //v.CompleteLoad();
+                //contextRz.xSys.xMainForm.TabShow(v);
+                //v.DoReceive();
+            }
+            catch { }
+        }
+        protected virtual void ReceiveRMA(ContextRz context, List<orddet_line> lines)
+        {
+            context.Reorg();
+            //orddet_line d = lines[0];
+            //if (d == null)
+            //    return;
+            //ViewDetailRMA v = (ViewDetailRMA)context.TheLeader.ViewCreate(context, new ShowArgsOrder(context, d, Enums.OrderType.RMA));
+            //v.SetCurrentObject(d);
+            //v.CompleteLoad();
+            //contextRz.xSys.xMainForm.TabShow(v);
+            //v.DoReceive();
+        }
+        protected virtual void ReceiveService(ContextRz context, List<orddet_line> lines)
+        {
+            context.Reorg();
+            //context.Reorg();
+            //orddet_line d = lines[0];
+            //if (d == null)
+            //    return;
+            //ViewDetailService v = (ViewDetailService)context.TheLeader.ViewCreate(context, new ShowArgsOrder(context, d, Enums.OrderType.Service));
+            //v.SetCurrentObject(d);
+            //v.CompleteLoad();
+            //contextRz.xSys.xMainForm.TabShow(v);
+            //v.DoReceive();
+        }
+        protected virtual void ShipService(ContextRz context, List<orddet_line> lines)
+        {
+            context.Reorg();
+            //orddet_line d = lines[0];
+            //if (d == null)
+            //    return;
+            //ViewDetailService v = (ViewDetailService)context.TheLeader.ViewCreate(context, new ShowArgsOrder(context, d, Enums.OrderType.Service));
+            //v.SetCurrentObject(d);
+            //v.CompleteLoad();
+            //contextRz.xSys.xMainForm.TabShow(v);
+            //v.DoShip();
+        }
+        protected virtual void ShipInvoice(ContextRz context, List<orddet_line> lines)
+        {
+            context.Reorg();
+        //    orddet_line d = lines[0];
+        //    if (d == null)
+        //        return;
+        //    ViewDetailInvoice v = (ViewDetailInvoice)context.TheLeader.ViewCreate(context, new ShowArgsOrder(context, d, Enums.OrderType.Invoice));
+        //    v.SetCurrentObject(d);
+        //    v.CompleteLoad();
+        //    contextRz.xSys.xMainForm.TabShow(v);
+        //    v.DoShip();
+        }
+        public virtual ordhed_service SendForService(ContextRz context, List<orddet_line> lines)
+        {
+            //option to jump on an existing service order
+            MakeOrderArgs args = context.Leader.AskForMakeOrderArgs(Enums.OrderType.Service);
+            if (args.Canceled)
+                return null;
+
+            ordhed_service serv = null;
+
+            if (args.NewOrder)
+            {
+                serv = (ordhed_service)ordhed.CreateNew(context, Enums.OrderType.Service);
+            }
+            else
+                serv = (ordhed_service)args.UseOrder;
+
+            foreach (orddet_line l in lines)
+            {
+                l.ServiceVar.RefSet(context, serv);
+                if (l.Status == Enums.OrderLineStatus.Open)
+                    l.Status = Enums.OrderLineStatus.Packing_For_Service;
+                l.Update(context);
+            }
+
+            serv.Update(context);
+            return serv;
+        }
+        public virtual ordhed_rma RMA(ContextRz context, List<orddet_line> lines)
+        {
+            //context.Reorg();
+            //return null;
+            if (lines.Count == 0)
+            {
+                context.TheLeader.Error("No lines");
+                return null;
+            }
+            ordhed_invoice sale_order = (ordhed_invoice)lines[0].OrderObjectGet(context, Rz4.Enums.OrderType.Invoice);
+            if (sale_order == null)
+            {
+                context.TheLeader.Error("The sales order for this scan could not be found");
+                return null;
+            }
+            int rmaQuantity = 0;
+            bool rmaQuantityEnabled = true;
+            //only single line selections can be split
+            //so if there's more than 1, the quantity has to be the total quantity
+            //the alternative would be to show each line on the rma screen and allow a quantity selection for each
+            if (lines.Count == 1)
+                rmaQuantityEnabled = lines[0].quantity > 1;
+            else
+                rmaQuantityEnabled = false;
+            foreach (orddet_line l in lines)
+            {
+                rmaQuantity += l.quantity;
+            }
+            //RMASelectionResult r = Win.Dialogs.RMASelection.Select(new RMASelectionArgs(rmaQuantity, rmaQuantityEnabled));
+            RMASelectionResult r = context.Leader.RMASelectionGet(context, new RMASelectionArgs(rmaQuantity, rmaQuantityEnabled));
+            if (r == null)
+                return null;
+            if (r.Cancel)
+                return null;
+            if (!rmaQuantityEnabled && (r.Quantity != lines[0].quantity))
+            {
+                context.TheLeader.Error("Only single lines can be split for an RMA.  Add each line individually.");
+                return null;
+            }
+            return RMA(context, lines, sale_order, r);
+        }
+        public virtual ordhed_rma RMA(ContextRz context, List<orddet_line> lines, ordhed_invoice sale_order, RMASelectionResult r)
+        {
+            ordhed_rma rma = null;
+
+            if (r.Quantity != lines[0].quantity)
+            {
+                ////added 2012_03_02 doesn't it make sense that if there is more than 1 and the quantity doesn't match, there's a problem?
+                //if (lines.Count > 1)
+                //    throw new Exception("RMA quantity mismatch");
+
+                lines[0].Split(context, lines[0].quantity - r.Quantity);
+            }
+
+            if (r.NewRMA)
+            {
+                rma = (Rz4.ordhed_rma)sale_order.GetNewOrderHeader(context, Rz4.Enums.OrderType.RMA);
+                rma.billingname = sale_order.billingname;
+                rma.shippingname = sale_order.shippingname;
+                rma.Update(context);
+                ((SysRz)context.xSys).TheOrderLogic.Link2Orders(context, sale_order, rma);
+            }
+            else
+            {
+                rma = r.TheRMA;
+                context.TheLeader.ViewsClose(rma);
+            }
+
+            //partials
+            //if( rma_qty > 0 && rma_qty < sale_line.quantity )
+            //{
+            //    sale_line.Split(context, sale_line.quantity - rma_qty);
+            //}
+
+            foreach (orddet_line l in lines)
+            {
+                l.RMAVar.RefSet(context, rma);
+                l.was_rma = true;
+                l.Status = Rz4.Enums.OrderLineStatus.RMA_Receiving;
+                l.Update(context);
+            }
+
+            rma.Update(context);
+            ordrma rmaData = rma.LinkedRMAGet(context);
+            if (rmaData == null)
+            {
+                rmaData = ordrma.New(context);
+                rmaData.rma_ordhed_uid = rma.unique_id;
+                rmaData.Insert(context);
+            }
+
+            Rz4.ordhed_vendrma vrma = null;
+            if (r.DoVRMA)
+            {
+                if (r.NewVRMA)
+                {
+                    ordhed_purchase po = (ordhed_purchase)lines[0].OrderObjectGet(context, Rz4.Enums.OrderType.Purchase);
+                    if (po == null)
+                        context.TheLeader.Error("The PO for this item could not be found.  Please find the PO and create the VRMA from it manually");
+                    else
+                    {
+                        vrma = (Rz4.ordhed_vendrma)po.MakeVendorRMAHeader(context, lines[0], r.DoVendorReplacement);
+                    }
+
+                    if (rmaData != null)
+                    {
+                        rmaData.vendrma_ordhed_uid = vrma.unique_id;
+                        context.TheDelta.Update(context, rmaData);
+                    }
+                }
+                else
+                {
+                    vrma = r.TheVRMA;
+                    context.TheLeader.ViewsClose(vrma);
+                }
+
+                foreach (orddet_line l in lines)
+                {
+                    l.VendRMAVar.RefSet(context, vrma);
+                    l.was_vendrma = true;
+                    l.unit_price_vendrma = l.unit_cost;
+                    l.total_price_vendrma = l.total_cost;
+                    l.Update(context);
+                }
+                vrma.Update(context);
+            }
+
+            List<orddet_line> replacementLines = new List<orddet_line>();
+            if (r.DoCustomerReplacement)
+            {
+                ordhed_sales sale = (ordhed_sales)lines[0].SalesVar.RefGet(context);  // lines[0].SalesOrderGet(context);
+                if (sale == null)
+                    context.TheLeader.Error("The sales order could not be found to add the replacement");
+                else
+                {
+                    context.TheLeader.ViewsClose(sale);
+
+                    foreach (orddet_line l in lines)
+                    {
+                        orddet_line replacement_line = (orddet_line)sale.DetailsVar.RefAddNew(context);
+                        //taken care of
+                        //replacement_line.ISave();
+
+                        l.IdentityApplyTo(context, replacement_line);
+
+                        replacement_line.quantity = l.quantity;
+                        replacement_line.stocktype = "";
+                        replacement_line.vendor_uid = "";
+                        replacement_line.vendor_name = "";
+                        replacement_line.vendor_contact_uid = "";
+                        replacement_line.vendor_contact_name = "";
+                        replacement_line.lotnumber = "";
+                        replacement_line.consignment_code = "";
+                        replacement_line.Status = Rz4.Enums.OrderLineStatus.Hold;
+                        replacement_line.internalcomment = "Replacement for RMA " + rma.ordernumber;
+                        replacement_line.Update(context);
+                        replacementLines.Add(replacement_line);
+                    }
+
+                    sale.Update(context);
+                    context.Show(sale);
+                }
+                //we need to talk about how Sensible wants this;
+                //we should come to a consensus but i didn't want to break anything for Sensible
+                foreach (orddet_line l in lines)
+                {
+                    l.unit_price_rma = GetRMAUnitPrice(l);
+                }
+            }
+            else
+            {
+                foreach (orddet_line l in lines)
+                {
+                    l.unit_price_rma = l.unit_price;
+                }
+            }
+
+            foreach (orddet_line l in lines)
+            {
+                context.TheDelta.Update(context, l);
+            }
+
+            if (r.DoVRMA && vrma != null && r.DoVendorReplacement)
+            {
+                ordhed_purchase p = null;
+                foreach (orddet_line ln in lines)
+                {
+                    p = (ordhed_purchase)ln.OrderObjectGet(context, Enums.OrderType.Purchase);
+                    if (p != null)
+                        break;
+                }
+
+                if (p != null)
+                {
+                    if (r.UseVendorReplacementForCustomer && replacementLines.Count > 0)
+                    {
+                        foreach (orddet_line replacement_line in replacementLines)
+                        {
+                            p.DetailsVar.RefsAdd(context, replacement_line);
+                            replacement_line.Status = Enums.OrderLineStatus.Buy;
+                            replacement_line.vendor_name = p.companyname;
+                            replacement_line.vendor_uid = p.base_company_uid;
+                            replacement_line.vendor_contact_name = p.contactname;
+                            replacement_line.vendor_contact_uid = p.base_companycontact_uid;
+                            context.TheDelta.Update(context, replacement_line);
+                        }
+                    }
+                    else
+                    {
+                        //add a new replacement line
+                        foreach (orddet_line ln in lines)
+                        {
+                            orddet_line replacement_line = (orddet_line)p.DetailsVar.RefAddNew(context);
+                            
+                            //handled
+                            //replacement_line.ISave();
+
+                            ln.IdentityApplyTo(context, replacement_line);
+
+                            replacement_line.quantity = ln.quantity;
+                            replacement_line.stocktype = ln.stocktype;
+                            replacement_line.vendor_name = p.companyname;
+                            replacement_line.vendor_uid = p.base_company_uid;
+                            replacement_line.vendor_contact_name = p.contactname;
+                            replacement_line.vendor_contact_uid = p.base_companycontact_uid;
+                            replacement_line.lotnumber = ln.lotnumber;
+                            replacement_line.consignment_code = ln.consignment_code;
+                            replacement_line.Status = Rz4.Enums.OrderLineStatus.Buy;
+                            replacement_line.internalcomment = "Replacement for VRMA " + vrma.ordernumber;
+                            context.TheDelta.Update(context, replacement_line);
+                        }
+                    }
+                }
+                else
+                    context.TheLeader.Error("The PO for VRMA " + vrma.ordernumber + " could not be found.  The replacement needs to be manually scheduled");
+
+            }
+
+            if (vrma != null)
+                context.Show(vrma);
+
+            context.Show(rma);
+
+            return rma;
+        }
+        protected virtual double GetRMAUnitPrice(orddet_line l)
+        {
+            return 0;
+        }
+        public virtual ordhed_vendrma VendRMA(ContextRz context, List<orddet_line> lines)
+        {
+            int rmaQuantity = 0;
+            bool rmaQuantityEnabled = true;
+
+            //only single line selections can be split
+            //so if there's more than 1, the quantity has to be the total quantity
+            //the alternative would be to show each line on the rma screen and allow a quantity selection for each
+            if (lines.Count == 1)
+                rmaQuantityEnabled = lines[0].quantity > 1;
+            else
+                rmaQuantityEnabled = false;
+
+            foreach (orddet_line l in lines)
+            {
+                rmaQuantity += l.quantity;
+            }
+
+            RMASelectionResult r = context.Leader.ChooseVendorRMA(new RMASelectionArgs(rmaQuantity, rmaQuantityEnabled));
+
+            if (r == null)
+                return null;
+
+            if (r.Cancel)
+                return null;
+
+            if (!rmaQuantityEnabled && lines[0].quantity != r.Quantity)
+            {
+                context.TheLeader.Error("Only single lines can be split for a Vendor RMA.  Add each line individually.");
+                return null;
+            }
+
+            return VendRMA(context, lines, r);
+        }
+        public virtual ordhed_vendrma VendRMA(ContextRz context, List<orddet_line> lines, RMASelectionResult r)
+        {
+            ordhed_vendrma vrma = null;
+            ordhed_purchase po = (ordhed_purchase)lines[0].OrderObjectGet(context, Rz4.Enums.OrderType.Purchase);
+            if (po == null)
+            {
+                context.TheLeader.Error("The PO for this item could not be found.  Please find the PO and create the VRMA from it manually");
+                return null;
+            }
+            if (r.TheVRMA == null)
+            {
+                vrma = (Rz4.ordhed_vendrma)po.GetNewOrderHeader(context, Rz4.Enums.OrderType.VendRMA);
+                context.TheDelta.Update(context, vrma);
+                //ordrma rmaData = null;
+                //ordhed_rma rmaHeader = (ordhed_rma)lines[0].OrderObjectGet(context, Enums.OrderType.RMA);
+                //if (rmaHeader != null)
+                //    rmaData = rmaHeader.LinkedRMA;
+                //if (rmaData != null)
+                //{
+                //    rmaData.vendrma_ordhed_uid = vrma.unique_id;
+                //    context.TheDelta.Update(context, rmaData);
+                //}
+                foreach (orddet_line l in lines)
+                {
+                    if (l.OrderHas(Enums.OrderType.RMA))
+                    {
+                        ordhed_rma rma = (ordhed_rma)l.OrderObjectGet(context, Enums.OrderType.RMA);
+                        if (rma != null)
+                        {
+                            ordrma rmaData = rma.LinkedRMAGet(context);
+                            if (rmaData == null)
+                            {
+                                rmaData = new ordrma();
+                                rmaData.rma_ordhed_uid = rma.unique_id;
+                                context.TheDelta.Insert(context, rmaData);
+                            }
+                            if (rmaData != null)
+                            {
+                                rmaData.vendrma_ordhed_uid = vrma.unique_id;
+                                rmaData.Update(context);
+                                vrma.LinkedRMASet(rmaData);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                vrma = r.TheVRMA;
+            }
+            ((SysRz)context.xSys).TheOrderLogic.Link2Orders(context, po, vrma);
+            if (r.Quantity != lines[0].quantity)
+            {
+                lines[0].Split(context, lines[0].quantity - r.Quantity);
+            }
+            foreach (orddet_line l in lines)
+            {
+                l.VendRMAVar.RefSet(context, vrma);
+                l.was_vendrma = true;
+                l.Status = Enums.OrderLineStatus.Vendor_RMA_Packing;
+                l.unit_price_vendrma = l.unit_cost;
+                l.Update(context);
+            }
+            vrma.Update(context);
+            return vrma;
+        }
+        public virtual bool PrintInternalComment()
+        {
+            return true;
+        }
+        public virtual ListArgs OrdLineSearchArgsGet(ContextRz x, SearchComparison compare, Enums.OrderType[] types, PartSearchParameters pars)
+        {
+            ListArgs ret = new ListArgs(x);
+            ret.TheTable = "orddet_line";
+
+            if (pars.SearchTerm == "")
+                ret.HeaderOnly = true;
+
+            ret.AddAllow = false;
+            ret.TheClass = ret.TheTable;
+            ret.TheOrder = ret.TheTable + ".orderdate_" + types[0].ToString().ToLower() + " desc";
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(" ( ");
+
+            bool btypes = false;
+            String stypes = "";
+            if (types.Length > 0)
+            {
+                btypes = true;
+                sb.Append("( ");
+                bool ft = true;
+                foreach (Enums.OrderType t in types)
+                {
+                    if (!ft)
+                    {
+                        sb.Append(" or ");
+                        stypes += ", ";
+                    }
+                    stypes += t.ToString();
+                    ft = false;
+                    sb.Append("isnull(orddet_line.ordernumber_" + t.ToString().ToLower() + ", '') > ''");
+                }
+                sb.Append(" )");
+            }
+
+            ArrayList a = PartObject.GetSearchPermutations(x, pars.SearchTerm, compare, true, false, false, false, true, "", true);
+
+            if (a.Count > 0)
+            {
+                if (btypes)
+                    sb.AppendLine(" and ");
+                sb.AppendLine(" ( ");
+                sb.Append(PartObject.BuildWhere(a));
+                sb.Append(" or internal_customer like '%" + pars.SearchTerm + "%%' ");
+                sb.Append(" or internal_vendor like '%" + pars.SearchTerm + "%%' ");
+                sb.AppendLine(" ) ");
+            }
+
+            sb.Append(" ) ");
+            ret.TheCaption = stypes;
+
+            //if (sb.ToString() != "")
+            //    sb.Append(" or ");
+            //sb.Append(" manufacturer like '%" + Rz3App.context.Filter(strPart) + "%' ");
+
+            ret.TheWhere = sb.ToString();
+            return ret;
+        }
+    }
+}

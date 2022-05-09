@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="287c681c7f1049c7af8eb30637c7b373" Name="Diagram1">
+        <EntityTypeShape EntityType="NONCON_RMAModel.NonCon_Customer" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NONCON_RMAModel.NonCon_Details" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NONCON_RMAModel.NonCon_Disposition" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NONCON_RMAModel.NonCon_Head" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NONCON_RMAModel.NonCon_Payment" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NONCON_RMAModel.NonCon_RMA" Width="1.5" PointX="3" PointY="23.5" IsExpanded="true" />
+        <AssociationConnector Association="NONCON_RMAModel.FK_NonCon_Customer_NonCon_Head" ManuallyRouted="false" />
+        <AssociationConnector Association="NONCON_RMAModel.FK_NonCon_Details_NonCon_Head" ManuallyRouted="false" />
+        <AssociationConnector Association="NONCON_RMAModel.FK_Disposition_NonCon_Head" ManuallyRouted="false" />
+        <AssociationConnector Association="NONCON_RMAModel.FK_NonCon_Payment_NonCon_Head1" ManuallyRouted="false" />
+        <AssociationConnector Association="NONCON_RMAModel.FK_NonCon_RMA_NonCon_Head" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

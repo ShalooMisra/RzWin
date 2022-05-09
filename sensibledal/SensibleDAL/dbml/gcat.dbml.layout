@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15, 8.5" name="gcat">
+  <DataContextMoniker Name="/gcatDataContext" />
+  <nestedChildShapes>
+    <classShape Id="78c8f47a-f4cb-4ffe-b2f9-45dbac35679e" isExpanded="false" absoluteBounds="12.75, 2, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/AccountManager" />
+      <nestedChildShapes>
+        <elementListCompartment Id="218d113f-8417-4d25-b65e-80188aac1411" absoluteBounds="12.765, 2.4600000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1b2871c0-8af7-4de7-9ca0-5868a9bc43bc" isExpanded="false" absoluteBounds="3.5, 2.25, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/XRF" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fe529778-d706-411e-a311-9eb9bd0285f1" absoluteBounds="3.5150000000000006, 2.7100000000000009, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f5cbec29-ad6f-4fdc-a1a6-51abb4916033" isExpanded="false" absoluteBounds="12.75, 1, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/CustomerPart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fc7db1e9-f213-4406-b01e-2a9440a1ec85" absoluteBounds="12.765, 1.4600000000000009, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="488ad8ab-888a-4afc-9365-673cedf7d225" isExpanded="false" absoluteBounds="12.75, 1.5, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/DateCode" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ba38a597-169d-48c4-ac0b-9baf1365f933" absoluteBounds="12.765, 1.9600000000000009, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1e4828eb-1d8c-418b-a68d-a318866a3bb6" isExpanded="false" absoluteBounds="10, 1, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/Decapsulation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="114667fa-54f5-40b0-9368-518f1aa1bf56" absoluteBounds="10.015, 1.4600000000000009, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e3e11ad2-e4c3-411a-a913-93c99a4ede62" isExpanded="false" absoluteBounds="5.75, 1.625, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/EPROM" />
+      <nestedChildShapes>
+        <elementListCompartment Id="209b0289-9cdf-41ad-8d14-f77572beb814" absoluteBounds="5.7650000000000006, 2.0850000000000009, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="05ac78aa-ae23-4126-a5a4-46498c8942f1" isExpanded="false" absoluteBounds="7.875, 2.25, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/ExtendedTesting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="24a0aae6-06bd-42c0-a01f-567e080b32cc" absoluteBounds="7.8900000000000006, 2.7099999999999937, 1.9700000000000002, 9.8644612630208321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dbc905e5-6a99-4909-9fe2-934a5b9c0f3f" isExpanded="false" absoluteBounds="3.5, 1, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/HeatedSolvent" />
+      <nestedChildShapes>
+        <elementListCompartment Id="55de79f8-9e79-4f21-b82b-ad59e67df9ec" absoluteBounds="3.5150000000000006, 1.4600000000000009, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8c0e418a-9bab-417b-8e0b-df5f08b8b8e9" isExpanded="false" absoluteBounds="12.75, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/ManufacturerPart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="35e26f65-4d5b-4093-a1e8-b8187ecf95fd" absoluteBounds="12.765, 0.96000000000000085, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1230c9de-50e4-412b-ba34-b59882ea1aee" isExpanded="false" absoluteBounds="10, 1.625, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/MarkingPermanency" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1ff6b94c-9bd9-4e56-b2a8-41a1a061e201" absoluteBounds="10.015, 2.0850000000000009, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2cdd216d-a37d-45be-b105-a3c187b8cbc2" isExpanded="false" absoluteBounds="3.5, 1.625, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/SentryVI" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0cfb7f91-d99a-4eba-891b-30a88c5a3471" absoluteBounds="3.5150000000000006, 2.0850000000000009, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eed1747c-6b61-409b-85d8-f5021a8c32fc" isExpanded="false" absoluteBounds="7.875, 1.625, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/Solderability" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c566534e-5ba3-4ac3-bc92-79da10c6f157" absoluteBounds="7.8900000000000006, 2.0850000000000009, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" isExpanded="false" absoluteBounds="0.5, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/ValidationReport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="47afdb64-1fe6-4809-8398-80a237cc1888" absoluteBounds="0.51500000000000057, 0.96000000000000085, 1.9700000000000002, 23.710164388020832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4ee80dd9-7b0c-4ba4-9e41-f028ae17cd48" isExpanded="false" absoluteBounds="7.875, 1, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/XRay" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3ae682d0-8763-4ab1-8f19-1f4a430fe2ae" absoluteBounds="7.8900000000000006, 1.4600000000000009, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.5 : 0.95); (1.5 : 2.475); (1.68229291666667 : 2.475 : JumpStart); (1.84895958333333 : 2.475 : JumpEnd); (3.5 : 2.475)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/gcatDataContext/ValidationReport/ValidationReport_XRF" />
+      <nodes>
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+        <classShapeMoniker Id="1b2871c0-8af7-4de7-9ca0-5868a9bc43bc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.9687475 : 0.95); (0.9687475 : 1.53125); (1.41666666666667 : 1.53125 : JumpStart); (1.58333333333333 : 1.53125 : JumpEnd); (1.68229291666667 : 1.53125 : JumpStart); (1.84895958333333 : 1.53125 : JumpEnd); (2.21354541666667 : 1.53125 : JumpStart); (2.38021208333333 : 1.53125 : JumpEnd); (7.72916666666667 : 1.53125 : JumpStart); (7.89583333333333 : 1.53125 : JumpEnd); (12.75 : 1.53125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/gcatDataContext/ValidationReport/ValidationReport_DateCode" />
+      <nodes>
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+        <classShapeMoniker Id="488ad8ab-888a-4afc-9365-673cedf7d225" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 0.7562525); (2.79166666666667 : 0.756252499999999 : JumpStart); (2.95833333333333 : 0.7562525 : JumpEnd); (5.60416666666667 : 0.756252499999999 : JumpStart); (5.77083333333333 : 0.7562525 : JumpEnd); (6.66666666666667 : 0.756252499999999 : JumpStart); (6.83333333333333 : 0.7562525 : JumpEnd); (11 : 0.7562525); (11 : 1)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/gcatDataContext/ValidationReport/ValidationReport_Decapsulation" />
+      <nodes>
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+        <classShapeMoniker Id="1e4828eb-1d8c-418b-a68d-a318866a3bb6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 0.62812625); (2.79166666666667 : 0.628126249999999 : JumpStart); (2.95833333333333 : 0.62812625 : JumpEnd); (5.6875 : 0.62812625); (5.6875 : 1.5625); (6.75 : 1.5625); (6.75 : 1.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/gcatDataContext/ValidationReport/ValidationReport_EPROM" />
+      <nodes>
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+        <classShapeMoniker Id="e3e11ad2-e4c3-411a-a913-93c99a4ede62" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 0.88437825); (2.79166666666667 : 0.884378249999999 : JumpStart); (2.95833333333333 : 0.88437825 : JumpEnd); (5.60416666666667 : 0.884378249999999 : JumpStart); (5.77083333333333 : 0.88437825 : JumpEnd); (6.66666666666667 : 0.884378249999999 : JumpStart); (6.83333333333333 : 0.88437825 : JumpEnd); (7.8125 : 0.88437825); (7.8125 : 2.15625); (8.875 : 2.15625); (8.875 : 2.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/gcatDataContext/ValidationReport/ValidationReport_ExtendedTesting" />
+      <nodes>
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+        <classShapeMoniker Id="05ac78aa-ae23-4126-a5a4-46498c8942f1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 0.91563075); (2.79166666666667 : 0.915630749999999 : JumpStart); (2.95833333333333 : 0.91563075 : JumpEnd); (5.60416666666667 : 0.915630749999999 : JumpStart); (5.77083333333333 : 0.91563075 : JumpEnd); (6.66666666666667 : 0.915630749999999 : JumpStart); (6.83333333333333 : 0.91563075 : JumpEnd); (8.79166666666667 : 0.915630749999999 : JumpStart); (8.95833333333333 : 0.91563075 : JumpEnd); (9.9375 : 0.91563075); (9.9375 : 1.5625); (11 : 1.5625); (11 : 1.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/gcatDataContext/ValidationReport/ValidationReport_MarkingPermanency" />
+      <nodes>
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+        <classShapeMoniker Id="1230c9de-50e4-412b-ba34-b59882ea1aee" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.29687875 : 0.95); (2.29687875 : 1.85); (3.5 : 1.85)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/gcatDataContext/ValidationReport/ValidationReport_SentryVI" />
+      <nodes>
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+        <classShapeMoniker Id="2cdd216d-a37d-45be-b105-a3c187b8cbc2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 0.85312575); (2.79166666666667 : 0.853125749999999 : JumpStart); (2.95833333333333 : 0.85312575 : JumpEnd); (5.60416666666667 : 0.853125749999999 : JumpStart); (5.77083333333333 : 0.85312575 : JumpEnd); (6.66666666666667 : 0.853125749999999 : JumpStart); (6.83333333333333 : 0.85312575 : JumpEnd); (7.84375 : 0.85312575); (7.84375 : 1.5625); (8.875 : 1.5625); (8.875 : 1.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/gcatDataContext/ValidationReport/ValidationReport_Solderability" />
+      <nodes>
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+        <classShapeMoniker Id="eed1747c-6b61-409b-85d8-f5021a8c32fc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(12.772499 : 1); (12.178749 : 0.40625); (2.875 : 0.40625); (2.875 : 1.325); (2.5 : 0.95)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/gcatDataContext/CustomerPart/CustomerPart_ValidationReport" />
+      <nodes>
+        <classShapeMoniker Id="f5cbec29-ad6f-4fdc-a1a6-51abb4916033" />
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(12.7503451538462 : 0.5); (12.3753451538462 : 0.125); (2.875 : 0.125); (2.5 : 0.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/gcatDataContext/ManufacturerPart/ManufacturerPart_ValidationReport" />
+      <nodes>
+        <classShapeMoniker Id="8c0e418a-9bab-417b-8e0b-df5f08b8b8e9" />
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 0.725); (2.79166666666667 : 0.724999999999999 : JumpStart); (2.95833333333333 : 0.725 : JumpEnd); (5.60416666666667 : 0.724999999999999 : JumpStart); (5.77083333333333 : 0.725 : JumpEnd); (6.66666666666667 : 0.724999999999999 : JumpStart); (6.83333333333333 : 0.725 : JumpEnd); (8.875 : 0.725); (8.875 : 1)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/gcatDataContext/ValidationReport/ValidationReport_XRay" />
+      <nodes>
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+        <classShapeMoniker Id="4ee80dd9-7b0c-4ba4-9e41-f028ae17cd48" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7f5a565d-2997-46e3-a455-a0a70501f622" isExpanded="false" absoluteBounds="3.625, 3.25, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/Summary_new" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cbee1b02-5c65-4ee6-b226-537e879eb1dc" absoluteBounds="3.6399999999999997, 3.71, 1.9700000000000002, 9.6721598307291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.76562625 : 0.95); (1.76562625 : 3.475); (3.625 : 3.475)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/gcatDataContext/ValidationReport/ValidationReport_Summary_new" />
+      <nodes>
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+        <classShapeMoniker Id="7f5a565d-2997-46e3-a455-a0a70501f622" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e06d8dbd-8fe3-4023-bf17-f7d082d13c43" isExpanded="false" absoluteBounds="5.75, 2.25, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/MoistureBaking" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8aeca7b1-656e-45c5-aee7-7a93d3a0f39f" absoluteBounds="5.765, 2.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c59bef1f-fa7a-4921-8828-341d91f534ad" isExpanded="false" absoluteBounds="5.75, 1, 2, 0.45">
+      <DataClassMoniker Name="/gcatDataContext/BasicElectrical" />
+      <nestedChildShapes>
+        <elementListCompartment Id="14402525-1242-4b35-96bb-c05e52224f23" absoluteBounds="5.7650000000000006, 1.46, 1.9700000000000002, 9.8644612630208321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 0.59687375); (2.79166666666667 : 0.596873749999999 : JumpStart); (2.95833333333333 : 0.59687375 : JumpEnd); (6.75 : 0.59687375); (6.75 : 1)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/gcatDataContext/ValidationReport/ValidationReport_BasicElectrical" />
+      <nodes>
+        <classShapeMoniker Id="87bd89ab-810a-4770-8ecc-6aeb2ab1bbb4" />
+        <classShapeMoniker Id="c59bef1f-fa7a-4921-8828-341d91f534ad" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

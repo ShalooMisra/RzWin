@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C393E56-82EE-4E3D-A276-87509AE6F27F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tie</RootNamespace>
+    <AssemblyName>Tie</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\dll\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DynamicInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Encryption.cs" />
+    <Compile Include="EndView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EndView.Designer.cs">
+      <DependentUpon>EndView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EternalHandles.cs" />
+    <Compile Include="Eye.cs" />
+    <Compile Include="EyeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EyeView.Designer.cs">
+      <DependentUpon>EyeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EyeWithStem.cs" />
+    <Compile Include="frmClientConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClientConnection.Designer.cs">
+      <DependentUpon>frmClientConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPin.Designer.cs">
+      <DependentUpon>frmPin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPins.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPins.Designer.cs">
+      <DependentUpon>frmPins.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPinvitation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPinvitation.Designer.cs">
+      <DependentUpon>frmPinvitation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTackMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTackMonitor.Designer.cs">
+      <DependentUpon>frmTackMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTackName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTackName.Designer.cs">
+      <DependentUpon>frmTackName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTieTack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTieTack.Designer.cs">
+      <DependentUpon>frmTieTack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HookView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HookView.Designer.cs">
+      <DependentUpon>HookView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IconHelper.cs" />
+    <Compile Include="Job_Clipboard.cs" />
+    <Compile Include="Job_Command.cs" />
+    <Compile Include="Job_DosCommand.cs" />
+    <Compile Include="Job_EchoTest.cs" />
+    <Compile Include="Job_EternalCheck.cs" />
+    <Compile Include="Job_FileAction.cs" />
+    <Compile Include="Job_Files.cs" />
+    <Compile Include="Job_OpenVNC.cs" />
+    <Compile Include="Job_SQL.cs" />
+    <Compile Include="Job_Stream.cs" />
+    <Compile Include="Job_TxChunk.cs" />
+    <Compile Include="Job_UpdateOriginals.cs" />
+    <Compile Include="nData.cs" />
+    <Compile Include="nEndlessStatusBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="nOthersCode.cs" />
+    <Compile Include="nTools.cs" />
+    <Compile Include="ClientConnection.cs" />
+    <Compile Include="n_data_target.cs" />
+    <Compile Include="PinPermission.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PinPermission.Designer.cs">
+      <DependentUpon>PinPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RandomProvider.cs" />
+    <Compile Include="Rescue\Database.cs" />
+    <Compile Include="Rescue\Manager.cs" />
+    <Compile Include="Rescue\Status.cs" />
+    <Compile Include="StemHook.cs" />
+    <Compile Include="StreamPoint.cs" />
+    <Compile Include="TackMonitor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TackMonitor.Designer.cs">
+      <DependentUpon>TackMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TieEnd.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Hook.cs" />
+    <Compile Include="TieJob.cs" />
+    <Compile Include="TieKnot.cs" />
+    <Compile Include="TieMessage.cs" />
+    <Compile Include="Job_TxFile.cs" />
+    <Compile Include="TieRefresh.cs" />
+    <Compile Include="TieStream.cs" />
+    <Compile Include="TieTack.cs" />
+    <Compile Include="TieWeb.cs" />
+    <Compile Include="TransparentSplitContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VaultManger.cs" />
+    <Compile Include="View_Knot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View_Knot.Designer.cs">
+      <DependentUpon>View_Knot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsServiceInstallUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EndView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EndView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EyeView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EyeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClientConnection.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmClientConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPin.resx">
+      <DependentUpon>frmPin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPins.resx">
+      <DependentUpon>frmPins.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPinvitation.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPinvitation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTackMonitor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTackMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTackName.resx">
+      <DependentUpon>frmTackName.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTieTack.resx">
+      <DependentUpon>frmTieTack.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HookView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>HookView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PinPermission.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PinPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TackMonitor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TackMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Knot.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>View_Knot.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Graphics\tie_corner.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Graphics\single_tie.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Graphics\whitetick.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Graphics\disconnected.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Graphics\pinvitation.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Chat\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{5047280a-4740-4083-85fe-f71b28b77848}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

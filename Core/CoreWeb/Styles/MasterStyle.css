@@ -1,0 +1,129 @@
+﻿body 
+{
+	margin-left:5%;
+    padding: 0;
+    font: 10px normal Tahoma, Arial, Helvetica, sans-serif;
+ /*   background: #ddd url(body_bg.gif) repeat-x; */
+}
+.container {
+    width: 960px;
+  /*  margin: 0 auto; */
+    position: relative;
+	top: 0px;
+	left: 0px;
+	height: 104px;
+}
+.image
+{
+/*padding-bottom:-10px;*/
+}
+
+ul.topnav 
+{
+    list-style: none;
+    padding: 0 20px; 
+    margin-top: 20px;
+    float: left;
+    width: 100%;
+    font-family: Tahoma, Arial, Helvetica;
+   /* background: #222;*/
+    background-color:#334477;
+    font-size: 1.2em;
+	height: 38px;
+}
+ul.topnav li {
+    float: left;
+    width:105px;
+    height:35px;    
+    padding: 0 5px 0 0;
+    position: relative; /*--Declare X and Y axis base--*/
+    background-color:#334477;
+	top: 1px;
+	left: -20px;
+
+}
+ul.topnav li a
+{
+	text-align:right;
+    padding: 10px 5px;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    float: left;
+	width: 51px;
+	font-family:Tahoma,Arial;
+	font-size:14px;
+}
+ul.topnav li a:hover{
+    background: url(topnav_hover.gif) no-repeat center top;
+}
+ul.topnav li span { /*--Drop down trigger styles--*/
+    width: 12px;
+    height: 35px;
+    float: left;
+    background: url(subnav_btn.gif) no-repeat center top;
+}
+ul.topnav li span.subhover {background-position: center bottom; cursor: pointer;} /*--Hover effect for trigger--*/
+ul.topnav li ul.subnav {
+    list-style: none;
+    position: absolute; /*--Important - Keeps subnav from affecting main navigation flow--*/
+    left: 0; top: 35px;
+    background: #333;
+    margin: 0; padding: 0;
+    display: none;
+    float: left;
+    width: 170px;
+    border: 1px solid #111;
+}
+ul.topnav li ul.subnav li
+{
+	
+    margin: 0; padding: 0;
+    border-top: 1px solid #252525; /*--Create bevel effect--*/
+    border-bottom: 1px solid #444; /*--Create bevel effect--*/
+    clear: both;
+    width: 170px;
+}
+html ul.topnav li ul.subnav li a 
+{
+	font-size:12px;
+	text-align:left;
+    float: left;
+    width: 145px;
+    background: #333 url(dropdown_linkbg.gif) no-repeat 10px center;
+    padding-left: 20px;
+}
+html ul.topnav li ul.subnav li a:hover { /*--Hover effect for subnav links--*/
+    background: #222 url(dropdown_linkbg.gif) no-repeat 10px center; 
+}
+#header img {
+    margin-top: 15px;
+}
+/* define height and width of scrollable area. Add 16px to width for scrollbar          */
+div.tableContainer {
+	clear: both;
+	border: 1px solid #963;
+	height: 285px;
+	overflow: auto;
+	width: 756px;
+}
+
+/* Reset overflow value to hidden for all non-IE browsers. */
+html>body div.tableContainer {
+	overflow: hidden;
+	width: 756px;
+}
+
+/* define width of table. IE browsers only                 */
+div.tableContainer table {
+	float: left;
+	width: 740px;
+}
+
+/* define width of table. Add 16px to width for scrollbar.           */
+/* All other non-IE browsers.                                        */
+html>body div.tableContainer table {
+	width: 756px;
+}
+
+

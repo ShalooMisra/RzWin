@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8a19f0a7b68e46d0986b1956d0f7e729" Name="Diagram1">
+        <EntityTypeShape EntityType="sm_portalModel.insp_detail" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sm_portalModel.insp_head" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sm_portalModel.insp_whse" Width="1.5" PointX="4.5" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="sm_portalModel.FK_insp_detail_insp_head" ManuallyRouted="false" />
+        <AssociationConnector Association="sm_portalModel.FK_insp_whse_insp_head" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+   <connections>
+      <connection>
+         <description>Rz4 Live</description>
+         <servername>rz\sqlexpress</servername>
+         <databasename>Rz3</databasename>
+         <username>RzSqlAccessAccount</username>
+         <password>COWfogRS%F0c6pdyQzhKbsfg#sdfgdsfgsdg@</password>
+         <recallservername>rz\sqlexpress</recallservername>
+         <recalldatabasename>Rz3_Recall</recalldatabasename>
+         <recallusername>RzSqlAccessAccount</recallusername>
+         <recallpassword>COWfogRS%F0c6pdyQzhKbsfg#sdfgdsfgsdg@</recallpassword>
+      </connection>
+      <connection>
+         <description>Rz4 Dev</description>
+         <servername>localhost\sqlexpress</servername>
+         <databasename>Rz3</databasename>
+         <username>sa</username>
+         <password>s3ns1bl3rZ3</password>
+         <recallservername></recallservername>
+         <recalldatabasename></recalldatabasename>
+         <recallusername></recallusername>
+         <recallpassword></recallpassword>
+      </connection>
+      <connection>
+         <description>Rz Test</description>
+         <servername>rz\SQLEXPRESS</servername>
+         <databasename>Rz3_Test</databasename>
+         <username>RzSqlAccessAccount</username>
+         <password>COWfogRS%F0c6pdyQzhKbsfg#sdfgdsfgsdg@</password>
+         <recallservername></recallservername>
+         <recalldatabasename></recalldatabasename>
+         <recallusername></recallusername>
+         <recallpassword></recallpassword>
+      </connection>
+   </connections>

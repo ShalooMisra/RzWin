@@ -1,0 +1,97 @@
+<HTML>
+<head>
+
+<link type="text/css" href="images/vps/pfl/pfl_styles.css" rel="stylesheet">
+<style type="text/css">
+		.header {COLOR: 000000;}
+		.names {COLOR: 000000;}
+		.subtext {COLOR: 000000;}
+		.bodytext {COLOR: 000000;}
+		.pagetext {COLOR: 000000;}
+		.dispname {COLOR: 000000;}
+		.hftext {COLOR: 000000;}
+	</style>
+<script language="JavaScript" type="text/javascript">
+<!--
+			function Link() {
+				if (top != self){
+					top.location.href="http://www.recognin.com/creditreturnpage.asp";
+				}
+				else {
+					location.href="http://www.recognin.com/creditreturnpage.asp";
+				}
+
+			}
+			function Post() {
+				document.form1.submit();
+			}
+		--></script>
+<title>Transaction Approved</title>
+</head>
+<body background="" bgcolor="ffffff"><center><table cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td>&nbsp;&nbsp;&nbsp;</td><td valign="top">
+<table cellspacing="0" cellpadding="0" border="0" width="420">
+<tr>
+<td colspan="3"><img src="https://images.payflowlink.verisign.com/Recognin_VeriSign_logo.jpg" alt=""></td>
+</tr>
+</table>
+<form Method="Post" Action="http://www.recognin.com/creditreturnpage.asp" name="form1">
+<table cellspacing="0" cellpadding="5" border="0" width="420">
+<tr>
+<td colspan="2"><span class="hftext"></span></td>
+</tr>
+</table>
+<table cellspacing="0" cellpadding="0" border="0" width="420">
+<tr>
+<td colspan="2" align="center" background="images/vps/pfl/screens/666666.gif"><span class="header">Your transaction was approved!</span></td>
+</tr>
+</table>
+<table cellspacing="0" cellpadding="5" border="0" width="420">
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;Reference #</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">VXJF1C4F4986</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;Total Amount:</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">$10.00</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;Bill To:</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">mike bloise</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">8604 vanburgh ct</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">raleigh   nc   27615</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">usa</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">9198707899</span></td>
+</tr>
+<tr>
+<td width="25%" background="images/vps/pfl/screens/3333ff.gif"><span class="names">&nbsp;</span></td><td width="75%" bgcolor="ffff99"><span class="bodytext">mike@recognin.com</span></td>
+</tr>
+<tr>
+<td colspan="2" align="center"><input onclick="Link()" value="Return to Recognin" type="button">&nbsp;
+ </td>
+</tr>
+</table>
+<table cellspacing="0" cellpadding="5" border="0" width="420">
+<tr>
+<td colspan="2"><span class="hftext"></span></td>
+</tr>
+</table>
+<input value="0" type="hidden" name="RESULT"><input value="503923" type="hidden" name="AUTHCODE"><input value="Approved" type="hidden" name="RESPMSG"><input value="YYY" type="hidden" name="AVSDATA"><input value="VXJF1C4F4986" type="hidden" name="PNREF"><input value="" type="hidden" name="HOSTCODE"><input value="" type="hidden" name="INVOICE"><input value="" type="hidden" name="PONUM"><input value="10.00" type="hidden" name="AMOUNT"><input value="" type="hidden" name="TAX"><input value="CC" type="hidden" name="METHOD"><input value="S" type="hidden" name="TYPE"><input value="3" type="hidden" name="CSCMATCH"><input value="" type="hidden" name="DESCRIPTION"><input value="" type="hidden" name="CUSTID"><input value="mike bloise" type="hidden" name="NAME"><input value="8604 vanburgh ct" type="hidden" name="ADDRESS"><input value="raleigh" type="hidden" name="CITY"><input value="nc" type="hidden" name="STATE"><input value="27615" type="hidden" name="ZIP"><input value="usa" type="hidden" name="COUNTRY"><input value="9198707899" type="hidden" name="PHONE"><input value="" type="hidden" name="FAX"><input value="mike@recognin.com" type="hidden" name="EMAIL"><input value="" type="hidden" name="USER1"><input value="" type="hidden" name="USER2"><input value="" type="hidden" name="USER3"><input value="" type="hidden" name="USER4"><input value="" type="hidden" name="USER5"><input value="" type="hidden" name="USER6"><input value="" type="hidden" name="USER7"><input value="" type="hidden" name="USER8"><input value="" type="hidden" name="USER9"><input value="" type="hidden" name="USER10"><input value="" type="hidden" name="NAMETOSHIP"><input value="" type="hidden" name="ADDRESSTOSHIP"><input value="" type="hidden" name="CITYTOSHIP"><input value="" type="hidden" name="STATETOSHIP"><input value="" type="hidden" name="ZIPTOSHIP"><input value="" type="hidden" name="COUNTRYTOSHIP"><input value="" type="hidden" name="PHONETOSHIP"><input value="" type="hidden" name="FAXTOSHIP"><input value="" type="hidden" name="EMAILTOSHIP">
+</form></center><div align="center">
+<table bgcolor="#FFFFFF" bordercolor="#000000" cellspacing="0" cellpadding="5" border="1">
+<tr>
+<td><script src="https://seal.verisign.com/getseal?host_name=payments.verisign.com&size=M&use_flash=NO&use_transparent=NO"></script></td>
+</tr>
+</table>
+</div>
+</td><td>&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</table>
+</body>
+</HTML>

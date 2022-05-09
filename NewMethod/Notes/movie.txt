@@ -1,0 +1,120 @@
+using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.Text;
+using System.Data;
+
+namespace NewMethod
+{
+    public class Movie: nObject 
+    {
+        public String movie_name = "";
+        public static SortedList AllProps = null;
+        public static String class_uid = "";
+
+        public Movie(nSys xs): base(xs)
+        {
+            ClassName = "Movie";
+        }
+        public override bool ICreate(String strIn)
+        {
+            if (strIn.Trim().ToLower().StartsWith("select "))
+            {
+                return CreateFromSQL(strIn);
+            }
+            else
+            {
+                return CreateFromID(strIn);
+            }
+
+            return false;
+        }
+        public bool ICreate(DataRow iRow)
+        {
+            unique_id = (String)xSys.xData.NullFilter_String(iRow["unique_id"]);
+            movie_name = (String)xSys.xData.NullFilter_String(iRow["movie_name"]);
+            return true;
+        }
+        protected override bool CreateFromSQL(String strIn)
+        {
+            DataTable t = xSys.xData.GetDataTable(strIn);
+            if (t == null)
+                return false;
+            return ICreate(t.Rows[0]);
+        }
+        protected override bool CreateFromID(String strIn)
+        {
+            return CreateFromSQL("select * from movie where unique_id = '" + strIn + "'");
+        }
+        public String GetSaveSQL()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("insert into movie( unique_id");
+            sb.Append(", movie_name");
+            sb.Append(") values ( '" + unique_id + "'");
+            sb.Append(", '" + xSys.xData.SyntaxFilter(movie_name) + "'");
+            sb.Append(")");
+
+            return sb.ToString();
+        }
+        public String GetUpdateSQL()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("update movie set ");
+            sb.Append("movie_name = '" +  xSys.xData.SyntaxFilter(movie_name) + "' ");
+            sb.Append(" where unique_id = '" + unique_id + "' ");
+
+            return sb.ToString();
+        }
+        public override bool ISave()
+        {
+            if (nTools.StrExt(unique_id))
+                return IUpdate();
+
+            unique_id = nTools.GetNewID();
+            String s = GetSaveSQL();
+            return xSys.xData.Execute(s);
+        }
+        public override bool IUpdate()
+        {
+            String s = GetUpdateSQL();
+            return xSys.xData.Execute(s);
+        }
+        public override bool IDelete()
+        {
+            return xSys.xData.Execute("delete from movie where unique_id = '" + unique_id + "'");
+        }
+        public Object ISet(String strProp, Object val)
+        {
+            switch (strProp.ToLower().Trim())
+            {
+                case "movie_name":
+                    movie_name = (String)val;
+                    break;
+                default:
+                    break;
+            }
+            return null;
+        }
+        public Object IGet(String strProp)
+        {
+            switch (strProp)
+            {
+                case "movie_name":
+                    return (Object)movie_name;
+                    break;
+            }
+            return null;
+        }
+        public override bool Init()
+        {
+            Movie.AllProps = new SortedList();
+            AllProps.Add("movie_name", new n_Prop("movie_name", "Movie Name", 255, (Int32)Enums.DataType.String));
+            return true;
+        }
+        public override SortedList GetProps()
+        { 
+            return Movie.AllProps; 
+        }
+    }
+}

@@ -1,0 +1,51 @@
+how do accounting periods work?
+	when someone is starting a new system, does it have to be at the start of a year?
+	when starting a new period, how important are the past transaction details?
+
+what if you post an invoice that's incorrect?
+what if you have to change a value from a previous month or year?
+
+ap aging
+ar aging
+	add > 120
+	add link on company name
+	add option under reports
+
+reporting in general
+	add new control (mqy) then select which one, plus specific dates
+
+balance sheet
+	add account links
+	add detail version
+
+security
+	transaction detail by account, default to mtd
+		search by specific amount
+	options by section
+		ap
+		ar
+		reporting
+
+
+P&l
+	add links
+	use Income Statement [Profit & Loss] excusively
+	add detail version
+	
+
+Budgeting
+	Company->Planning and budgeting->Set Up Budgets
+	Reporting->Planning and budgeting->vs Actual
+
+Journal entry
+	Check the logic (sub accounts?)
+
+Trial balance report
+	links to accounts
+
+add COA to menu
+
+
+change the splits
+
+

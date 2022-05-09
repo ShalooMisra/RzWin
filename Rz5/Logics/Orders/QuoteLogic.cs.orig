@@ -1,0 +1,331 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using NewMethod;
+using Core;
+
+namespace Rz4
+{
+    public class QuoteLogic : NewMethod.Logic
+    {
+        public override void ActInstance(Context context, ActArgs args)
+        {
+            List<ordhed_quote> quotes = new List<ordhed_quote>();
+            foreach (IItem i in args.TheItems.AllGet(context))
+            {
+                quotes.Add((ordhed_quote)i);
+            }
+
+            switch (args.ActionName.Trim().ToLower())
+            {
+                case "salesorder":
+                    ordhed_sales sale = SalesOrderCreate((ContextRz)context, quotes);
+                    if (sale != null)
+                        context.Show(sale);
+                    break;
+                default:
+                    base.ActInstance(context, args);
+                    break;
+            }
+        }
+
+        public virtual void ActDetail(Context context, ActArgs args)
+        {
+            List<orddet_quote> quotes = new List<orddet_quote>();
+            ordhed_quote header = null;
+            foreach (IItem i in args.TheItems.AllGet(context))
+            {
+                if (header == null)
+                    header = (ordhed_quote)((orddet_quote)i).OrderObject((ContextRz)context);
+                quotes.Add((orddet_quote)i);
+            }
+
+            switch (args.ActionName.Trim().ToLower())
+            {
+                case "salesorder":
+                    ordhed_sales sale = SalesOrderCreate((ContextRz)context, header, quotes);
+                    if (sale != null)
+                        context.Show(sale);
+                    break;
+                default:
+                    base.ActInstance(context, args);
+                    break;
+            }
+        }
+
+        public virtual ordhed_sales SalesOrderCreate(ContextRz context, List<ordhed_quote> quotes)
+        {
+            ordhed_quote header = null;
+            List<orddet_quote> details = new List<orddet_quote>();
+
+            foreach (ordhed_quote h in quotes)
+            {
+                if (header == null)
+                    header = h;
+            }
+
+            foreach (orddet_quote d in header.DetailsList(context))
+            {
+                if (!details.Contains(d))
+                    details.Add(d);
+            }
+
+            return SalesOrderCreate(context, header, details);
+        }
+
+        public virtual ordhed_sales SalesOrderCreate(ContextRz context, ordhed_quote q)
+        {
+            return SalesOrderCreate(context, q, q.DetailsListQuoteSelected(context));
+        }
+
+        public virtual ordhed_sales SalesOrderCreate(ContextRz context, ordhed_quote header, List<orddet_quote> quotes)
+        {
+            if (!context.xUser.CheckPermit("Order:Create:Can Make Sales"))
+            {
+                context.TheLeader.ShowNoRight();
+                return null;
+            }
+
+            ordhed_sales h = header.SalesOrderHeaderCreate(context);
+            if (h == null)
+                return null;
+
+            //lines
+            foreach (orddet_quote q in quotes)
+            {
+                MakeSalesOrderLines(context, h, q);
+            }
+
+            //header.MakeLinkObject(context, h);
+            context.TheSysRz.TheOrderLogic.Link2Orders(context, header, h);
+
+            header.isclosed = true;
+            //header.IUpdate();
+            context.TheDelta.Update(context, header);
+
+            //refresh the so totals
+            h.IUpdate();
+
+            return h;
+        }
+        public virtual bool CompanyAndContactRequired()
+        {
+            return false;
+        }
+        public virtual void MakeSalesOrderLines(ContextRz x, ordhed_sales h, orddet_quote q)
+        {
+            if (q.Details.Count == 0)
+            {
+                MakeSalesOrderLine(x, h, q, company.GetByID(x.xSys, q.vendorid), companycontact.GetByID(x.xSys, q.vendorcontactid), null, q.quantityordered, q.unitcost, q.StockType, null);
+                return;
+            }
+            partrecord p = null;
+            List<orddet_rfq> bids = q.GetSplitBids();
+            if (bids.Count > 1)
+            {
+                if (!x.TheLeader.AskYesNo("There are " + Tools.Strings.PluralizePhrase("bid", bids.Count) + " on the quote for " + q.fullpartnumber + ".  Do you want to make a new line for each bid?"))
+                {
+                    orddet_rfq bb = bids[0];
+                    p = null;
+                    if (bb.isinstock)
+                        p = partrecord.GetByID(x.xSys, bb.stockid);
+                    Enums.StockType tpe = Enums.StockType.Buy;
+                    if (p != null)
+                        tpe = p.StockType;
+                    orddet_line l = MakeSalesOrderLine(x, h, q, bb.CompanyVar.RefGet(x), bb.ContactVar.RefGet(x), bb, q.quantityordered, bb.unitprice, tpe, p); 
+                    l.rohs_info_vendor = bb.rohs_info;
+                    l.ISave();
+                    return;
+                }
+            }
+
+            foreach (orddet_rfq bid in bids)
+            {
+                p = null;
+                if (bid.isinstock)
+                    p = partrecord.GetByID(x.xSys, bid.stockid);
+                Enums.StockType tpe = Enums.StockType.Buy;
+                if (p != null)
+                    tpe = p.StockType;
+                orddet_line l = MakeSalesOrderLine(x, h, q, bid.CompanyVar.RefGet(x), bid.ContactVar.RefGet(x), bid, q.quantityordered, bid.unitprice, tpe, p);
+                l.rohs_info_vendor = bid.rohs_info;
+                l.ISave();
+            }
+        }
+
+        protected virtual orddet_line MakeSalesOrderLine(ContextRz x, ordhed_sales h, orddet_quote q, company bidVendor, companycontact bidVendorContact, orddet_rfq vendor_bid, int qty, Double cost, Enums.StockType type, partrecord linked_stock)
+        {
+            orddet_line l = h.DetailsVar.RefAddNew(x);
+            l.StockType = type;
+            l.quantity = qty;
+            l.VendorVar.RefSet(x, bidVendor);
+            l.VendorContactVar.RefSet(x, bidVendorContact);
+            l.unit_price = q.unitprice;
+            l.unit_cost = cost;
+            l.fullpartnumber = q.fullpartnumber;
+            l.manufacturer = q.manufacturer;
+            l.alternatepart = q.alternatepart;
+            l.internal_customer = q.internalpartnumber;
+            l.datecode = q.datecode;
+            l.description = q.description;
+            l.condition = q.condition;
+            l.orderid_quote = q.base_ordhed_uid;
+            l.ordernumber_quote = q.ordernumber;
+            l.quote_line_uid = q.unique_id;
+            l.rohs_info = q.rohs_info;
+            l.customer_dock_date = q.dockdate;
+            l.lotnumber = q.lotnumber;
+            l.consignment_code = q.lotnumber;
+            l.quote_line_uid = q.unique_id;
+            l.CostCalc(x);
+            if (vendor_bid != null)
+                l.datecode_purchase = vendor_bid.datecode;
+            if (l.StockType == Enums.StockType.Stock || l.StockType == Enums.StockType.Consign)
+                l.LinkAndAllocate(x, linked_stock);
+            l.IUpdate();
+            return l;
+        }
+
+        public virtual String QuoteBcc
+        {
+            get
+            {
+                return "";
+            }
+        }
+
+        public virtual orddet_rfq AddStockBid(ContextNM x, orddet_quote q, partrecord p)
+        {
+            orddet_rfq b = new orddet_rfq(x.xSys);
+            b.the_orddet_quote_uid = q.unique_id;
+            b.fullpartnumber = p.fullpartnumber;
+            b.manufacturer = p.manufacturer;
+            b.datecode = p.datecode;
+            b.quantitycancelled = Convert.ToInt32(p.quantity);
+            b.condition = p.condition;
+            b.packaging = p.packaging;
+            b.lotnumber = p.lotnumber;
+            b.location = p.location;
+            b.boxnum = p.boxnum;
+            b.isinstock = true;
+            b.unitprice = p.cost;
+            b.base_dealheader_uid = q.base_dealheader_uid;
+            b.stockid = p.unique_id;
+            b.isselected = true;
+            b.ISave();
+            q.BidAbsorb(b);
+            return b;
+        }
+
+        public virtual ListArgs QuoteSearchArgsGet(ContextRz x, Enums.PartSearchType SearchType, SearchComparison compare, PartSearchParameters par)
+        {
+            ListArgs ret = null;
+            switch (SearchType)
+            {
+                case Enums.PartSearchType.Quotes_Giving:
+                    ret = OrdDetSearchArgsGet(x, compare, "'quote'", par);
+                    break;
+                case Enums.PartSearchType.Quotes_Receiving:
+                case Enums.PartSearchType.Bids:
+                    ret = OrdDetSearchArgsGet(x, compare, "'rfq'", par);
+                    break;
+                default:
+                    ret = OrdDetSearchArgsGet(x, compare, "'quote', 'rfq'", par);
+                    break;
+            }
+
+            ret.TheTemplate = x.TheLogicRz.TemplateSecure(x, "orddet", "simple_quotes");
+
+            return ret;
+        }
+
+        public virtual ListArgs QuoteSearchArgsGetCompany(ContextRz x, String companyId, String contactId)
+        {
+            ListArgs ret = new ListArgs(x);
+            ret.TheTable = "orddet";
+            ret.TheClass = "orddet";
+            ret.TheWhere = "base_company_uid = '" + companyId + "'";
+            if (Tools.Strings.StrExt(contactId))
+                ret.TheWhere += " and base_companycontact_uid = '" + contactId + "'";
+
+            ret.TheOrder = "orderdate desc";
+            ret.TheTemplate = x.TheLogicRz.TemplateSecure(x, "orddet", "simple_quotes");
+            return ret;
+        }
+
+        public virtual ListArgs OrdDetSearchArgsGet(ContextRz x, SearchComparison compare, String strType, PartSearchParameters par)
+        {
+            ListArgs ret = new ListArgs(x);
+            if (Tools.Strings.HasString(strType, ","))
+                ret.TheTable = "orddet";
+            else
+                ret.TheTable = ordhed.MakeOrddetName(strType.Replace("'", ""));
+            if (par.SearchTerm == "")
+                ret.HeaderOnly = true;
+            ret.AddAllow = false;
+            ret.TheClass = ret.TheTable;
+            ret.TheOrder = ret.TheTable + ".orderdate desc";
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" ( ");
+            if (Tools.Strings.StrExt(strType))
+                sb.AppendLine(" " + ret.TheTable + ".ordertype in ( " + strType + " ) ");
+            ArrayList a = PartObject.GetSearchPermutations(x, par.SearchTerm, compare, true, false, false, false, true, "", true);
+            if (a.Count > 0)
+            {
+                if (Tools.Strings.StrExt(strType))
+                    sb.AppendLine(" and ");
+                sb.AppendLine(" ( ");
+                sb.Append(PartObject.BuildWhere(a));
+                sb.AppendLine(" ) ");
+            }
+            sb.Append(" ) ");
+            switch (strType.ToLower().Trim())
+            {
+                case "'rfq', 'quote'":
+                case "'quote', 'rfq'":
+                    ret.TheCaption = "Customer Quotes and Vendor Bids";
+                    break;
+                case "'sales', 'invoice'":
+                case "'invoice', 'sales'":
+                    ret.TheCaption = "Sales Orders and Invoices";
+                    break;
+                case "'purchase'":
+                    ret.TheCaption = "Purchase Orders";
+                    break;
+                case "'rma', 'vendrma'":
+                case "'vendrma', 'rma'":
+                    ret.TheCaption = "Customer and Vendor RMAs";
+                    break;
+            }
+            if (Tools.Strings.StrExt(par.CompanyName))
+                sb.Append(" and companyname = '" + x.xSys.xData.SyntaxFilter(par.CompanyName) + "'");
+            if (sb.ToString() != "")
+                sb.Append(" or ");
+            sb.Append(" manufacturer like '%" + x.xSys.xData.SyntaxFilter(par.SearchTerm) + "%' ");
+            ret.TheWhere = sb.ToString();
+            return ret;
+        }
+
+        public virtual usernote CreateFollowUpReminder(ContextRz x, ordhed q)
+        {
+            usernote xNote = new usernote(x.xSys);
+            xNote.base_company_uid = q.base_company_uid;
+            xNote.for_mc_user_uid = Rz3App.xUser.unique_id;
+            xNote.by_mc_user_uid = Rz3App.xUser.unique_id;
+            xNote.notetext = "Follow Up Reminder";
+            xNote.shouldpopup = true;
+            xNote.ISave();
+            xNote.displaydate = DateTime.Now.Add(new TimeSpan(4, 0, 0));
+            xNote.ISave();
+            xNote.CreateObjectLink(q, q.GetFriendlyName());
+            return xNote;
+        }
+
+        public virtual void CheckPriorityFlag(ContextNM x, orddet_quote q)
+        {
+
+        }
+    }
+}

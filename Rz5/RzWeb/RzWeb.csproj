@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{484DF9CF-AC64-42BF-B075-7FF20C50A6FC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RzWeb</RootNamespace>
+    <AssemblyName>RzWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ActionSpot.cs" />
+    <Compile Include="Controls\Attachments.cs" />
+    <Compile Include="Controls\ChartControl.cs" />
+    <Compile Include="Controls\ChoicesControl.cs" />
+    <Compile Include="Controls\CompanyContactControl.cs" />
+    <Compile Include="Controls\DesignSpot.cs" />
+    <Compile Include="Controls\ListViewSpotRz.cs" />
+    <Compile Include="Controls\PackControl.cs" />
+    <Compile Include="Dialogs\BudgetArgsGet.cs" />
+    <Compile Include="Dialogs\ChooseFromArray.cs" />
+    <Compile Include="Dialogs\NewAccountArgsGet.cs" />
+    <Compile Include="Dialogs\PrintChecksArgsGet.cs" />
+    <Compile Include="Dialogs\ReconcileArgsGet.cs" />
+    <Compile Include="LeaderWebUserRz.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RzWebApp.cs" />
+    <Compile Include="Screens\BudgetEditor.cs" />
+    <Compile Include="Screens\ChartOfAccounts.cs" />
+    <Compile Include="Screens\ChartScreen.cs" />
+    <Compile Include="Screens\CheckRegister.cs" />
+    <Compile Include="Screens\CompanyDetails.cs" />
+    <Compile Include="Screens\ImportScreenBids.cs" />
+    <Compile Include="Screens\Currencies.cs" />
+    <Compile Include="Screens\Deposits.cs" />
+    <Compile Include="Screens\ExportInventory.cs" />
+    <Compile Include="Screens\ExportOEMEmails.cs" />
+    <Compile Include="Screens\FormDesigner.cs" />
+    <Compile Include="Screens\FormList.cs" />
+    <Compile Include="Screens\ImportScreenCompany.cs" />
+    <Compile Include="Screens\EmailBlasterScreen.cs" />
+    <Compile Include="Screens\HomeScreen.cs" />
+    <Compile Include="Screens\ImportScreen.cs" />
+    <Compile Include="Screens\ImportScreenParts.cs" />
+    <Compile Include="Screens\ImportScreenReqs.cs" />
+    <Compile Include="Screens\JournalEntry.cs" />
+    <Compile Include="Screens\ManagePartImports.cs" />
+    <Compile Include="Screens\NagScreen.cs" />
+    <Compile Include="Screens\OrderBatch.cs" />
+    <Compile Include="Screens\OrderLinks.cs" />
+    <Compile Include="Screens\OrderSearch.cs" />
+    <Compile Include="Screens\OrderTransmit.cs" />
+    <Compile Include="Screens\Panel.cs" />
+    <Compile Include="Screens\PartSearch.cs" />
+    <Compile Include="Screens\PaymentScreen.cs" />
+    <Compile Include="Screens\PeopleSearch.cs" />
+    <Compile Include="Screens\PostOrders.cs" />
+    <Compile Include="Screens\ProcessPayments.cs" />
+    <Compile Include="Screens\ReconcileAccount.cs" />
+    <Compile Include="Screens\ReportScreen.cs" />
+    <Compile Include="Screens\ReportsScreen.cs" />
+    <Compile Include="Screens\RzMenuScreen.cs" />
+    <Compile Include="Screens\RzScreen.cs" />
+    <Compile Include="Screens\SandboxScreen.cs" />
+    <Compile Include="Screens\ShippingScreen.cs" />
+    <Compile Include="Screens\StartScreen.cs" />
+    <Compile Include="Screens\UserManager.cs" />
+    <Compile Include="Views\Account.cs" />
+    <Compile Include="Views\Bill.cs" />
+    <Compile Include="Views\CallLog.cs" />
+    <Compile Include="Views\Choice.cs" />
+    <Compile Include="Views\Choices.cs" />
+    <Compile Include="Views\Company.cs" />
+    <Compile Include="Views\CompanyAddress.cs" />
+    <Compile Include="Views\CompanyContact.cs" />
+    <Compile Include="Views\ContactNote.cs" />
+    <Compile Include="Views\FormalQuote.cs" />
+    <Compile Include="Views\FormalQuoteLine.cs" />
+    <Compile Include="Views\Invoice.cs" />
+    <Compile Include="Views\InvoiceLine.cs" />
+    <Compile Include="Views\Line.cs" />
+    <Compile Include="Views\PartMaster.cs" />
+    <Compile Include="Views\PartRecord.cs" />
+    <Compile Include="Views\Purchase.cs" />
+    <Compile Include="Views\PurchaseLine.cs" />
+    <Compile Include="Views\RFQ.cs" />
+    <Compile Include="Views\RFQLine.cs" />
+    <Compile Include="Views\RMA.cs" />
+    <Compile Include="Views\RMALine.cs" />
+    <Compile Include="Views\Sales.cs" />
+    <Compile Include="Views\SalesLine.cs" />
+    <Compile Include="Views\Service.cs" />
+    <Compile Include="Views\ServiceLine.cs" />
+    <Compile Include="Views\ShippingAccount.cs" />
+    <Compile Include="Views\User.cs" />
+    <Compile Include="Views\VendRMA.cs" />
+    <Compile Include="Views\VendRMALine.cs" />
+    <Compile Include="Views\ViewAccountingReport.cs" />
+    <Compile Include="Views\_Item.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.csproj">
+      <Project>{B5CEFFDE-EA3C-4BFA-9501-03FE5642741C}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\CoreWeb\CoreWeb.csproj">
+      <Project>{5F18ED2C-C558-4A79-A71C-70760B0B9BFB}</Project>
+      <Name>CoreWeb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NewMethod\NewMethod.csproj">
+      <Project>{DA2388CC-2076-4327-90E4-46B8D463DBC2}</Project>
+      <Name>NewMethod</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NewMethod\NewMethodWeb\NewMethodWeb.csproj">
+      <Project>{F540AB2B-B4D7-43DB-9CF2-A69899BE24DE}</Project>
+      <Name>NewMethodWeb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Tie\Tie.csproj">
+      <Project>{4C393E56-82EE-4E3D-A276-87509AE6F27F}</Project>
+      <Name>Tie</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Tools\Tools.csproj">
+      <Project>{5047280A-4740-4083-85FE-F71B28B77848}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rz5.csproj">
+      <Project>{045D97AD-AB64-4F3F-B0CD-B61EDFD917FB}</Project>
+      <Name>Rz5</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Graphics\Cancel.png" />
+    <Content Include="Graphics\Circle-blue-32.png" />
+    <Content Include="Graphics\ExcelFile3.png" />
+    <Content Include="Graphics\homemenu.png" />
+    <Content Include="Graphics\Maximize.png" />
+    <Content Include="Graphics\Minimize.png" />
+    <Content Include="Graphics\NewFile.png" />
+    <Content Include="Graphics\partsmenu.png" />
+    <Content Include="Graphics\peoplemenu.png" />
+    <Content Include="Graphics\RefreshBlue3.png" />
+    <Content Include="Graphics\Rz.png" />
+    <Content Include="Graphics\SmallBar.png" />
+    <Content Include="Graphics\SmallPie.png" />
+    <Content Include="Scripts\Rz.js" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

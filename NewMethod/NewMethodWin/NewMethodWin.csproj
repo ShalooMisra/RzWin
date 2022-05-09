@@ -1,0 +1,1052 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DADA5260-9911-4CBD-AAD7-89177DC7EC9F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NewMethodWin</RootNamespace>
+    <AssemblyName>NewMethodWin</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus">
+      <HintPath>..\..\dll\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Windows\assembly\GAC\Microsoft.mshtml\7.0.3300.0__b03f5f7f11d50a3a\Microsoft.mshtml.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Browser\nWebReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Browser\nWebReport.Designer.cs">
+      <DependentUpon>nWebReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Browser\nWebScan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Browser\nWebScan.Designer.cs">
+      <DependentUpon>nWebScan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Browser\nWebScanView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Browser\nWebScanView.Designer.cs">
+      <DependentUpon>nWebScanView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ActivityReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ActivityReport.Designer.cs">
+      <DependentUpon>ActivityReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AsyncWait.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AsyncWait.Designer.cs">
+      <DependentUpon>AsyncWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CubeDateSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CubeDateSelection.Designer.cs">
+      <DependentUpon>CubeDateSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IconStub.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\IconStub.Designer.cs">
+      <DependentUpon>IconStub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ManagedListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\nActionLink.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\nActionLink.Designer.cs">
+      <DependentUpon>nActionLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\nActionMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\nActionMenu.Designer.cs">
+      <DependentUpon>nActionMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\nChanges.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\nChanges.Designer.cs">
+      <DependentUpon>nChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\nEmailMessageView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\nEmailMessageView.Designer.cs">
+      <DependentUpon>nEmailMessageView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\nEmails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\nEmails.Designer.cs">
+      <DependentUpon>nEmails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\nEntryBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\nEntryBox.Designer.cs">
+      <DependentUpon>nEntryBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\nLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\nLine.Designer.cs">
+      <DependentUpon>nLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\nList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\nList.Designer.cs">
+      <DependentUpon>nList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\nSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\nSearch.Designer.cs">
+      <DependentUpon>nSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\nSearchCriteria.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\nSearchCriteria.Designer.cs">
+      <DependentUpon>nSearchCriteria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\nSQLView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\nSQLView.Designer.cs">
+      <DependentUpon>nSQLView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\nStatusBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\nTables.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\nTables.Designer.cs">
+      <DependentUpon>nTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\nThrobber.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\nThrobber.Designer.cs">
+      <DependentUpon>nThrobber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\nToolsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\nToolsView.Designer.cs">
+      <DependentUpon>nToolsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NumericOption.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NumericOption.Designer.cs">
+      <DependentUpon>NumericOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PermitEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PermitEditor.Designer.cs">
+      <DependentUpon>PermitEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseChoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseChoice.Designer.cs">
+      <DependentUpon>frmChooseChoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseDate.Designer.cs">
+      <DependentUpon>frmChooseDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseDateRange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseDateRange.Designer.cs">
+      <DependentUpon>frmChooseDateRange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseFromClipboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseFromClipboard.Designer.cs">
+      <DependentUpon>frmChooseFromClipboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseFromDictionary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseFromDictionary.Designer.cs">
+      <DependentUpon>frmChooseFromDictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseMultipleChoices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseMultipleChoices.Designer.cs">
+      <DependentUpon>frmChooseMultipleChoices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseObject.Designer.cs">
+      <DependentUpon>frmChooseObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseOneChoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseOneChoice.Designer.cs">
+      <DependentUpon>frmChooseOneChoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseProp.Designer.cs">
+      <DependentUpon>frmChooseProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseStringFromArray.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseStringFromArray.Designer.cs">
+      <DependentUpon>frmChooseStringFromArray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Choices\frmChooseUser.Designer.cs">
+      <DependentUpon>frmChooseUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmAddUser.Designer.cs">
+      <DependentUpon>frmAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmAskTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmAskTemp.Designer.cs">
+      <DependentUpon>frmAskTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmCheckList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmCheckList.Designer.cs">
+      <DependentUpon>frmCheckList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmColumnSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmColumnSelect.Designer.cs">
+      <DependentUpon>frmColumnSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmCompanyFlag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmCompanyFlag.Designer.cs">
+      <DependentUpon>frmCompanyFlag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmConversionOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmConversionOptions.Designer.cs">
+      <DependentUpon>frmConversionOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmDataSources.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmDataSources.Designer.cs">
+      <DependentUpon>frmDataSources.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmDataTableProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmDataTableProcess.Designer.cs">
+      <DependentUpon>frmDataTableProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmDepot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmDepot.Designer.cs">
+      <DependentUpon>frmDepot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmIconChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmIconChooser.Designer.cs">
+      <DependentUpon>frmIconChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmList.Designer.cs">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmPermit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmPermit.Designer.cs">
+      <DependentUpon>frmPermit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmUpdateRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmUpdateRequest.Designer.cs">
+      <DependentUpon>frmUpdateRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ObjectChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ObjectChooser.Designer.cs">
+      <DependentUpon>ObjectChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\TeamChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\TeamChooser.Designer.cs">
+      <DependentUpon>TeamChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\frmEdit_MultiLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edits\frmEdit_MultiLine.Designer.cs">
+      <DependentUpon>frmEdit_MultiLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit.Designer.cs">
+      <DependentUpon>nEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit_Boolean.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit_Boolean.Designer.cs">
+      <DependentUpon>nEdit_Boolean.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit_Choice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit_Choice.Designer.cs">
+      <DependentUpon>nEdit_Choice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit_Date.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit_Date.Designer.cs">
+      <DependentUpon>nEdit_Date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit_Label.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit_Label.Designer.cs">
+      <DependentUpon>nEdit_Label.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit_List.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit_List.Designer.cs">
+      <DependentUpon>nEdit_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit_Memo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit_Memo.Designer.cs">
+      <DependentUpon>nEdit_Memo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit_Modified.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit_Modified.Designer.cs">
+      <DependentUpon>nEdit_Modified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit_Money.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit_Money.Designer.cs">
+      <DependentUpon>nEdit_Money.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit_Number.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit_Number.Designer.cs">
+      <DependentUpon>nEdit_Number.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit_Picture.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit_Picture.Designer.cs">
+      <DependentUpon>nEdit_Picture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit_String.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit_String.designer.cs">
+      <DependentUpon>nEdit_String.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edits\nEdit_User.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edits\nEdit_User.Designer.cs">
+      <DependentUpon>nEdit_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LeaderWinUserNM.cs" />
+    <Compile Include="NMWin.cs" />
+    <Compile Include="nStatusTarget.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Screens\DataTargetManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\DataTargetManager.Designer.cs">
+      <DependentUpon>DataTargetManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\GroupManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\GroupManager.designer.cs">
+      <DependentUpon>GroupManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\nClip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\nClip.Designer.cs">
+      <DependentUpon>nClip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\nDataView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\nDataView.Designer.cs">
+      <DependentUpon>nDataView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\nDataWorkBench.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\nDataWorkBench.Designer.cs">
+      <DependentUpon>nDataWorkBench.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\nQuery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\nQuery.Designer.cs">
+      <DependentUpon>nQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\nTeams.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\nTeams.Designer.cs">
+      <DependentUpon>nTeams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\nText.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\nText.Designer.cs">
+      <DependentUpon>nText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartUpWin.cs" />
+    <Compile Include="Views\DisplaySummary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\DisplaySummary.Designer.cs">
+      <DependentUpon>DisplaySummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GridView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\GridView.Designer.cs">
+      <DependentUpon>GridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\nView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\nView.Designer.cs">
+      <DependentUpon>nView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\nView_n_choice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\nView_n_choice.Designer.cs">
+      <DependentUpon>nView_n_choice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\nView_n_choices.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\nView_n_choices.Designer.cs">
+      <DependentUpon>nView_n_choices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewChangeHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ViewChangeHistory.Designer.cs">
+      <DependentUpon>ViewChangeHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewEditPermissions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ViewEditPermissions.designer.cs">
+      <DependentUpon>ViewEditPermissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewPlusMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ViewPlusMenu.Designer.cs">
+      <DependentUpon>ViewPlusMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\view_data_target.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\view_data_target.Designer.cs">
+      <DependentUpon>view_data_target.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\view_n_user.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\view_n_user.designer.cs">
+      <DependentUpon>view_n_user.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Browser\nWebReport.resx">
+      <DependentUpon>nWebReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Browser\nWebScan.resx">
+      <DependentUpon>nWebScan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Browser\nWebScanView.resx">
+      <DependentUpon>nWebScanView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ActivityReport.resx">
+      <DependentUpon>ActivityReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\AsyncWait.resx">
+      <DependentUpon>AsyncWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CubeDateSelection.resx">
+      <DependentUpon>CubeDateSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\IconStub.resx">
+      <DependentUpon>IconStub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ManagedListView.resx">
+      <DependentUpon>ManagedListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\nActionLink.resx">
+      <DependentUpon>nActionLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\nActionMenu.resx">
+      <DependentUpon>nActionMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\nChanges.resx">
+      <DependentUpon>nChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\nEmailMessageView.resx">
+      <DependentUpon>nEmailMessageView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\nEmails.resx">
+      <DependentUpon>nEmails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\nLine.resx">
+      <DependentUpon>nLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\nList.resx">
+      <DependentUpon>nList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\nSearch.resx">
+      <DependentUpon>nSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\nSearchCriteria.resx">
+      <DependentUpon>nSearchCriteria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\nSQLView.resx">
+      <DependentUpon>nSQLView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\nTables.resx">
+      <DependentUpon>nTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\nThrobber.resx">
+      <DependentUpon>nThrobber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\nToolsView.resx">
+      <DependentUpon>nToolsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NumericOption.resx">
+      <DependentUpon>NumericOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PermitEditor.resx">
+      <DependentUpon>PermitEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Choices\frmChooseChoice.resx">
+      <DependentUpon>frmChooseChoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Choices\frmChooseDate.resx">
+      <DependentUpon>frmChooseDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Choices\frmChooseDateRange.resx">
+      <DependentUpon>frmChooseDateRange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Choices\frmChooseFromClipboard.resx">
+      <DependentUpon>frmChooseFromClipboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Choices\frmChooseFromDictionary.resx">
+      <DependentUpon>frmChooseFromDictionary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Choices\frmChooseMultipleChoices.resx">
+      <DependentUpon>frmChooseMultipleChoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Choices\frmChooseObject.resx">
+      <DependentUpon>frmChooseObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Choices\frmChooseOneChoice.resx">
+      <DependentUpon>frmChooseOneChoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Choices\frmChooseProp.resx">
+      <DependentUpon>frmChooseProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Choices\frmChooseStringFromArray.resx">
+      <DependentUpon>frmChooseStringFromArray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Choices\frmChooseUser.resx">
+      <DependentUpon>frmChooseUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmAddUser.resx">
+      <DependentUpon>frmAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmAskTemp.resx">
+      <DependentUpon>frmAskTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmCheckList.resx">
+      <DependentUpon>frmCheckList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmColumnSelect.resx">
+      <DependentUpon>frmColumnSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmCompanyFlag.resx">
+      <DependentUpon>frmCompanyFlag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmConversionOptions.resx">
+      <DependentUpon>frmConversionOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmDataSources.resx">
+      <DependentUpon>frmDataSources.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmDataTableProcess.resx">
+      <DependentUpon>frmDataTableProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmDepot.resx">
+      <DependentUpon>frmDepot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmIconChooser.resx">
+      <DependentUpon>frmIconChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmList.resx">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmPermit.resx">
+      <DependentUpon>frmPermit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmUpdateRequest.resx">
+      <DependentUpon>frmUpdateRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ImageChooser.resx" />
+    <EmbeddedResource Include="Dialogs\ObjectChooser.resx">
+      <DependentUpon>ObjectChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\TeamChooser.resx">
+      <DependentUpon>TeamChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\frmEdit_MultiLine.resx">
+      <DependentUpon>frmEdit_MultiLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit.resx">
+      <DependentUpon>nEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit_Boolean.resx">
+      <DependentUpon>nEdit_Boolean.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit_Choice.resx">
+      <DependentUpon>nEdit_Choice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit_Date.resx">
+      <DependentUpon>nEdit_Date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit_Label.resx">
+      <DependentUpon>nEdit_Label.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit_List.resx">
+      <DependentUpon>nEdit_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit_Memo.resx">
+      <DependentUpon>nEdit_Memo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit_Modified.resx">
+      <DependentUpon>nEdit_Modified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit_Money.resx">
+      <DependentUpon>nEdit_Money.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit_Number.resx">
+      <DependentUpon>nEdit_Number.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit_Picture.resx">
+      <DependentUpon>nEdit_Picture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit_String.resx">
+      <DependentUpon>nEdit_String.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edits\nEdit_User.resx">
+      <DependentUpon>nEdit_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DataTargetManager.resx">
+      <DependentUpon>DataTargetManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\GroupManager.resx">
+      <DependentUpon>GroupManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\nClip.resx">
+      <DependentUpon>nClip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\nDataView.resx">
+      <DependentUpon>nDataView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\nDataWorkBench.resx">
+      <DependentUpon>nDataWorkBench.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\nQuery.resx">
+      <DependentUpon>nQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\nTeams.resx">
+      <DependentUpon>nTeams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\nText.resx">
+      <DependentUpon>nText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DisplaySummary.resx">
+      <DependentUpon>DisplaySummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\GridView.resx">
+      <DependentUpon>GridView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\nView.resx">
+      <DependentUpon>nView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\nView_n_choice.resx">
+      <DependentUpon>nView_n_choice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\nView_n_choices.resx">
+      <DependentUpon>nView_n_choices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewChangeHistory.resx">
+      <DependentUpon>ViewChangeHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewEditPermissions.resx">
+      <DependentUpon>ViewEditPermissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewPlusMenu.resx">
+      <DependentUpon>ViewPlusMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\view_data_target.resx">
+      <DependentUpon>view_data_target.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\view_n_user.resx">
+      <DependentUpon>view_n_user.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.csproj">
+      <Project>{B5CEFFDE-EA3C-4BFA-9501-03FE5642741C}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\CoreWin\CoreWin.csproj">
+      <Project>{3836F191-B2A8-4457-A5F6-5B766DB73E36}</Project>
+      <Name>CoreWin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Tools\Tools.csproj">
+      <Project>{5047280a-4740-4083-85fe-f71b28b77848}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Tools\ToolsWin\ToolsWin.csproj">
+      <Project>{c4d3a247-5091-401f-9045-2dedae231831}</Project>
+      <Name>ToolsWin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NewMethod.csproj">
+      <Project>{DA2388CC-2076-4327-90E4-46B8D463DBC2}</Project>
+      <Name>NewMethod</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Graphics\add_to_list24_h.bmp" />
+    <Content Include="Graphics\attach.bmp" />
+    <Content Include="Graphics\back.bmp" />
+    <Content Include="Graphics\back16.BMP" />
+    <Content Include="Graphics\Back24.bmp" />
+    <Content Include="Graphics\barchart.bmp" />
+    <Content Include="Graphics\bid_active.ico" />
+    <Content Include="Graphics\bid_inactive.ico" />
+    <Content Include="Graphics\blank_16.bmp" />
+    <Content Include="Graphics\breakpoint.bmp" />
+    <Content Include="Graphics\breakpoint_pointer.bmp" />
+    <Content Include="Graphics\Calendar.bmp" />
+    <Content Include="Graphics\camera.bmp" />
+    <Content Include="Graphics\captain_user.bmp" />
+    <Content Include="Graphics\chat.bmp" />
+    <Content Include="Graphics\chat.jpg" />
+    <Content Include="Graphics\class.bmp" />
+    <Content Include="Graphics\class.jpg" />
+    <Content Include="Graphics\close.bmp" />
+    <Content Include="Graphics\closewindow.bmp" />
+    <Content Include="Graphics\CLOUD.ICO" />
+    <Content Include="Graphics\company_connected.bmp" />
+    <Content Include="Graphics\company_disconnected.bmp" />
+    <Content Include="Graphics\connected.bmp" />
+    <Content Include="Graphics\crosshairs.bmp" />
+    <Content Include="Graphics\Database Security.bmp" />
+    <Content Include="Graphics\date_time.bmp" />
+    <Content Include="Graphics\desk.jpg" />
+    <Content Include="Graphics\Desk\banner_blue.jpg" />
+    <Content Include="Graphics\Desk\banner_green.jpg" />
+    <Content Include="Graphics\Desk\banner_orange.jpg" />
+    <Content Include="Graphics\Desk\banner_purple.jpg" />
+    <Content Include="Graphics\Desk\banner_red.jpg" />
+    <Content Include="Graphics\Desk\banner_yellow.jpg" />
+    <Content Include="Graphics\Desk\desk_000.jpg" />
+    <Content Include="Graphics\Desk\desk_001.jpg" />
+    <Content Include="Graphics\Desk\desk_002.jpg" />
+    <Content Include="Graphics\Desk\desk_003.jpg" />
+    <Content Include="Graphics\Desk\desk_004.jpg" />
+    <Content Include="Graphics\Desk\desk_005.jpg" />
+    <Content Include="Graphics\Desk\desk_006.jpg" />
+    <Content Include="Graphics\Desk\desk_007.jpg" />
+    <Content Include="Graphics\Desk\desk_008.jpg" />
+    <Content Include="Graphics\Desk\desk_009.jpg" />
+    <Content Include="Graphics\Desk\desk_010.jpg" />
+    <Content Include="Graphics\Desk\desk_011.jpg" />
+    <Content Include="Graphics\Desk\desk_012.jpg" />
+    <Content Include="Graphics\Desk\desk_013.jpg" />
+    <Content Include="Graphics\Desk\desk_014.jpg" />
+    <Content Include="Graphics\Desk\desk_015.jpg" />
+    <Content Include="Graphics\Desk\desk_016.jpg" />
+    <Content Include="Graphics\Desk\desk_017.jpg" />
+    <Content Include="Graphics\Desk\desk_blue.jpg" />
+    <Content Include="Graphics\Desk\desk_green.jpg" />
+    <Content Include="Graphics\Desk\desk_inactive.jpg" />
+    <Content Include="Graphics\Desk\desk_orange.jpg" />
+    <Content Include="Graphics\Desk\desk_purple.jpg" />
+    <Content Include="Graphics\Desk\desk_red.jpg" />
+    <Content Include="Graphics\Desk\desk_yellow.jpg" />
+    <Content Include="Graphics\Desk\star.bmp" />
+    <Content Include="Graphics\disconnected.bmp" />
+    <Content Include="Graphics\dollar.bmp" />
+    <Content Include="Graphics\dot.bmp" />
+    <Content Include="Graphics\EARTH.ICO" />
+    <Content Include="Graphics\edit.bmp" />
+    <Content Include="Graphics\edit_menu.bmp" />
+    <Content Include="Graphics\Excel.jpg" />
+    <Content Include="Graphics\fast_backward.bmp" />
+    <Content Include="Graphics\fast_foreward.bmp" />
+    <Content Include="Graphics\FIRE.ICO" />
+    <Content Include="Graphics\Folder.BMP" />
+    <Content Include="Graphics\Foreward24.bmp" />
+    <Content Include="Graphics\form.bmp" />
+    <Content Include="Graphics\form.jpg" />
+    <Content Include="Graphics\forward.bmp" />
+    <Content Include="Graphics\Grid.bmp" />
+    <Content Include="Graphics\guided_class.jpg" />
+    <Content Include="Graphics\guided_property.jpg" />
+    <Content Include="Graphics\hits.bmp" />
+    <Content Include="Graphics\import16_h.bmp" />
+    <Content Include="Graphics\Import24.bmp" />
+    <Content Include="Graphics\inactive_user.bmp" />
+    <Content Include="Graphics\inbox.jpg" />
+    <Content Include="Graphics\Information.bmp" />
+    <Content Include="Graphics\ListIcons\caution.jpg" />
+    <Content Include="Graphics\ListIcons\check.png" />
+    <Content Include="Graphics\ListIcons\cloud.jpg" />
+    <Content Include="Graphics\ListIcons\earth.jpg" />
+    <Content Include="Graphics\ListIcons\fire.jpg" />
+    <Content Include="Graphics\ListIcons\lightning.jpg" />
+    <Content Include="Graphics\ListIcons\star.png" />
+    <Content Include="Graphics\LITENING.bmp" />
+    <Content Include="Graphics\LITENING.ICO" />
+    <Content Include="Graphics\lock.bmp" />
+    <Content Include="Graphics\mail.bmp" />
+    <Content Include="Graphics\maximize.bmp" />
+    <Content Include="Graphics\method.bmp" />
+    <Content Include="Graphics\method.jpg" />
+    <Content Include="Graphics\minimize24_h.bmp" />
+    <Content Include="Graphics\MOON01.ICO" />
+    <Content Include="Graphics\MOON02.ICO" />
+    <Content Include="Graphics\MOON03.ICO" />
+    <Content Include="Graphics\MOON04.ICO" />
+    <Content Include="Graphics\MOON05.ICO" />
+    <Content Include="Graphics\MOON06.ICO" />
+    <Content Include="Graphics\MOON07.ICO" />
+    <Content Include="Graphics\MOON08.ICO" />
+    <Content Include="Graphics\newtick.bmp" />
+    <Content Include="Graphics\Next.bmp" />
+    <Content Include="Graphics\NM.ico" />
+    <Content Include="Graphics\parts.bmp" />
+    <Content Include="Graphics\pause24_d.bmp" />
+    <Content Include="Graphics\phone.JPG" />
+    <Content Include="Graphics\piechart.bmp" />
+    <Content Include="Graphics\play_blue24.bmp" />
+    <Content Include="Graphics\print.bmp" />
+    <Content Include="Graphics\property.jpg" />
+    <Content Include="Graphics\quote.ico" />
+    <Content Include="Graphics\RAIN.ICO" />
+    <Content Include="Graphics\rapidquote.bmp" />
+    <Content Include="Graphics\Recogniz.ico" />
+    <Content Include="Graphics\Recogniz.jpg" />
+    <Content Include="Graphics\refresh.bmp" />
+    <Content Include="Graphics\remove_from_list24_h.bmp" />
+    <Content Include="Graphics\reply.bmp" />
+    <Content Include="Graphics\req.ico" />
+    <Content Include="Graphics\save.bmp" />
+    <Content Include="Graphics\search.bmp" />
+    <Content Include="Graphics\Serious.bmp" />
+    <Content Include="Graphics\SNOW.ICO" />
+    <Content Include="Graphics\SQL24.bmp" />
+    <Content Include="Graphics\sql_query16.bmp" />
+    <Content Include="Graphics\step-into.png" />
+    <Content Include="Graphics\step-out.png" />
+    <Content Include="Graphics\step-out1.png" />
+    <Content Include="Graphics\stock_buys.bmp" />
+    <Content Include="Graphics\stop.bmp" />
+    <Content Include="Graphics\SUN.ICO" />
+    <Content Include="Graphics\super_user.bmp" />
+    <Content Include="Graphics\table16.bmp" />
+    <Content Include="Graphics\Table24.bmp" />
+    <Content Include="Graphics\Target24.bmp" />
+    <Content Include="Graphics\team.bmp" />
+    <Content Include="Graphics\template.bmp" />
+    <Content Include="Graphics\template_big.bmp" />
+    <Content Include="Graphics\Throbber-small.gif" />
+    <Content Include="Graphics\Throbber-small.png" />
+    <None Include="Resources\fa_plane.bmp" />
+    <None Include="Resources\fa_dollar.bmp" />
+    <None Include="Resources\fa_calendar.bmp" />
+    <EmbeddedResource Include="Graphics\Throbber.gif" />
+    <Content Include="Graphics\Throbber.png" />
+    <Content Include="Graphics\Tick.bmp" />
+    <Content Include="Graphics\Tools.bmp" />
+    <Content Include="Graphics\trash.jpg" />
+    <Content Include="Graphics\TreeAdd.bmp" />
+    <Content Include="Graphics\user.bmp" />
+    <Content Include="Graphics\Verisign.jpg" />
+    <Content Include="Graphics\vine_connected.bmp" />
+    <Content Include="Graphics\vine_disconnected.bmp" />
+    <Content Include="Graphics\Warning.bmp" />
+    <Content Include="Graphics\WATER.ICO" />
+    <Content Include="Graphics\Window Close.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

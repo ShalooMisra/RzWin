@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{045D97AD-AB64-4F3F-B0CD-B61EDFD917FB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rz5</RootNamespace>
+    <AssemblyName>Rz5</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxInterop.SHDocVw">
+      <HintPath>..\dll\AxInterop.SHDocVw.dll</HintPath>
+    </Reference>
+    <Reference Include="BarcodeLib">
+      <HintPath>..\dll\BarcodeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\dll\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\dll\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.IWshRuntimeLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\dll\Interop.IWshRuntimeLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Outlook">
+      <HintPath>..\dll\Interop.Outlook.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.QBFC13Lib">
+      <HintPath>..\dll\Interop.QBFC13Lib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.SHDocVw">
+      <HintPath>..\dll\Interop.SHDocVw.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\dll\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.10.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Auto\system_management_auto.cs" />
+    <Compile Include="Auto\affiliate_auto.cs" />
+    <Compile Include="Auto\company_terms_conditions_auto.cs" />
+    <Compile Include="Auto\split_commission_auto.cs" />
+    <Compile Include="Auto\line_process_auto.cs" />
+    <Compile Include="Auto\silicon_expert_list_summary_auto.cs" />
+    <Compile Include="Auto\part_risk_summary_auto.cs" />
+    <Compile Include="Auto\addresshandler_auto.cs" />
+    <Compile Include="Auto\address_auto.cs" />
+    <Compile Include="Auto\blast_adrdet_auto.cs" />
+    <Compile Include="Auto\blast_adrhed_auto.cs" />
+    <Compile Include="Auto\blast_emailserver_auto.cs" />
+    <Compile Include="Auto\blast_emailtemplate_auto.cs" />
+    <Compile Include="Auto\consignment_manifest_auto.cs" />
+    <Compile Include="Auto\hubspot_engagement_auto.cs" />
+    <Compile Include="Auto\shipped_stock_auto.cs" />
+    <Compile Include="Auto\qc_turn_back_auto.cs" />
+    <Compile Include="Auto\recent_item_auto.cs" />
+    <Compile Include="Auto\validation_form_auto.cs" />
+    <Compile Include="Auto\validation_tracking_auto.cs" />
+    <Compile Include="Auto\oem_product_auto.cs" />
+    <Compile Include="Auto\calllog_auto.cs" />
+    <Compile Include="Auto\chat_message_auto.cs" />
+    <Compile Include="Auto\checkpayment_auto.cs" />
+    <Compile Include="Auto\clipobject_auto.cs" />
+    <Compile Include="Auto\companyaddress_auto.cs" />
+    <Compile Include="Auto\companycontact_auto.cs" />
+    <Compile Include="Auto\portal_searched_part_auto.cs" />
+    <Compile Include="Auto\companycredit_auto.cs" />
+    <Compile Include="Auto\company_auto.cs" />
+    <Compile Include="Auto\consignment_code_auto.cs" />
+    <Compile Include="Auto\contactnote_auto.cs" />
+    <Compile Include="Auto\dealheader_auto.cs" />
+    <Compile Include="Auto\emailaddress_auto.cs" />
+    <Compile Include="Auto\emailmatch_auto.cs" />
+    <Compile Include="Auto\emailtemplate_auto.cs" />
+    <Compile Include="Auto\exporttemplate_auto.cs" />
+    <Compile Include="Auto\export_log_auto.cs" />
+    <Compile Include="Auto\feedback_auto.cs" />
+    <Compile Include="Auto\filelink_auto.cs" />
+    <Compile Include="Auto\focus_item_auto.cs" />
+    <Compile Include="Auto\importtemplate_auto.cs" />
+    <Compile Include="Auto\import_summary_auto.cs" />
+    <Compile Include="Auto\label_auto.cs" />
+    <Compile Include="Auto\label_queue_auto.cs" />
+    <Compile Include="Auto\linecardlink_auto.cs" />
+    <Compile Include="Auto\linkednote_auto.cs" />
+    <Compile Include="Auto\manufacturer_auto.cs" />
+    <Compile Include="Auto\mc_done_auto.cs" />
+    <Compile Include="Auto\mc_duty_auto.cs" />
+    <Compile Include="Auto\mfg_link_auto.cs" />
+    <Compile Include="Auto\multisearch_login_auto.cs" />
+    <Compile Include="Auto\multisearch_siteorder_auto.cs" />
+    <Compile Include="Auto\n_user_screens_auto.cs" />
+    <Compile Include="Auto\orddet_auto.cs" />
+    <Compile Include="Auto\orddet_line_auto.cs" />
+    <Compile Include="Auto\orddet_old_auto.cs" />
+    <Compile Include="Auto\orddet_quote_auto.cs" />
+    <Compile Include="Auto\orddet_rfq_auto.cs" />
+    <Compile Include="Auto\ordhed_auto.cs" />
+    <Compile Include="Auto\ordhed_invoice_auto.cs" />
+    <Compile Include="Auto\ordhed_new_auto.cs" />
+    <Compile Include="Auto\ordhed_old_auto.cs" />
+    <Compile Include="Auto\ordhed_purchase_auto.cs" />
+    <Compile Include="Auto\ordhed_quote_auto.cs" />
+    <Compile Include="Auto\ordhed_rfq_auto.cs" />
+    <Compile Include="Auto\ordhed_rma_auto.cs" />
+    <Compile Include="Auto\ordhed_sales_auto.cs" />
+    <Compile Include="Auto\ordhed_service_auto.cs" />
+    <Compile Include="Auto\ordhed_vendrma_auto.cs" />
+    <Compile Include="Auto\ordhit_auto.cs" />
+    <Compile Include="Auto\ordlnk_auto.cs" />
+    <Compile Include="Auto\ordrma_auto.cs" />
+    <Compile Include="Auto\pack_auto.cs" />
+    <Compile Include="Auto\partial_contact_email_auto.cs" />
+    <Compile Include="Auto\partial_contact_surfacemail_auto.cs" />
+    <Compile Include="Auto\partpicture_auto.cs" />
+    <Compile Include="Auto\partrecord_ssd_auto.cs" />
+    <Compile Include="Auto\partrecord_auto.cs" />
+    <Compile Include="Auto\partsearch_auto.cs" />
+    <Compile Include="Auto\part_auto.cs" />
+    <Compile Include="Auto\part_master_auto.cs" />
+    <Compile Include="Auto\part_warning_auto.cs" />
+    <Compile Include="Auto\phonecall_auto.cs" />
+    <Compile Include="Auto\printdetail_auto.cs" />
+    <Compile Include="Auto\printheader_auto.cs" />
+    <Compile Include="Auto\profit_deduction_auto.cs" />
+    <Compile Include="Auto\profit_line_auto.cs" />
+    <Compile Include="Auto\profit_month_auto.cs" />
+    <Compile Include="Auto\qualitycontrol_auto.cs" />
+    <Compile Include="Auto\service_line_auto.cs" />
+    <Compile Include="Auto\shippingaccount_auto.cs" />
+    <Compile Include="Auto\task_event_auto.cs" />
+    <Compile Include="Auto\test_pictures_auto.cs" />
+    <Compile Include="Auto\usernote_auto.cs" />
+    <Compile Include="Auto\user_activity_auto.cs" />
+    <Compile Include="Auto\virtual_desk_auto.cs" />
+    <Compile Include="Auto\virtual_floor_auto.cs" />
+    <Compile Include="ContextRz.cs" />
+    <Compile Include="Duties\DropTempTables.cs" />
+    <Compile Include="Duties\Duty_CalculateStats.cs" />
+    <Compile Include="Duties\Duty_CloseBooks.cs" />
+    <Compile Include="Duties\Duty_RTE.cs" />
+    <Compile Include="Duties\RzLinkDuty.cs" />
+    <Compile Include="Duties\RzRescueDuty.cs" />
+    <Compile Include="Imports\ImportRz3.cs" />
+    <Compile Include="Items\system_management.cs" />
+    <Compile Include="Items\company_terms_conditions.cs" />
+    <Compile Include="Items\split_commission.cs" />
+    <Compile Include="Items\line_process.cs" />
+    <Compile Include="Items\affiliate.cs" />
+    <Compile Include="Items\silicon_expert_list_summary.cs" />
+    <Compile Include="Items\part_risk_summary.cs" />
+    <Compile Include="Items\consignment_manifest.cs" />
+    <Compile Include="Items\hubspot_engagement.cs" />
+    <Compile Include="Items\deposit.cs" />
+    <Compile Include="Items\shipped_stock.cs" />
+    <Compile Include="Items\qc_turn_back.cs" />
+    <Compile Include="Items\recent_item.cs" />
+    <Compile Include="Items\validation_form.cs" />
+    <Compile Include="Items\validation_tracking.cs" />
+    <Compile Include="Items\oem_product.cs" />
+    <Compile Include="Items\companycontact.cs" />
+    <Compile Include="Items\portal_searched_part.cs" />
+    <Compile Include="Items\companycredit.cs" />
+    <Compile Include="Items\dealcompany.cs" />
+    <Compile Include="Items\dealheader.cs" />
+    <Compile Include="Items\Extra\orddet_invoice.cs" />
+    <Compile Include="Items\Extra\orddet_purchase.cs" />
+    <Compile Include="Items\Extra\orddet_sales.cs" />
+    <Compile Include="Items\filelink.cs" />
+    <Compile Include="Items\orddet_line.cs" />
+    <Compile Include="Items\orddet_old.cs" />
+    <Compile Include="Items\Extra\orddet_service.cs" />
+    <Compile Include="Items\ordhed_new.cs" />
+    <Compile Include="Items\ordhed_old.cs" />
+    <Compile Include="Items\pack.cs" />
+    <Compile Include="Items\part.cs" />
+    <Compile Include="Items\partrecord_ssd.cs" />
+    <Compile Include="Items\partrecord.cs" />
+    <Compile Include="Items\part_master.cs" />
+    <Compile Include="Logics\AccountingReports.cs" />
+    <Compile Include="Logics\AccountLogic.cs" />
+    <Compile Include="Logics\PrintLogic.cs" />
+    <Compile Include="Logics\QuickBooksImportLogic.cs" />
+    <Compile Include="Logics\ReportLogic.cs" />
+    <Compile Include="Misc\HomeScreenOptions.cs" />
+    <Compile Include="Misc\RzHook.cs" />
+    <Compile Include="Printing\PrintSession.cs" />
+    <Compile Include="Printing\PrintSessionCache.cs" />
+    <Compile Include="Printing\PrintSessionImages.cs" />
+    <Compile Include="Printing\PrintSessionPdf.cs" />
+    <Compile Include="Printing\PrintSessionPrinter.cs" />
+    <Compile Include="Items\profit_deduction.cs" />
+    <Compile Include="Items\service_line.cs" />
+    <Compile Include="Logics\DutyLogic.cs" />
+    <Compile Include="Duties\Duty_BackUpDB.cs" />
+    <Compile Include="Duties\Duty_ReindexDatabase.cs" />
+    <Compile Include="Duties\Duty_StockExport.cs" />
+    <Compile Include="Duties\Duty_StockExportAndUpload.cs" />
+    <Compile Include="Duties\Duty_TruncateDatabaseLog.cs" />
+    <Compile Include="Imports\ImportInventory.cs" />
+    <Compile Include="Items\address.cs" />
+    <Compile Include="Items\addresshandler.cs" />
+    <Compile Include="Items\blast_adrdet.cs" />
+    <Compile Include="Items\blast_adrhed.cs" />
+    <Compile Include="Items\blast_emailserver.cs" />
+    <Compile Include="Items\blast_emailtemplate.cs" />
+    <Compile Include="Items\calllog.cs" />
+    <Compile Include="Items\chat_message.cs" />
+    <Compile Include="Items\checkpayment.cs" />
+    <Compile Include="Items\clipobject.cs" />
+    <Compile Include="Items\company.cs" />
+    <Compile Include="Items\companyaddress.cs" />
+    <Compile Include="Items\consignment_code.cs" />
+    <Compile Include="Items\contactnote.cs" />
+    <Compile Include="Items\emailaddress.cs" />
+    <Compile Include="Items\emailmatch.cs" />
+    <Compile Include="Items\emailtemplate.cs" />
+    <Compile Include="Items\exporttemplate.cs" />
+    <Compile Include="Items\export_log.cs" />
+    <Compile Include="Items\feedback.cs" />
+    <Compile Include="Items\focus_item.cs" />
+    <Compile Include="Items\importtemplate.cs" />
+    <Compile Include="Items\import_summary.cs" />
+    <Compile Include="Items\label.cs" />
+    <Compile Include="Items\label_queue.cs" />
+    <Compile Include="Items\linecardlink.cs" />
+    <Compile Include="Items\linkednote.cs" />
+    <Compile Include="Items\lot_buy.cs" />
+    <Compile Include="Items\manufacturer.cs" />
+    <Compile Include="Items\mc_done.cs" />
+    <Compile Include="Items\mc_duty.cs" />
+    <Compile Include="Items\mfg_link.cs" />
+    <Compile Include="Items\multisearch_login.cs" />
+    <Compile Include="Items\multisearch_siteorder.cs" />
+    <Compile Include="Reports\AccountDetail.cs" />
+    <Compile Include="Reports\ArApAging.cs" />
+    <Compile Include="Reports\CreditCardChargeReport.cs" />
+    <Compile Include="Reports\CustomerInvoiceReport.cs" />
+    <Compile Include="Reports\IncomingInventory.cs" />
+    <Compile Include="Reports\InventoryAllocation.cs" />
+    <Compile Include="Reports\ProfitReport.cs" />
+    <Compile Include="Reports\QuoteToSale.cs" />
+    <Compile Include="Reports\SalesForecast.cs" />
+    <Compile Include="Reports\SalesLineReport.cs" />
+    <Compile Include="Reports\StockEvaluatorCore.cs" />
+    <Compile Include="Reports\SupplierEvaluation.cs" />
+    <Compile Include="Reports\TopCustomers.cs" />
+    <Compile Include="Reports\TopVendors.cs" />
+    <Compile Include="SensibleDAL\AfiliateLogic.cs" />
+    <Compile Include="SysRz.cs" />
+    <Compile Include="Items\n_user_screens.cs" />
+    <Compile Include="Items\orddet.cs" />
+    <Compile Include="Items\orddet_quote.cs" />
+    <Compile Include="Items\orddet_rfq.cs" />
+    <Compile Include="Items\Extra\orddet_rma.cs" />
+    <Compile Include="Items\Extra\orddet_vendrma.cs" />
+    <Compile Include="Items\ordhed.cs" />
+    <Compile Include="Items\ordhed_invoice.cs" />
+    <Compile Include="Items\ordhed_purchase.cs" />
+    <Compile Include="Items\ordhed_quote.cs" />
+    <Compile Include="Items\ordhed_rfq.cs" />
+    <Compile Include="Items\ordhed_rma.cs" />
+    <Compile Include="Items\ordhed_sales.cs" />
+    <Compile Include="Items\ordhed_service.cs" />
+    <Compile Include="Items\ordhed_vendrma.cs" />
+    <Compile Include="Items\ordhit.cs" />
+    <Compile Include="Items\ordlnk.cs" />
+    <Compile Include="Items\ordrma.cs" />
+    <Compile Include="Items\partial_contact_email.cs" />
+    <Compile Include="Items\partial_contact_surfacemail.cs" />
+    <Compile Include="Items\partpicture.cs" />
+    <Compile Include="Items\partsearch.cs" />
+    <Compile Include="Items\part_warning.cs" />
+    <Compile Include="Items\phonecall.cs" />
+    <Compile Include="Items\printdetail.cs" />
+    <Compile Include="Items\printheader.cs" />
+    <Compile Include="Items\profit_line.cs" />
+    <Compile Include="Items\profit_month.cs" />
+    <Compile Include="Items\qualitycontrol.cs" />
+    <Compile Include="Items\shippingaccount.cs" />
+    <Compile Include="Items\task_event.cs" />
+    <Compile Include="Items\test_pictures.cs" />
+    <Compile Include="Items\usernote.cs" />
+    <Compile Include="Items\user_activity.cs" />
+    <Compile Include="Items\virtual_desk.cs" />
+    <Compile Include="Items\virtual_floor.cs" />
+    <Compile Include="Logics\EmailLogic.cs" />
+    <Compile Include="Logics\HomeLogic.cs" />
+    <Compile Include="Logics\ImportLogic.cs" />
+    <Compile Include="Logics\ItemLogic.cs" />
+    <Compile Include="Logics\LabelLogic.cs" />
+    <Compile Include="Logics\LinkLogic.cs" />
+    <Compile Include="Logics\ListViewLogic.cs" />
+    <Compile Include="Logics\Orders\InvoiceLogic.cs" />
+    <Compile Include="Logics\Orders\LineLogic.cs" />
+    <Compile Include="Logics\Orders\PaymentLogic.cs" />
+    <Compile Include="Logics\Orders\SalesLogic.cs" />
+    <Compile Include="Logics\Orders\ServiceLogic.cs" />
+    <Compile Include="Logics\PanelLogic.cs" />
+    <Compile Include="Logics\PermitLogic.cs" />
+    <Compile Include="Logics\PhoneLogic.cs" />
+    <Compile Include="Logics\RecallLogic.cs" />
+    <Compile Include="Logics\ToolsLogic.cs" />
+    <Compile Include="Logics\UrlLogic.cs" />
+    <Compile Include="Misc\PDFBuilder.cs" />
+    <Compile Include="Reports\CommissionReport.cs" />
+    <Compile Include="Reports\PurchaseReport.cs" />
+    <Compile Include="Reports\QuoteCompletion.cs" />
+    <Compile Include="Reports\Report.cs" />
+    <Compile Include="Reports\SalesReport.cs" />
+    <Compile Include="Reports\StockValueReport.cs" />
+    <Compile Include="Misc\RzLicense.cs" />
+    <Compile Include="Logics\CompanyLogic.cs" />
+    <Compile Include="Logics\CurrencyLogic.cs" />
+    <Compile Include="Logics\Orders\OrderLogic.cs" />
+    <Compile Include="Logics\PartLogic.cs" />
+    <Compile Include="Logics\Orders\ProfitLogic.cs" />
+    <Compile Include="Logics\QuickBooksLogic.cs" />
+    <Compile Include="Logics\Orders\QuoteLogic.cs" />
+    <Compile Include="Logics\ReqLogic.cs" />
+    <Compile Include="Logics\UserLogic.cs" />
+    <Compile Include="Misc\nEnum.cs" />
+    <Compile Include="Misc\PartObject.cs" />
+    <Compile Include="Misc\PreDefinedImports.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\DayDetail.cs" />
+    <Compile Include="Logics\RzLogic.cs" />
+    <Compile Include="StartRz.cs" />
+    <Compile Include="Logics\ProofLogic.cs" />
+    <Compile Include="Misc\ToolsConnection.cs" />
+    <Compile Include="Misc\UPSWorldship.cs" />
+    <Compile Include="Auto\currency_auto.cs" />
+    <Compile Include="Items\currency.cs" />
+    <Compile Include="Auto\account_auto.cs" />
+    <Compile Include="Items\account.cs" />
+    <Compile Include="Auto\journal_auto.cs" />
+    <Compile Include="Items\journal.cs" />
+    <Compile Include="Auto\deposit_auto.cs" />
+    <Compile Include="Auto\payment_in_auto.cs" />
+    <Compile Include="Auto\payment_out_auto.cs" />
+    <Compile Include="Items\payment_in.cs" />
+    <Compile Include="Items\payment_out.cs" />
+    <Compile Include="Auto\budget_account_auto.cs" />
+    <Compile Include="Auto\budget_auto.cs" />
+    <Compile Include="Items\budget.cs" />
+    <Compile Include="Items\budget_account.cs" />
+    <Compile Include="Auto\creditmemo_det_auto.cs" />
+    <Compile Include="Auto\creditmemo_hed_auto.cs" />
+    <Compile Include="Items\creditmemo_det.cs" />
+    <Compile Include="Items\creditmemo_hed.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoogleApis\GoogleApis\GoogleApis\GoogleApis.csproj">
+      <Project>{1352af3d-51ec-4823-a3a4-417a94c07da0}</Project>
+      <Name>GoogleApis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HubspotApi\HubspotApi\HubspotApi.csproj">
+      <Project>{752d523c-ab59-4915-a78c-741684ae7ae0}</Project>
+      <Name>HubspotApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SensibleDAL\SensibleDAL\SensibleDAL.csproj">
+      <Project>{b0cb5ca4-35fa-4069-a18c-947716d318ae}</Project>
+      <Name>SensibleDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{B5CEFFDE-EA3C-4BFA-9501-03FE5642741C}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\CoreWin\CoreWin.csproj">
+      <Project>{3836F191-B2A8-4457-A5F6-5B766DB73E36}</Project>
+      <Name>CoreWin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NewMethod\NewMethod.csproj">
+      <Project>{DA2388CC-2076-4327-90E4-46B8D463DBC2}</Project>
+      <Name>NewMethod</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NewMethod\NewMethodWin\NewMethodWin.csproj">
+      <Project>{DADA5260-9911-4CBD-AAD7-89177DC7EC9F}</Project>
+      <Name>NewMethodWin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tie\Tie.csproj">
+      <Project>{4c393e56-82ee-4e3d-a276-87509ae6f27f}</Project>
+      <Name>Tie</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{5047280a-4740-4083-85fe-f71b28b77848}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\ToolsWin\ToolsWin.csproj">
+      <Project>{c4d3a247-5091-401f-9045-2dedae231831}</Project>
+      <Name>ToolsWin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Blends\Rz4BlueSmall.bmp" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

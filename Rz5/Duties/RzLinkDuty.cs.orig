@@ -1,0 +1,215 @@
+﻿
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+using System.Data;
+
+using Tie;
+using NewMethod;
+using CoreWin;
+
+namespace Rz4
+{
+    public class RzLinkDuty : nDuty
+    {
+        //Constructors
+        public RzLinkDuty() : base("RzLink", "RzLink")
+        {
+
+        }
+        //Public Override Functions
+        public override bool Run(ContextNM q, IStatusView s)
+        {
+            base.Init(q, s);
+            CompanyInfo companyInfo = GetCompanyInfo(q);
+            String id = Tools.Strings.FilterTrash(companyInfo.CompanyName);
+            String folder = "";
+            if (Tools.Strings.StrCmp(Environment.MachineName, "LAPTOP07"))
+                folder = @"c:\Bilge\RzLink\";
+            else
+            {
+                folder = Tools.Strings.Left(Tools.FileSystem.GetAppPath(), 1) + @":\";
+                if (!Directory.Exists(folder))
+                {
+                    NewMethod.nStatus.TellUser("No root folder found");
+                    return false;
+                }
+                folder += @"RzLink\";
+            }
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
+            String iFile = folder + "Upload_" + id + ".info";
+            Tools.Files.SaveStringAsFile(iFile, "working...");
+            //clear the iFile on the site during the operation
+            if (!Tools.FTP.SendFile("mike.recognin.com", "RzLink", "RzLink", iFile, Path.GetFileName(iFile), null, null))
+            {
+                q.TheLeader.Error("Initial iFile upload error");
+                return false;
+            }
+            DataTable d = GetDataTable(q);
+            if (!Tools.Data.DataTableExists(d))
+            {
+                q.TheLeader.Comment("No data");
+                return true;
+            }
+            bool ret = true;
+            StringBuilder sb = new StringBuilder();
+            foreach (DataRow r in d.Rows)
+            {
+                String part = CsvFilter(Tools.Data.NullFilterString(r["fullpartnumber"]));
+                String prefix = "";
+                String basenumber = "";
+                PartObject.ParsePartNumber(part, ref prefix, ref basenumber);
+                prefix = Tools.Strings.FilterTrash(prefix);
+                basenumber = Tools.Strings.FilterTrash(basenumber);
+                if (Tools.Strings.StrExt(prefix) || Tools.Strings.StrExt(basenumber))
+                {
+                    sb.Append(part.ToUpper());
+                    sb.Append(",");
+                    sb.Append(prefix.ToUpper());
+                    sb.Append(",");
+                    sb.Append(basenumber.ToUpper());
+                    sb.Append(",");
+                    sb.Append(Tools.Data.NullFilterIntegerFromIntOrLong(r["quantity"]).ToString());
+                    sb.Append(",");
+                    sb.Append(CsvFilter(Tools.Data.NullFilterString(r["manufacturer"])).ToUpper());
+                    sb.Append(",");
+                    sb.Append(CsvFilter(Tools.Data.NullFilterString(r["datecode"])).ToUpper());
+                    sb.Append(",");
+                    sb.Append(CsvFilter(Tools.Data.NullFilterString(r["condition"])).ToUpper());
+                    sb.Append(",");
+                    sb.Append(CsvFilter(Tools.Data.NullFilterString(r["description"])));
+                    sb.Append(",");
+                    sb.Append(Tools.Strings.NiceFormat(CsvFilter(Tools.Data.NullFilterString(r["stocktype"]))));
+                    sb.Append(",");
+                    sb.Append(CsvFilter(Tools.Data.NullFilterString(r["packaging"])).ToUpper());
+                    sb.Append("\r\n");
+                }
+            }
+            String pFile = folder + "Upload_" + id + ".csv";
+            Tools.Files.SaveStringAsFile(pFile, sb.ToString());
+            String zFile = folder + "Upload_" + id + ".zip";
+            Tools.Zip.ZipOneFile(pFile, zFile);
+            Tools.Files.SaveStringAsFile(iFile, companyInfo.ToString());
+            if (Tools.FTP.SendFile("mike.recognin.com", "RzLink", "RzLink", zFile, Path.GetFileName(zFile), null, null))
+            {
+                if (Tools.FTP.SendFile("mike.recognin.com", "RzLink", "RzLink", iFile, Path.GetFileName(iFile), null, null))
+                    q.TheLeader.Comment("Data and info sent");
+                else
+                {
+                    q.TheLeader.Error("Info FTP failed");
+                    ret = false;
+                }
+            }
+            else
+            {
+                q.TheLeader.Error("Data FTP failed");
+                ret = false;
+            }
+            try { File.Delete(zFile); }
+            catch { }
+            try { File.Delete(iFile); }
+            catch { }
+            try { File.Delete(pFile); }
+            catch { }
+            //ask the site to import
+            String req = Tools.Strings.DownloadInternetString("http://mike.recognin.com:8091/Import.aspx?async=Y");
+            q.TheLeader.Comment("Import request result: " + req);
+            return ret;
+        }
+        //Private Functions
+        private DataTable GetDataTable(ContextNM q)
+        {
+            string types = "";
+            if (Rz4Win.RzCommunitySettings.ShowStock)
+                types += "'stock'";
+            if (Rz4Win.RzCommunitySettings.ShowConsign)
+            {
+                if (Tools.Strings.StrExt(types))
+                    types += ",";
+                types += "'consign'";
+            }
+            if (Rz4Win.RzCommunitySettings.ShowExcess)
+            {
+                if (Tools.Strings.StrExt(types))
+                    types += ",";
+                types += "'excess'";
+            }
+            if (!Tools.Strings.StrExt(types))
+                return null;
+            string sql = "select fullpartnumber,quantity,";
+            if (Rz4Win.RzCommunitySettings.ShowManufacturer)
+                sql += "manufacturer,";
+            else
+                sql += "'' as manufacturer,";
+            if (Rz4Win.RzCommunitySettings.ShowDateCode)
+                sql += "datecode,";
+            else
+                sql += "'' as datecode,";
+            if (Rz4Win.RzCommunitySettings.ShowDescription)
+                sql += "description,";
+            else
+                sql += "'' as description,";
+            if (Rz4Win.RzCommunitySettings.ShowCondition)
+                sql += "condition,";
+            else
+                sql += "'' as condition,";
+            if (Rz4Win.RzCommunitySettings.ShowPackaging)
+                sql += "packaging,";
+            else
+                sql += "'' as packaging,";
+            sql += "stocktype from partrecord where stocktype in (" + types + ") and len(fullpartnumber) > 3 and quantity > 0";
+            return q.xSys.xData.GetDataTable(sql, false, true);
+        }
+        private String CsvFilter(String s)
+        {
+            s = s.Replace(",", " ").Replace("\"", "").Replace("'", "").Replace("\r", "").Replace("\n", "").Replace("\t", "").Trim();
+            if (s.Length > 255)
+                s = s.Substring(0, 255);
+            return s;
+        }
+        private CompanyInfo GetCompanyInfo(ContextNM q)
+        {
+            CompanyInfo c = new CompanyInfo();
+            c.CompanyName = Rz3App.OwnerSettings.CompanyName;
+            if (!Tools.Strings.StrExt(c.CompanyName))
+                c.CompanyName = Tools.Strings.NiceFormat(Rz3App.xLogic.CompanyIdentifier);
+            if (!Tools.Strings.StrExt(c.CompanyName))
+                c.CompanyName = "Vendor";
+            c.ContactName = c.CompanyName;
+            c.Phone = Rz3App.OwnerSettings.Phone;
+            n_user u = n_user.GetByID(q.xSys, Rz4Win.RzCommunitySettings.ContactAgent);
+            if (u != null)
+            {
+                if (Tools.Strings.StrExt(u.name))
+                    c.ContactName = u.name;
+                if (Tools.Strings.StrExt(u.phone))
+                    c.Phone = u.phone;
+                c.Email = u.email_address;
+            }
+            return c;
+        }
+        //Private Classes
+        private class CompanyInfo
+        {
+            //Public Variables
+            public string CompanyName = "";
+            public string ContactName = "";
+            public string Phone = "";
+            public string Email = "";
+
+            //Public Override Functions
+            public override string ToString()
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(CompanyName);
+                sb.AppendLine(ContactName);
+                sb.AppendLine(Phone);
+                sb.AppendLine(Email);
+                return sb.ToString();
+            }
+        }
+    }
+}

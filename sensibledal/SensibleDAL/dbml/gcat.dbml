@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ComponentIQ" Class="gcatDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=rz.sensiblemicro.local\SQLEXPRESS;Initial Catalog=ComponentIQ;Integrated Security=True" SettingsObjectName="SensibleDAL.Properties.Settings" SettingsPropertyName="ComponentIQConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AccountManager" Member="AccountManagers">
+    <Type Name="AccountManager">
+      <Column Name="AccountManagerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.XRF" Member="XRFs">
+    <Type Name="XRF">
+      <Column Name="XRFID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="XRFSampleQty" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PackageMountTypeXRF" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="XRFServiceProviderRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="XRFSPRequiredComments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="LeadMaterialsMatch" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="LeadMaterialsMatchComments" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ForeignMaterials" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ForeignMaterialsComments" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Association Name="ValidationReport_XRF" Member="ValidationReport" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="ValidationReport" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerPart" Member="CustomerParts">
+    <Type Name="CustomerPart">
+      <Column Name="CPN" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Customer" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="CPNID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MPNID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CustomerPart_ValidationReport" Member="ValidationReports" ThisKey="CPNID" OtherKey="CPNID" Type="ValidationReport" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DateCode" Member="DateCodes">
+    <Type Name="DateCode">
+      <Column Name="DateCodeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateCodeA" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="QtyA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="imgDateCodeA" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateCodeB" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="QtyB" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="imgDateCodeB" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateCodeC" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="QtyC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="imgDateCodeC" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateCodeD" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="QtyD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="imgDateCodeD" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateCodeE" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="QtyE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="imgDateCodeE" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="ValidationReport_DateCode" Member="ValidationReport" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="ValidationReport" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Decapsulation" Member="Decapsulations">
+    <Type Name="Decapsulation">
+      <Column Name="DeCapID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DeCap_SampleQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MFGLogoPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="MFGLogoComments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="LogoMatchPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="LogoMatchComments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="DiePNMatchPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DiePNMatchComments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="DieBondWiresPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DieBondWiresComments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="DeCapImage1" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DeCapImage2" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DeCapImage3" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="DeCapImage4" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="ValidationReport_Decapsulation" Member="ValidationReport" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="ValidationReport" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EPROM" Member="EPROMs">
+    <Type Name="EPROM">
+      <Column Name="EPROMID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EPROMSampleQty" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PackageMountTypeEPROM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="EPROMServiceProviderRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EPROMSPRequiredComments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="ChecksumAnalysis" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ChecksumComment" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="ProgrammingRequired" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ProgrammingRequiredComment" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="VerifyProgramLoad" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ProgramLoadComment" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Association Name="ValidationReport_EPROM" Member="ValidationReport" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="ValidationReport" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExtendedTesting" Member="ExtendedTestings">
+    <Type Name="ExtendedTesting">
+      <Column Name="ExtCategory" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ExtTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ExtImage" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExtID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SampleQty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Test1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test4" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond4" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res4" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual4" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test5" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond5" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res5" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual5" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test6" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond6" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res6" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual6" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test7" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond7" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res7" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual7" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test8" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond8" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res8" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual8" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test9" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond9" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res9" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual9" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test10" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond10" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res10" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual10" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExtCategoryOther" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExtTestingResult" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="ValidationReport_ExtendedTesting" Member="ValidationReport" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="ValidationReport" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HeatedSolvents" Member="HeatedSolvents">
+    <Type Name="HeatedSolvent">
+      <Column Name="HeatedSolventId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HeatedSolventSampleQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Methyl_PyrrolidinonePass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Methyl_PyrrolidinoneComments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="DynasolvePass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DynasolveComments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SecondaryCoatingPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SecondaryCoatingComments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Heated_SolventsImage1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Heated_SolventsImage2" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Heated_SolventsImage3" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="date_created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ManufacturerPart" Member="ManufacturerParts">
+    <Type Name="ManufacturerPart">
+      <Column Name="MPN" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Manufacturer" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ECCN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HarmonizedCode" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PackageType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Lead_PinCount" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Lead_PinPitch" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Width" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Length" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Thickness" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="RoHS_Compliant" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SurfaceMount" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ThroughHole" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BGA" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MemoryDevice" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MSD_MSL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MoistureLevel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Lead/Leadless]" Member="Lead_Leadless" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="MPNID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Import_ID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="date_created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="ManufacturerPart_ValidationReport" Member="ValidationReports" ThisKey="MPNID" OtherKey="MPNID" Type="ValidationReport" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MarkingPermanency" Member="MarkingPermanencies">
+    <Type Name="MarkingPermanency">
+      <Column Name="MarkingPermanencyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MarkingSample_Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AcetoneTestPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Comments_Acetone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Alcohol_MineralSpiritsTestPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Comments_Alcohol" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ScrapeTestPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Comments_ScrapeTest" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SecondaryCoatingTestPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Comments_SecondaryCoating" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PartNumber_MarkingTestPass" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments_PartNumber" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CaseMarking_LogoTestPass" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments_CaseMarking" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Marking_Image1" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Marking_Image2" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Marking_Image3" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Association Name="ValidationReport_MarkingPermanency" Member="ValidationReport" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="ValidationReport" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SentryVI" Member="SentryVIs">
+    <Type Name="SentryVI">
+      <Column Name="SentryVISignatureID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SentryVISampleQty" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PackageMountTypeSentryVI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ServiceProviderRequiredSentryVI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SentryVISPRequiredComments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SignaturesMatch" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SignatureMatchComments" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Open_Shorts_Detection" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="OpenShortsComments" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SignatureAnalysisPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SignatureAnalysisComments" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SignatureReportRequired" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SignatureReportComments" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SentryOverAllResult" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SentryICResults" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Association Name="ValidationReport_SentryVI" Member="ValidationReport" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="ValidationReport" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Solderability" Member="Solderabilities">
+    <Type Name="Solderability">
+      <Column Name="SolderabilityID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SolderabilitySampleQty" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PackageMountTypeSolderability" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SolderabilityServiceProviderRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SolderabilitySPRequiredComments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="RoHS" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="RoHSComments" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SolderWettingAcceptable" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SolderWettingComments" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="VoidFree" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="VoidFreeComments" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ContaminantFree" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ContaminantFreeComments" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SolderabilityImage1" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SolderabilityImage2" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SolderabilityImage3" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Association Name="ValidationReport_Solderability" Member="ValidationReport" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="ValidationReport" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ValidationReport" Member="ValidationReports">
+    <Type Name="ValidationReport">
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ReportDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Form" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="company_uid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="company_name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Rev" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MPN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CPN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SalesOrderNumberOLD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerPO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="AccountManagerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Image_Top" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Image_Bottom" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DateCode1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Quantity1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateCode2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Quantity2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateCode3" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Quantity3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateCode4" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Quantity4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateCode5" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Quantity5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateCode6" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Quantity6" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerTypeA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CustomerTypeB" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CustomerTypeC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CustomerTypeD" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_StandardA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_StandardB" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_StandardC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_StandardD" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="is_AS6081" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="is_CCAP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Customer_RequirementA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Customer_RequirementB" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Customer_RequirementC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Customer_RequirementD" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_TypeA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_TypeB" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_TypeC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_TypeD" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_TypeE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_TypeF" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_TypeG" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_TypeH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="New" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Used" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Refurbished" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="VCA_Image1" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="VCA_Image2" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="VCA_Image3" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="VisualComponentSampleQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Width_Actual" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="UnitWidth" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Pass_W" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CommentsWidth" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Length_Actual" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="UnitLength" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Pass_L" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CommentsLength" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Thickness_Actual" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="UnitThickness" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Pass_T" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CommentsThickness" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ComponentType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SolderBalls_Spheres" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Uniform_Concentricity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Crushed_Damages_Spheres" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CommentSolderBalls" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CommentUniformity" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CommentDamagedSpheres" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Lead_Count" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Lead&amp;PadCondition]" Member="Lead_PadCondition" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LeadCoplanarity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Oxidation/Discoloration]" Member="Oxidation_Discoloration" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SignsExposedBaseMetal" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CommentLeadCount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[CommentLead&amp;Pad]" Member="CommentLead_Pad" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CommentLeadCoplanarity" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CommentO2Discoloration" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CommentExpBaseMetal" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VSA_Image1" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="VSA_Image2" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="VSA_Image3" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="VisualSurfaceSampleQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Top_Pass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Bottom_Pass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Comments_Top" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Comments_Bottom" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LogosPartnumbersPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="LogosPartnumbersComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="Traceability" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SalesOrderNumber" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MPNID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date_created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CPNID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EXTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Manufacturer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Test_TypeI" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Test_TypeJ" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DateCodeUnltd" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="summaryNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="orddet_line_fullpartnumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="orddet_line_uid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="orderid_sales" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="orderid_purchase" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="agent_uid" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="agent_name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="is_deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="is_imported" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="is_completed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="completed_by" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="completed_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="is_approved" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="approved_by" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="approved_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="is_demo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="demo_source_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="created_by" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="ValidationReport_XRF" Member="XRFs" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="XRF" />
+      <Association Name="ValidationReport_DateCode" Member="DateCodes" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="DateCode" />
+      <Association Name="ValidationReport_Decapsulation" Member="Decapsulations" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="Decapsulation" />
+      <Association Name="ValidationReport_EPROM" Member="EPROMs" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="EPROM" />
+      <Association Name="ValidationReport_ExtendedTesting" Member="ExtendedTestings" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="ExtendedTesting" />
+      <Association Name="ValidationReport_MarkingPermanency" Member="MarkingPermanencies" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="MarkingPermanency" />
+      <Association Name="ValidationReport_SentryVI" Member="SentryVIs" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="SentryVI" />
+      <Association Name="ValidationReport_Solderability" Member="Solderabilities" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="Solderability" />
+      <Association Name="ValidationReport_XRay" Member="XRays" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="XRay" />
+      <Association Name="ValidationReport_Summary_new" Member="Summary_news" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="Summary_new" />
+      <Association Name="ValidationReport_BasicElectrical" Member="BasicElectricals" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="BasicElectrical" />
+      <Association Name="CustomerPart_ValidationReport" Member="CustomerPart" ThisKey="CPNID" OtherKey="CPNID" Type="CustomerPart" IsForeignKey="true" />
+      <Association Name="ManufacturerPart_ValidationReport" Member="ManufacturerPart" ThisKey="MPNID" OtherKey="MPNID" Type="ManufacturerPart" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.XRay" Member="XRays">
+    <Type Name="XRay">
+      <Column Name="XRayID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="XRaySampleQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiePresentPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DiePresentComments" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="BondWiresPresentPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="BondWiresPresentComment" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Damaged_MissingWiresPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Damaged_MissingWiresComment" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DieLeadUniformityPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DieLeadUniformityComment" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DieFRameSize_LocationPass" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="XRay_Image1" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="XRay_Image2" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="XRay_Image3" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="XRay_Image4" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="DieFrameSize_LocationComment" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="ValidationReport_XRay" Member="ValidationReport" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="ValidationReport" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Summary_new" Member="Summary_news">
+    <Type Name="Summary_new">
+      <Column Name="SummaryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="date_created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExtVisLogosPartsResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ExtVisLogosPartsComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ExtVisDimensionalResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ExtVisDimensionalComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ExtVisLeadPkgResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ExtVisLeadPkgComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ExtVisSurfaceAltResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ExtVisSurfaceAltComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MarkingAcetoneResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MarkingAcetoneComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MarkingScrapeResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MarkingScrapeComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MarkingAlterationResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MarkingAlterationComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="XrayDieWireResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="XrayDieWireComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeatedMethResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HeatedMethComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeatedDynaResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HeatedDynaComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeatedSecondaryResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HeatedSecondaryComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DecapWireBondResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DecapWireBondComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DecapDieMarkingResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DecapDieMarkingComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="XRFLeadMatsResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="XRFLeadMatsComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="XRFForeignResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="XRFForeignComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SolPassedResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SolPassedComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SolWettingResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SolWettingComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BasicElectricalResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BasicElectricalComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SentryVIResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SentryVIComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ExtendedTestingResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ExtendedTestingComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="EPROMChecksumResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EPROMCheckSumComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="EPROMProgramValidationResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EPROMProgramValidationComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MoistureBakingResult" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MoistureBakingComment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="ValidationReport_Summary_new" Member="ValidationReport" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="ValidationReport" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MoistureBaking" Member="MoistureBakings">
+    <Type Name="MoistureBaking">
+      <Column Name="unique_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="validationreportid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date_created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="strategic_sales_work_order_number" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="process" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="bake_duration" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="msl" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="bake_temperature" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="total_quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="result" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="result_comment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BasicElectrical" Member="BasicElectricals">
+    <Type Name="BasicElectrical">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ValidationReportID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Category" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SampleQty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Test1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Cond1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test4" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond4" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res4" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual4" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test5" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond5" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res5" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual5" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test6" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond6" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res6" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual6" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test7" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond7" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res7" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual7" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test8" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond8" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res8" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual8" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test9" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond9" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res9" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual9" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Test10" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cond10" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Res10" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actual10" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CategoryOther" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TestingResult" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="ValidationReport_BasicElectrical" Member="ValidationReport" ThisKey="ValidationReportID" OtherKey="ValidationReportID" Type="ValidationReport" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
